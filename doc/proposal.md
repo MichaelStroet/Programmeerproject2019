@@ -1,27 +1,36 @@
 # Programmeerproject2019
-# Project Proposal
+# Projectvoorstel
 
 ## Problem statement
+Sterren komen in allerlei soorten en maten: van de kleinste rode dwergen, met een straal nog geen tiende van onze zon, tot de gigantische superreuzen, honderden tot duizenden keren groter en tientallen keren zwaarder.
+Hoewel er veel figuren te vinden zijn die de absolute verschillen tussen de zon en andere sterren vergelijken, is er relatief weinig over de verdeling van de lichtere en zwaardere sterren in het heelal te vinden. Deze komen meestal in de vorm van een speciaal figuur, het Hertzsprung-Rusell diagram (HR-diagram).
+In dit project wil ik deze verdeling overzichtelijk visualiseren door verder te bouwen op het HR-diagram met linked-view visualisaties.
 
-## Solution
+## Visualisatie
 
-### Schets work in progress
+### Schets
 ![Schets](proposal_sketch.png)
 
 ### Hertzsprung-Russell Diagram
-Een Hertzsprung-Russell diagram (HR-diagram) is een scatterplot van sterren en hun absolute herlderheid en effectieve temperatuur. Het diagram kan ook worden veranderd in een bubble chart door de straal of massa van sterren te visualiseren als de oppervlakte van de stippen.
-De effectieve temperatuur van een ster staat gelijk aan de bepaalde kleur (blauw -> wit -> geel -> rood).
-
-### Histogram
-In het histogram wordt de verdeling van de massa of de straal weergegeven aan de hand van hoeveel sterren er in de verschillende 'bins' passen.
+Een HR-diagram is een scatterplot van sterren met hun absolute herlderheid en effectieve temperatuur. Het diagram kan ook met een extra dimensie uitgebreid worden door een andere variabele, zoals de straal of de massa, weer te geven als de grootte van de stippen.
+De effectieve temperatuur van een ster komt ongeveer overeen met de oppervlakte temperatuur en bepaald ook de kleur van de ster. Van een hoge naar lage temperatuur is het kleurenverloop: blauw -> wit -> geel -> rood.
 
 ### Piechart
-In het taartdiagram wordt de verdeling van de type sterren weergegeven. In een HR-diagram zijn de sterren in 5 type te verdelen:
+In het taartdiagram wordt de verdeling van de catagoriën sterren weergegeven. De 5 catagoriën waarin ik de sterren zal indelen zijn:
 - Rode dwergen
 - De hoofdreeks (main sequence)
 - Reuzen
 - Superreuzen
 - Witte dwergen
+
+### Histogram: temperatuur (links)
+In dit histogram wordt het aantal sterren van een bepaalde temperatuur weergegeven. De x-as zal niet veranderen bij het updaten om de vergelijking met het HR-diagram te behouden.
+
+### massa/straal histogram (rechts)
+In dit histogram wordt het aantal sterren van een bepaalde massa of straal weergegeven.
+
+### Overige opties
+
 
 ## Prerequisites
 

@@ -3,8 +3,6 @@
 
 ## Problem statement
 
-
-
 ## Solution
 
 ### Schets work in progress
@@ -27,10 +25,21 @@ In het taartdiagram wordt de verdeling van de type sterren weergegeven. In een H
 
 ## Prerequisites
 
-### Data sources
+### Dataset
+Voor het project wordt er gebruik gemaakt van de [HYG-database](https://github.com/astronexus/HYG-Database) van David Nash. Deze database bevat bijna 120.000 sterren en is samengesteld uit verschillende catalogussen:
+- Hipparcos Catalog
+- Yale Bright Star Catalog (5th edition)
+- Gliese Catalog of Nearby Stars (3rd edition)
 
-### External components
+### Externe componenten
+Er zal gebruikt worden gemaakt van D3 versie 5 en de externe D3 library: [d3-tip](https://github.com/Caged/d3-tip)
 
 ### Similar
+ESA: [Star Mapper](http://sci.esa.int/star_mapper/)
+Google: [100,000 Stars](https://stars.chromeexperiments.com/)
 
-### Hardest parts
+### Moeilijkste onderdelen
+- Bepalen type van elke ster
+- Bepalen massa van sterren aan de hand van type en helderheid
+- Efficiënt omgaan met 120.000 datapunten
+- Alle selecties en updates goed laten werken

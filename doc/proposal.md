@@ -15,6 +15,13 @@ In dit project wil ik deze verdeling overzichtelijk visualiseren door verder te 
 
 ![Schets](proposal_sketch.png)
 
+### Overzicht
+- [Hertzsprung-Russell Diagram](#hertzsprung-russell-diagram)
+- [Taartdiagram](#taartdiagram)
+- [Histogram: temperatuur (links)](#histogram-temperatuur-links)
+- [Histogram: massa/straal (rechts)](#histogram-massastraal-rechts)
+- [Overige opties](#overige-opties)
+
 ### Hertzsprung-Russell Diagram
 Een HR-diagram is een scatterplot van sterren met hun absolute herlderheid en effectieve temperatuur. Het diagram kan ook met een extra dimensie uitgebreid worden door een andere variabele, zoals de straal of de massa, weer te geven als de grootte van de stippen.
 De effectieve temperatuur van een ster komt ongeveer overeen met de oppervlakte temperatuur en bepaald ook de kleur van de ster. Van een hoge naar lage temperatuur is het kleurenverloop: blauw -> wit -> geel -> rood.
@@ -36,7 +43,7 @@ In dit histogram wordt het aantal sterren van een bepaalde temperatuur weergegev
 
 ![Temp](onclick_hist_temp.png)
 
-### massa/straal histogram (rechts)
+### Histogram: massa/straal (rechts)
 In dit histogram wordt het aantal sterren van een bepaalde massa of straal weergegeven.
 
 ![Mass/Radius](onclick_hist_mass-radius.png)

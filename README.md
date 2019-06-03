@@ -7,6 +7,7 @@ UvA minor programmeren 2019 - ProgrammeerProject periode 6 (5062PRPR6Y)
 
 ## Projectvoorstel
 [Voorstel document](doc/proposal.md)
+
 In het projectvoorstel staat beschreven wat het doel van de visualisatie is en hoe deze zal worden bereikt.
 
 ## Dankwoord

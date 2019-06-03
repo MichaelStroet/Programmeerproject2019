@@ -1,8 +1,8 @@
-# Programmeerproject2019
 # Projectvoorstel
+## Michael Stroet - 11293284
 
 ## Doel van het project
-
+In dit project zullen meer dan 100.000 sterren worden gevisualiseerd om de onderlinge verdeling van hun grootte, massa, temperatuur en helderheid duidelijk weer te geven. Dit zal bereikt worden via een Hertzsprung-Russell diagram en linked-view figuren die verschillende onderdelen van het diagram zullen highlighten.
 
 ## Problem statement
 Sterren komen in allerlei soorten en maten: van de kleinste rode dwergen, met een straal nog geen tiende van onze zon, tot de gigantische superreuzen, honderden tot duizenden keren groter en tientallen keren zwaarder.

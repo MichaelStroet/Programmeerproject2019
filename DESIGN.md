@@ -1,7 +1,7 @@
 # Design document
 ## Michael Stroet - 11293284
 
-### Dataset
+## Dataset
 Voor het project wordt er gebruik gemaakt van de [HYG-database](https://github.com/astronexus/HYG-Database) van David Nash. Deze database bevat 119.616 sterren en is samengesteld uit drie verschillende catalogussen:
 - Hipparcos Catalog
 - Yale Bright Star Catalog (5th edition)
@@ -38,30 +38,60 @@ Met de lichtkracht en de categoriën kunnen de massa's van de sterren bepaald wo
 met L/Lo de lichtkracht relatief aan de zon, M/Mo de massa relatief aan de zon en a en c twee constantes die afhankelijk zijn van de categorie.
 De waardes van deze constanten zullen uit Zaninetti (2008) \[[2](README.md/#referenties)\] gehaald worden.
 
-## Technische aspecten visualisatie
+Nadat alle data is geïsoleerd en berekent is in python zal deze in een JSON bestand worden opgeslagen. De structuur van dit bestand is als volgt:
+{
+    "Rode dwergen": {
+        Ster 1 (proper name of andere identificatie): {
+            temperatuur: a,
+            helderheid : b,
+            kleur : c,
+            massa : d,
+            straal : e,
+            afstand : f
+            },
+        Ster 2: {},
+        ...},
+    "Hoofdreeks": {},
+    ...    
+}
 
-![Schets](doc/design/annotated_sketch.png)
-
-### Overzicht
-- [Hertzsprung-Russell Diagram](#hertzsprung-russell-diagram)
-- [Taartdiagram](#taartdiagram)
-- [Histogram: temperatuur (links)](#histogram-temperatuur-links)
-- [Histogram: massa/straal (rechts)](#histogram-massastraal-rechts)
-
-### Hertzsprung-Russell Diagram
-De sterren in de Hertzsprung-Russell scatter plot zijn afhankelijk van drie variabelen:
-
-- De lichtkracht relatief aan de zon bepaalt de y-coördinaat
-    - De y-as is logaritmisch
-- De effectieve temperatuur bepaalt de x-coördinaat en de kleur
-    - De x-as gaat van hoog naar laag
-- De straal bepaalt de grootte van de punten
-    - Omdat het verschil in stralen enorm is is het beter om een (tweedmachts- of hoger) wortel van de straal te nemen
+### Opmerkingen
 
 Om aan elke temperatuur een kleur toe te kunnen wijzen, wordt er gebruik gemaakt van een [blackbody color tabel](http://www.vendian.org/mncharity/dir3/blackbody/UnstableURLs/bbr_color.html). Van de twee verschillende Color Matching Functions (CMF) zullen de CIE 1931 waardes gebruikt worden.
 
-### Taartdiagram
+## Visualisatie
 
-### Histogram: temperatuur (links)
+### Initialisatie
+Wanneer de visualisatie voor het eerst wordt geopend, bevatten de taartdiagram en histogrammen alle sterren. In het HR-diagram wordt de zon geselecteerd. De corresponderende balken in de histogrammen en de "Hoofdreeks" sectie van de taartdiagram worden gehighlight.
 
-### Histogram: massa/straal (rechts)
+### Updates
+
+Ieder figuur beïnvloed de andere figuren, of door dingen te highlighten of door ze te updaten.
+
+#### Hertzsprung-Russell diagram
+
+In het HR-diagram kunnen individuele sterren worden geselecteerd. Wanneer een bepaalde ster wordt geselecteerd verschijnt rechts naast het diagram de indentificatie/naam van de ster en zijn eigenschappen. Verder worden in de taartdiagram en histogrammen de bijbehoordende data gehighlight.
+
+Boven het HR-diagram staat een dropdown menu waarin de sterren met een proper name kunnen worden geselecteerd zonder dat deze in het diagram gezocht hoeven te worden.
+
+Naast het diagram komt ook een afstandsslider die alle figuren aanpast zodat zij alleen sterren laten zien die tot een bepaalde afstand staan. De beginwaarde van deze slider moet nog bepaald worden.
+
+#### Taartdiagram
+
+In het taartdiagram kan op de verschillende categoriën geklikt worden. Wanneer een categorie geselecteerd is worden de histogrammen aangepast zodat alleen de sterren uit die categorie zichtbaar zijn. In het HR-diagram worden de corresponderende sterren gehighlight en de rest gedimd.
+
+#### Histogram: temperatuur
+
+In dit histogram kunnen de balken aangeklikt worden. Wanneer een bepaalde temperatuur range wordt geselecteerd, worden het andere histogram en het taartdiagram aangepast zodat zij alleen sterren met die temperatuur weergeven. In het HR-diagram worden deze gehighlight en de rest gedimd.
+
+#### Histogram: massa/straal
+
+In dit histogram kunnen ook de balken aangeklikt worden, maar deze bevat nu ook twee knoppen waarmee het histogram van variabele kan veranderen. Wanneer een bepaalde massa of straal range wordt geselecteerd, worden het andere histogram en het taartdiagram aangepast zodat zij alleen sterren in dat gebied weergeven. In het HR-diagram worden deze gehighlight en de rest gedimd.
+
+#### Combinatie
+
+Het huidige plan is dat deze updates op elkaar gestapeld kunnen worden. Als de "Superreuzen" in het taartdiagram geselecteerd zijn, kunnen in de aangepaste histogrammen verder op de balken geklikt worden. Deze passen dan de overige figuren verder aan.
+
+In dit geval is het niet nuttig meer dat de histogrammen het taartdiagram aanpassen, omdat dat diagram dan maar 1 categorie met 100% heeft.
+
+Door op een geselecteerde optie opnieuw te klikken wordt deze gedeselecteerd.

@@ -13,7 +13,7 @@ In dit project wil ik deze verdeling overzichtelijk visualiseren door verder te 
 
 ## Visualisatie
 
-![Schets](doc/proposal/visualisation_sketch.png)
+![Schets](doc/visualisation_sketch.png)
 
 ### Overzicht
 - [Hertzsprung-Russell Diagram](#hertzsprung-russell-diagram)

@@ -7,7 +7,7 @@ Week: [1](#week-1-3-9-juni) - [2](#week-2-10-16-juni) - [3](#week-3-17-23-juni) 
 ## Week 1 (3-9 juni)
 
 ### Weekoverzicht
-Dag: [1](#dag-1) - [2](#dag-2) - [3](#dag-3) - [4](#dag-4) - [5](#dag-5) - [weekend](#weekend)
+Dag: [1](#dag-1) - [2](#dag-2) - [3](#dag-3) - [4](#dag-4) - [5](#dag-5) - [weekend](#weekend-1)
 
 ### Dag 1:
 
@@ -30,13 +30,13 @@ Aan de hand van het mentorgesprek met Jasper zal er ook een afstandsslider toe w
 
 ### Dag 5:
 
-### Weekend:
+### Weekend 1:
 
 
 ## Week 2 (10-16 juni)
 
 ### Weekoverzicht
-Dag: [6](#dag-6) - [7](#dag-7) - [8](#dag-8) - [9](#dag-9) - [10](#dag-10) - [weekend](#weekend)
+Dag: [6](#dag-6) - [7](#dag-7) - [8](#dag-8) - [9](#dag-9) - [10](#dag-10) - [weekend](#weekend-2)
 
 ### Dag 6:
 
@@ -48,12 +48,12 @@ Dag: [6](#dag-6) - [7](#dag-7) - [8](#dag-8) - [9](#dag-9) - [10](#dag-10) - [we
 
 ### Dag 10:
 
-### Weekend:
+### Weekend 2:
 
 ## Week 3 (17-23 juni)
 
 ### Weekoverzicht
-Dag: [11](#dag-11) - [12](#dag-12) - [13](#dag-13) - [14](#dag-14) - [14](#dag-14) - [weekend](#weekend)
+Dag: [11](#dag-11) - [12](#dag-12) - [13](#dag-13) - [14](#dag-14) - [14](#dag-14) - [weekend](#weekend-3)
 
 ### Dag 11:
 
@@ -65,13 +65,13 @@ Dag: [11](#dag-11) - [12](#dag-12) - [13](#dag-13) - [14](#dag-14) - [14](#dag-1
 
 ### Dag 15:
 
-### Weekend:
+### Weekend 3:
 
 
 ## Week 4 (24-30 juni)
 
 ### Weekoverzicht
-Dag: [16](#dag-16) - [7](#dag-7) - [18](#dag-18) - [19](#dag-19) - [20](#dag-20) - [weekend](#weekend)
+Dag: [16](#dag-16) - [7](#dag-7) - [18](#dag-18) - [19](#dag-19) - [20](#dag-20) - [weekend](#weekend-4)
 
 ### Dag 16:
 
@@ -83,4 +83,4 @@ Dag: [16](#dag-16) - [7](#dag-7) - [18](#dag-18) - [19](#dag-19) - [20](#dag-20)
 
 ### Dag 20:
 
-### Weekend:
+### Weekend 4:

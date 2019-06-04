@@ -38,11 +38,13 @@ In deze database is voor elke ster, waar mogelijk, een groot aantal informatie e
     - 119.616 (100%) van de sterren hebben een lichtkracht
 
 Van de kleurenindex kan de effectieve temperatuur bepaald worden door middel van de formule van Ballesteros \[[1](README>md/#referenties)\]:
+
 ![Ballesteros](doc/Ballesteros.png),
 
 met T de effectieve temperatuur en (B-V) de kleurenindex.
 
 Van de lichtkracht kan de straal van de ster bepaald worden door middel van de wet van Stefan-Boltzmann:
+
 ![Stefan-Boltzmann](doc/Stefan-Boltzmann.png),
 
 met L de totale lichtkracht, R de straal, σ de constante van Stefan-Boltzmann en Te de effectieve temperatuur.
@@ -50,6 +52,7 @@ met L de totale lichtkracht, R de straal, σ de constante van Stefan-Boltzmann e
 Met de temperatuur en de lichtkracht kan het Hertzsprung-Russell diagram gemaakt worden, waaruit de grenzen van de verschillende categoriën bepaald kan worden en elke ster aan één van deze kan worden toegewezen.
 
 Met de lichtkracht en de categoriën kunnen de massa's van de sterren bepaald worden met behulp van de massa-lichtkracht relatie. Deze relatie is anders voor elke categorie.
+
 ![massa-lichtkracht](doc/massa-lichtkracht.png),
 
 met L/Lo de lichtkracht relatief aan de zon, M/Mo de massa relatief aan de zon en a en c twee constantes die afhankelijk zijn van de categorie.

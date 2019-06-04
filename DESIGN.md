@@ -39,7 +39,8 @@ met L/Lo de lichtkracht relatief aan de zon, M/Mo de massa relatief aan de zon e
 De waardes van deze constanten zullen uit Zaninetti (2008) \[[2](README.md/#referenties)\] gehaald worden.
 
 Nadat alle data is geïsoleerd en berekent is in python zal deze in een JSON bestand worden opgeslagen. De structuur van dit bestand is als volgt:
-```{
+```
+{
     "Rode dwergen": {
         Ster 1 (proper name of andere identificatie): {
             temperatuur: a,

@@ -54,7 +54,7 @@ Boven de ster info staat nog een dropdowm menu voor sterren met een naam, zoals:
 ## Voorwaarden
 
 ### Dataset
-Voor het project wordt er gebruik gemaakt van de [HYG-database](https://github.com/astronexus/HYG-Database) van David Nash. Deze database bevat bijna 120.000 sterren en is samengesteld uit verschillende catalogussen:
+Voor het project wordt er gebruik gemaakt van de [HYG-database v.3](https://github.com/astronexus/HYG-Database) van David Nash. Deze database bevat bijna 120.000 sterren en is samengesteld uit drie verschillende catalogussen:
 - Hipparcos Catalog
 - Yale Bright Star Catalog (5th edition)
 - Gliese Catalog of Nearby Stars (3rd edition)

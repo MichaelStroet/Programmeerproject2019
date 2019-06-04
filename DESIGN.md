@@ -2,7 +2,7 @@
 ### Michael Stroet - 11293284
 
 ## Dataset
-Voor het project wordt er gebruik gemaakt van de [HYG-database](https://github.com/astronexus/HYG-Database) van David Nash. Deze database bevat 119.616 sterren en is samengesteld uit drie verschillende catalogussen:
+Voor het project wordt er gebruik gemaakt van de [HYG-database v.3](https://github.com/astronexus/HYG-Database) van David Nash. Deze database bevat 119.616 sterren en is samengesteld uit drie verschillende catalogussen:
 - Hipparcos Catalog
 - Yale Bright Star Catalog (5th edition)
 - Gliese Catalog of Nearby Stars (3rd edition)
@@ -40,19 +40,33 @@ De waardes van deze constanten zullen uit Zaninetti (2008) \[[2](README.md/#refe
 
 Nadat alle data is geïsoleerd en berekent is in python zal deze in een JSON bestand worden opgeslagen. De structuur van dit bestand is als volgt:
 {
+
     "Rode dwergen": {
+
         Ster 1 (proper name of andere identificatie): {
+
             temperatuur: a,
+
             helderheid : b,
+
             kleur : c,
+
             massa : d,
+
             straal : e,
+
             afstand : f
+
             },
+
         Ster 2: {},
+
         ...},
+
     "Hoofdreeks": {},
+
     ...    
+
 }
 
 ### Opmerkingen
@@ -95,3 +109,9 @@ Het huidige plan is dat deze updates op elkaar gestapeld kunnen worden. Als de "
 In dit geval is het niet nuttig meer dat de histogrammen het taartdiagram aanpassen, omdat dat diagram dan maar 1 categorie met 100% heeft.
 
 Door op een geselecteerde optie opnieuw te klikken wordt deze gedeselecteerd.
+
+## Externe componenten
+
+In dit project zal gebruik worden gemaakt van [D3 v5](https://github.com/d3/d3) en de [d3-tip](https://github.com/Caged/d3-tip) library voor tooltips.
+
+Voor een mooie indeling van de website zal [bootstrap v3.4.1](https://getbootstrap.com/) gebruikt worden.

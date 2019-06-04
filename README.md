@@ -15,5 +15,7 @@ In het projectvoorstel staat beschreven wat het doel van de visualisatie is en h
 ## Dankwoord
 
 ## Referenties
-- Zaninetti, Lorenzo. *Semi-analytical formulas for the Hertzsprung-Russell Diagram.*, arXiv preprint arXiv:0811.4524 (2008)
+- BALLESTEROS, F. J. *New insights into black bodies.*, 2012, EPL (Europhysics Letters), **97**:34008
+    - Website: https://iopscience.iop.org/article/10.1209/0295-5075/97/34008/meta
+- Zaninetti, Lorenzo. *Semi-analytical formulas for the Hertzsprung-Russell Diagram.*, 2008, arXiv preprint arXiv:0811.4524
     - Website: https://arxiv.org/abs/0811.4524

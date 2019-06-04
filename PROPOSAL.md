@@ -70,6 +70,6 @@ Ik heb geen visualisaties kunnen vinden die hetzelfde hebben gedaan als wat ik w
 ### Moeilijkste onderdelen
 Er zijn een aantal moeilijkheden waar tegenaan gelopen kunnen worden tijdens het project. Zo moet in het begin eerst elke ster een categorie toegewezen worden, dit kan het beste worden gedaan door de grenzen van de verschillende gebieden te bepalen en via python elke ster de goede categorie toewijzen.
 
-Verder moet de massa en de straal van elke ster berekent worden. De straal is makkelijk te berekenen met de wet van Stefan-Boltzmann, maar de massa is niet simpel afhankelijk van de lichtkracht. De massa-lichtkracht relatie parameters zijn anders voor de verschillende categoriën. Zie de [README.md](README.md) voor de paper die waardes geeft aan deze parameters.
+Verder moet de massa en de straal van elke ster berekent worden. De straal is makkelijk te berekenen met de wet van Stefan-Boltzmann, maar de massa is niet simpel afhankelijk van de lichtkracht. De massa-lichtkracht relatie parameters zijn anders voor de verschillende categoriën. Zie de referenties voor de paper die waardes geeft aan deze parameters \[[2](README>md/#referenties)\].
 
 Daarnaast is dit de grootste dataset waar ik tot nu toe mee heb gewerkt, dus ervoor zorgen dat de visualisatie hier goed mee omgaat zal een leuke uitdaging zijn. Alle preprocessing van de data zal in python gedaan worden zodat javascript dit niet telkens opnieuw hoeft te doen.

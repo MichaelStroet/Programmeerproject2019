@@ -1,5 +1,5 @@
 # Design document
-## Michael Stroet - 11293284
+### Michael Stroet - 11293284
 
 ## Dataset
 Voor het project wordt er gebruik gemaakt van de [HYG-database](https://github.com/astronexus/HYG-Database) van David Nash. Deze database bevat 119.616 sterren en is samengesteld uit drie verschillende catalogussen:

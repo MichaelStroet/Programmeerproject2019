@@ -1,5 +1,5 @@
 # Projectvoorstel
-## Michael Stroet - 11293284
+### Michael Stroet - 11293284
 
 ## Doel van het project
 In dit project zullen meer dan 100.000 sterren worden gevisualiseerd om de onderlinge verdeling van hun grootte, massa, temperatuur en helderheid duidelijk weer te geven. Dit zal bereikt worden via een Hertzsprung-Russell diagram en linked-view figuren die verschillende onderdelen van het diagram zullen highlighten.

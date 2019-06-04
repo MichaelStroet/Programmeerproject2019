@@ -13,7 +13,7 @@ In dit project wil ik deze verdeling overzichtelijk visualiseren door verder te 
 
 ## Visualisatie
 
-![Schets](proposal_sketch.png)
+![Schets](doc/proposal_sketch.png)
 
 ### Overzicht
 - [Hertzsprung-Russell Diagram](#hertzsprung-russell-diagram)
@@ -26,7 +26,7 @@ In dit project wil ik deze verdeling overzichtelijk visualiseren door verder te 
 Een HR-diagram is een scatterplot van sterren met hun absolute herlderheid en effectieve temperatuur. Het diagram kan ook met een extra dimensie uitgebreid worden door een andere variabele, zoals de straal of de massa, weer te geven als de grootte van de stippen.
 De effectieve temperatuur van een ster komt ongeveer overeen met de oppervlakte temperatuur en bepaald ook de kleur van de ster. Van een hoge naar lage temperatuur is het kleurenverloop: blauw -> wit -> geel -> rood.
 
-![HR](onclick_HR.png)
+![HR](doc/onclick_HR.png)
 
 ### Taartdiagram
 In het taartdiagram wordt de verdeling van de catagoriën sterren weergegeven. De 5 catagoriën waarin ik de sterren zal indelen zijn:
@@ -36,17 +36,17 @@ In het taartdiagram wordt de verdeling van de catagoriën sterren weergegeven. D
 - Superreuzen
 - Witte dwergen
 
-![Pie](onclick_Pie.png)
+![Pie](doc/onclick_Pie.png)
 
 ### Histogram: temperatuur (links)
 In dit histogram wordt het aantal sterren van een bepaalde temperatuur weergegeven. De x-as zal niet veranderen bij het updaten om de vergelijking met het HR-diagram te behouden.
 
-![Temp](onclick_hist_temp.png)
+![Temp](doc/onclick_hist_temp.png)
 
 ### Histogram: massa/straal (rechts)
 In dit histogram wordt het aantal sterren van een bepaalde massa of straal weergegeven.
 
-![Mass/Radius](onclick_hist_mass-radius.png)
+![Mass/Radius](doc/onclick_hist_mass-radius.png)
 
 ### Overige opties
 Boven de ster info staat nog een dropdowm menu voor sterren met een naam, zoals: Sol, Sirius, Vega, Proxima Centauri, etc. In plaats van deze sterren te vinden in het HR-diagram kunnen ze ook via dit menu geselecteerd worden.
@@ -70,6 +70,6 @@ Ik heb geen visualisaties kunnen vinden die hetzelfde hebben gedaan als wat ik w
 ### Moeilijkste onderdelen
 Er zijn een aantal moeilijkheden waar tegenaan gelopen kunnen worden tijdens het project. Zo moet in het begin eerst elke ster een categorie toegewezen worden, dit kan het beste worden gedaan door de grenzen van de verschillende gebieden te bepalen en via python elke ster de goede categorie toewijzen.
 
-Verder moet de massa en de straal van elke ster berekent worden. De straal is makkelijk te berekenen met de wet van Stefan-Boltzmann, maar de massa is niet simpel afhankelijk van de lichtkracht. De massa-lichtkracht relatie parameters zijn anders voor de verschillende categoriën. Zie de [README.md](../README.md) voor de paper die waardes geeft aan deze parameters.
+Verder moet de massa en de straal van elke ster berekent worden. De straal is makkelijk te berekenen met de wet van Stefan-Boltzmann, maar de massa is niet simpel afhankelijk van de lichtkracht. De massa-lichtkracht relatie parameters zijn anders voor de verschillende categoriën. Zie de [README.md](README.md) voor de paper die waardes geeft aan deze parameters.
 
 Daarnaast is dit de grootste dataset waar ik tot nu toe mee heb gewerkt, dus ervoor zorgen dat de visualisatie hier goed mee omgaat zal een leuke uitdaging zijn. Alle preprocessing van de data zal in python gedaan worden zodat javascript dit niet telkens opnieuw hoeft te doen.

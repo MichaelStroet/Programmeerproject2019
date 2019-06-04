@@ -6,10 +6,12 @@ UvA minor programmeren 2019 - ProgrammeerProject periode 6 (5062PRPR6Y)
 [Visualisatie sterren](https://michaelstroet.github.io/Programmeerproject2019/index.html)
 
 ## Projectvoorstel
-[Voorstel document](doc/proposal.md)
+[Voorstel document](PROPOSAL.md)
 
 In het projectvoorstel staat beschreven wat het doel van de visualisatie is en hoe deze zal worden bereikt.
 
+## Design document
+[Design document](DESIGN.md)
 ## Dankwoord
 
 ## Referenties

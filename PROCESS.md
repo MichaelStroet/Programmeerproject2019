@@ -26,6 +26,27 @@ Aan de hand van het mentorgesprek met Jasper zal er ook een afstandsslider toe w
 
 ### Dag 3:
 
+#### Team meeting
+Met twee van de vier mensen aanwezig waren we snel klaar met de eerste standup meeting. Er was niets aan te merken over mijn verhaal of mijn plan. Ik kreeg echter wel de tip om polygonen te gebruiken voor het bepalen van de categoriën.
+
+#### Geschreven code
+- Python [script](code/python/create_temperatureCSV.py) geschreven die de data in een pandas dataframe zet. De data wordt geïsoleert en de sterren met ontbrekende gegevens verwijdert. De waardes van de effectieve temperaturen worden berekent in een ander [script](code/python/calculate_temperature.py) en deze worden als extra kolom toegevoegd aan de dataframe. Deze dataframe creëert een nieuwe csv genaamd: [temperature](data/temperature.csv).
+- Python [script](code/python/plot_Hertzsprung-Russel.py) geschreven die een Hertzsprung-Russel diagram plot met matplotlib.
+
+#### Keuzes categorie grenzen
+
+Het resulteerende figuur:
+
+![HR-diagram](doc/process/week_1/HR-diagram.png)
+
+Hieruit zijn de grenzen van de verschillende gebieden bepaald:
+
+![HR-gebeiden](doc/process/week_1/HR-gebieden.png)
+
+De coördinaten van de hoekpunten van elk polynoom zijn genoteerd en opgeslagen in [polygon_points.csv](data/polygon_points.csv).
+
+![Notebook_scan](doc/process/week_1/notebook_scan.png)
+
 ### Dag 4:
 
 ### Dag 5:

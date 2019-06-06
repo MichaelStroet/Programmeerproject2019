@@ -22,6 +22,16 @@ text {
      fill: crimson;
 }
 
+.wedge {
+    stroke: black;
+    stroke-width: 2px;
+    opacity: 0.7
+}
+
+.wedge:hover {
+    opacity: 1.0
+
+}
 .barTooltip {
      color: white;
      position: absolute;

@@ -90,6 +90,9 @@ function visualisationStars(dataset) {
 
     // Draw a scatterplot of stars
     scatterPlot(dataset)
+
+    // Draw a piechart of star types
+    pieChart(dataset)
 };
 
 // window.onresize = resize;

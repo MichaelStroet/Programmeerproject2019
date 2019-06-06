@@ -21,7 +21,7 @@ function scatterPlot(dataset) {
     var chartHeight = svgHeight - padding.top - padding.bottom;
 
     // Select the "svg" for the HRdiagram
-    var svgScatter = d3.select("#svgHRdiagram")
+    var svgScatter = d3.select("#svgHRdiagram");
 
     // Select the "div" for the tooltip
     var tooltip = d3.select(".HR-tooltip");

@@ -26,15 +26,16 @@ Aan de hand van het mentorgesprek met Jasper zal er ook een afstandsslider toe w
 
 ### Dag 3:
 
-#### Team meeting
+#### Stand-up
 Met twee van de vier mensen aanwezig waren we snel klaar met de eerste standup meeting. Er was niets aan te merken over mijn verhaal of mijn plan. Ik kreeg echter wel de tip om polygonen te gebruiken voor het bepalen van de categoriën.
 
 #### Geschreven code
-- Python [script](code/python/create_temperatureCSV.py) geschreven die de data in een pandas dataframe zet. De data wordt geïsoleert en de sterren met ontbrekende gegevens verwijdert. De waardes van de effectieve temperaturen worden berekent in een ander [script](code/python/calculate_temperature.py) en deze worden als extra kolom toegevoegd aan de dataframe. Deze dataframe creëert een nieuwe csv genaamd: [temperature](data/temperature.csv).
-- Python [script](code/python/plot_Hertzsprung-Russel.py) geschreven die een Hertzsprung-Russel diagram plot met matplotlib.
+
+##### Python
+- [Script](code/python/create_temperatureCSV.py) geschreven die de data in een pandas dataframe zet. De data wordt geïsoleert en de sterren met ontbrekende gegevens verwijdert. De waardes van de effectieve temperaturen worden berekent in een ander [script](code/python/calculate_temperature.py) en deze worden als extra kolom toegevoegd aan de dataframe. Deze dataframe creëert een nieuwe csv genaamd: [temperature](data/temperature.csv).
+- [Script](code/python/plot_Hertzsprung-Russell.py) geschreven die een Hertzsprung-Russell diagram plot met matplotlib.
 
 #### Keuzes categorie grenzen
-
 Het resulteerende figuur:
 
 ![HR-diagram](doc/process/week_1/HR-diagram.png)
@@ -48,6 +49,33 @@ De coördinaten van de hoekpunten van elk polynoom zijn genoteerd en opgeslagen 
 ![Notebook_scan](doc/process/week_1/notebook_scan.png)
 
 ### Dag 4:
+
+#### Stand-up
+Tijdens de stand-up meeting van vandaag werd mij aangeraden om even te stoppen met de data te bewerken en om van random data alvast figuren te maken.
+
+Verder werd er opgemerkt over het python HR-diagram dat door zo'n groot aantal sterren het één grote vlek is. Een mogelijke oplossing hiervoor is de afstandslider niet op maximaal te initialiseren en de mogelijkheid voor een minimum afstand.
+
+#### Geschreven code
+
+##### Python
+- Begonnen aan het bepalen van de polygonen coördinaten in het [plot_HR bestand](code/python/plot_Hertzsprung-Russell.py).
+- [Script](code/python/add_category_color_radius_mass.py) aangemaakt die alle variabelen, op het moment random, toevoegt aan de [temperature csv](data/temperature.csv) en daarmee [stars.csv](data/stars.csv) aanmaakt.
+- Begonnen aan het [convertCSV2JSON](code/python/convertCSV2JSON.py) script die de data om zal zetten naar json bestanden.
+
+De python code is op het moment vrij rommelig, later zal er een hoofdbestand komen die alles in één keer zal laten runnen.
+
+##### Html / CSS
+- [Html](code/html-css/stars.html) en [css](code/html-css/stars.css) bestanden van de visualisatie pagina aangmeaakt. De html pagina maakt gebruik van een bootstrap indeling. Link naar de visualisatie toegevoegd aan het [index.html](index.html) bestand.
+
+##### Javascript
+- [Hoofdbestand](code/javascript/stars.js) voor javascript aangemaakt die de json data inlaad en de pagina klaarmaakt voor de figuren.
+- [Scatterplot script](code/javascript/starsScatterplot.js) aangemaakt die een Hertzsprung-Russell diagram maakt van de sterren. De huidige versie plot alleen de sterren met een proper naam.
+- [Piechart script](code/javascript/starsScatterplot.js) aangemaakt die een taartdiagram maakt van de verschillende soorten sterren. In het diagram staat alleen dummy data op het moment
+
+#### Figuren
+De huidige Hertzsprung-Russell en taart- diagrammen in de visualisatie:
+
+![huidige visualisatie](doc/process/week_1/scatterplot&piechart.png)
 
 ### Dag 5:
 

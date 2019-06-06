@@ -14,8 +14,6 @@ data_directory = os.path.join(root_directory, "data")
 import numpy as np
 import pandas as pd
 
-from calculate_temperature import calc_temp
-
 # Global constants for in and out put files and the required columns
 INPUT_CSV = os.path.join(data_directory, "hygdata_v3.csv")
 OUTPUT_CSV = os.path.join(data_directory, "temperature.csv")
@@ -28,6 +26,13 @@ def open_csv():
     '''
     df = pd.read_csv(INPUT_CSV, usecols = WANTED_DATA)
     return(df)
+
+def calc_temp(color_index):
+    '''
+    Calculates the effective temperature in Kelvin of a star from it's (B-V) color index
+    '''
+    # Calculate the temperature
+    return 4600 * (pow((0.92 * color_index + 1.7), -1) + pow((0.92 * color_index + 0.62), -1))
 
 def preprocess_data(df):
     '''
@@ -45,15 +50,6 @@ def preprocess_data(df):
 
     return df
 
-
-def save_csv(df):
-    '''
-    Output a CSV file from the given dataframe
-    '''
-
-    df.to_csv(OUTPUT_CSV)
-
-
 if __name__ == "__main__":
 
     # Open the csv and convert it to a pandas dataframe object
@@ -65,4 +61,4 @@ if __name__ == "__main__":
     print(processed_df)
 
     # Save the preprocessed dataframe as a new csv file
-    save_csv(processed_df)
+    processed_df.to_csv(OUTPUT_CSV)

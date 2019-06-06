@@ -1,0 +1,50 @@
+/* Name: Michael Stroet
+   Student number: 11293284 */
+
+text {
+    font: 13px Verdana;
+}
+
+.bar {
+    fill: royalblue;
+}
+
+.bar:hover {
+     fill: crimson;
+}
+
+.barTooltip {
+     color: white;
+     position: absolute;
+     text-align: center;
+     width: 125px;
+     height: 33px;
+     padding: 2px;
+     font: 12px sans-serif;
+     background: rgba(0,0,0,.8);
+     border: 2px solid black;
+     pointer-events: none;
+}
+
+.calTooltip {
+     color: white;
+     position: absolute;
+     text-align: center;
+     width: 75px;
+     height: 33px;
+     padding: 2px;
+     font: 12px sans-serif;
+     background: rgba(0,0,0,.8);
+     border: 2px solid black;
+     pointer-events: none;
+}
+
+.day {
+    stroke: #ccc;
+}
+
+.month {
+    fill: none;
+    stroke: #000;
+    stroke-width: 2px;
+}

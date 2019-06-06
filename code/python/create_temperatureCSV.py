@@ -43,7 +43,7 @@ def preprocess_data(df):
     df.loc[df["dist"] >= 100000, "dist"] = np.nan
 
     # Remove all rows with missing and/or invalid data
-    df.dropna(subset = ["dist", "ci", "lum"], inplace = True)
+    df.dropna(subset = ["proper", "dist", "ci", "lum"], inplace = True)
 
     # calculate the effective temperature from the color index and create a new column
     df = df.assign(Teff = calc_temp(df["ci"]))

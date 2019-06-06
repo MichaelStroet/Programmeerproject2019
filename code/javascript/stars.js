@@ -1,10 +1,6 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-//
-// WILDCARD GEBRUIKT
-//
-
 window.onload = function() {
     /*
      * Main function
@@ -31,7 +27,7 @@ function defineSVG(containerId, svgId, width, height) {
 
 function visualisationStars(dataset) {
 
-    var totalHeight = 2000;
+    var totalHeight = 600;
 
     var widthHRdiagram = document.getElementById("HRdiagram").clientWidth;
     var widthPiechart = document.getElementById("piechart").clientWidth;
@@ -39,8 +35,6 @@ function visualisationStars(dataset) {
     var widthMassRadiusHist = document.getElementById("massRadiusHist").clientWidth;
 
     var body = d3.select("body")
-
-    console.log(dataset);
 
     // Define a "div" for the HR-diagram tooltip
     body.append("div")
@@ -94,6 +88,8 @@ function visualisationStars(dataset) {
         .attr("width", widthMassRadiusHist)
         .attr("height", totalHeight);
 
+    // Draw a scatterplot of stars
+    scatterPlot(dataset)
 };
 
 // window.onresize = resize;

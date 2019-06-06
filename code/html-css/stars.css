@@ -5,6 +5,15 @@ text {
     font: 13px Verdana;
 }
 
+.star {
+    r: 5px;
+    stroke: black;
+}
+
+.star:hover {
+    r: 7px;
+}
+
 .bar {
     fill: royalblue;
 }
@@ -37,14 +46,4 @@ text {
      background: rgba(0,0,0,.8);
      border: 2px solid black;
      pointer-events: none;
-}
-
-.day {
-    stroke: #ccc;
-}
-
-.month {
-    fill: none;
-    stroke: #000;
-    stroke-width: 2px;
 }

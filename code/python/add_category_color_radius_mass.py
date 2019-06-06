@@ -41,7 +41,7 @@ def add_variables(df):
     categories = ["Rode dwergen", "Hoofdreeks", "Reuzen", "Superreuzen", "Witte dwergen"]
     df["type"] = np.random.choice(categories, df.shape[0])
 
-    df["color"] = "ffffff"
+    df["color"] = "#4169e1"
 
     df["radius"] = np.random.randint(0, 2000, df.shape[0])
 

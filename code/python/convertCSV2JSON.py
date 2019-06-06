@@ -38,6 +38,8 @@ def prepare_data(df):
         "Witte dwergen" : {}
     }
 
+    star_dictionary = {}
+
     for index, row in df.iterrows():
 
         if index % 1000 == 0:
@@ -55,12 +57,11 @@ def prepare_data(df):
         }
 
         if isinstance(proper, str):
-            dictionary[type][proper] = properties
+            star_dictionary[proper] = properties
         else:
-            dictionary[type][index] = properties
+            star_dictionary[index] = properties
 
-    return dictionary
-
+    return star_dictionary
 
 def save_json(dict):
     '''

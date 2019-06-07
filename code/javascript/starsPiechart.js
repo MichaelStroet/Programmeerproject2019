@@ -8,10 +8,10 @@ function pieChart(dataset) {
 
     // Padding for the piechart
     var padding = {
-        top: 0,
+        top: 20,
         right: 100,
-        bottom: 0,
-        left: 0
+        bottom: 5,
+        left: 5
     };
 
     var svgWidth = document.getElementById("svgPiechart").clientWidth;

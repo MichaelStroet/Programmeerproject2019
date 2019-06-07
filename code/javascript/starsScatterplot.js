@@ -9,7 +9,7 @@ function scatterPlot(dataset) {
     // Padding for the HRdiagram
     var padding = {
         top: 50,
-        right: 25,
+        right: 50,
         bottom: 50,
         left: 75
     };
@@ -52,7 +52,7 @@ function scatterPlot(dataset) {
     svgScatter.append("text")
         .attr("class", "label")
         .attr("x", chartWidth / 2 + padding.left)
-        .attr("y", chartHeight + padding.top + padding.bottom / 1.1)
+        .attr("y", chartHeight + padding.top + padding.bottom / 1.25)
         .attr("text-anchor", "middle")
         .text("Effectieve temperatuur (K)");
 
@@ -85,7 +85,8 @@ function scatterPlot(dataset) {
         .call(d3.axisRight(yScale)
             .tickSize(chartWidth, 0, 0)
             .tickFormat("")
-    );
+        );
+
     // Draw title
     svgScatter.append("text")
         .attr("class", "title")

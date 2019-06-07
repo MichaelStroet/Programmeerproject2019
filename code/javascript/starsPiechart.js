@@ -8,10 +8,10 @@ function pieChart(dataset) {
 
     // Padding for the piechart
     var padding = {
-        top: 50,
+        top: 0,
         right: 100,
-        bottom: 20,
-        left: 20
+        bottom: 0,
+        left: 0
     };
 
     var svgWidth = document.getElementById("svgPiechart").clientWidth;
@@ -34,7 +34,7 @@ function pieChart(dataset) {
         .attr("transform", `translate(${(chartWidth + padding.left) / 2}, ${(chartHeight + padding.top) / 2})`);
 
     // -------------------------------------------------------------------------
-    
+
     var data = {a: 2, b: 5, c: 5, d: 6, e: 5}
 
     var color = d3.scaleOrdinal()

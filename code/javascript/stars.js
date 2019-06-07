@@ -26,35 +26,34 @@ function defineSVG(containerId, svgId, width, height) {
 }
 
 function visualisationStars(dataset) {
+    /*
 
-    var totalHeight = 600;
+    */
 
     var widthHRdiagram = document.getElementById("HRdiagram").clientWidth;
+    var heightHRdiagram = widthHRdiagram;
+
     var widthPiechart = document.getElementById("piechart").clientWidth;
+    var heightPiechart = widthPiechart;
+
     var widthTemperatureHist = document.getElementById("temperatureHist").clientWidth;
+    var heightTemperatureHist = widthTemperatureHist / 1.5;
+
     var widthMassRadiusHist = document.getElementById("massRadiusHist").clientWidth;
+    var heightMassRadiusHist = widthMassRadiusHist / 1.5;
 
-    var body = d3.select("body")
+    var body = d3.select("body");
 
-    // Define a "div" for the HR-diagram tooltip
-    body.append("div")
-        .attr("class", "HR-tooltip")
-        .style("opacity", 0);
-
-    // Define a "div" for the piechart tooltip
-    body.append("div")
-        .attr("class", "pie-tooltip")
-        .style("opacity", 0);
-
-    // Define a "div" for the temperature histogram tooltip
-    body.append("div")
-        .attr("class", "temperature-tooltip")
-        .style("opacity", 0);
-
-    // Define a "div" for the mass-radius histogram tooltip
-    body.append("div")
-        .attr("class", "mass-radius-tooltip")
-        .style("opacity", 0);
+    var addTooltipDiv = function(className) {
+        body.append("div")
+            .attr("class", `${className}`)
+            .style("opacity", 0);
+    };
+    // Define "div"s of tooltips for all figures
+    addTooltipDiv("HR-tooltip");
+    addTooltipDiv("pie-tooltip");
+    addTooltipDiv("temperature-tooltip");
+    addTooltipDiv("mass-radius-tooltip");
 
     // Define a "svg" for the HRdiagram
     var svgHRdiagram = d3.select("#HRdiagram")
@@ -62,7 +61,7 @@ function visualisationStars(dataset) {
         .attr("class", "container")
         .attr("id", "svgHRdiagram")
         .attr("width", widthHRdiagram)
-        .attr("height", totalHeight);
+        .attr("height", heightHRdiagram);
 
     // Define a "svg" for the piechart
     var svgPiechart = d3.select("#piechart")
@@ -70,7 +69,7 @@ function visualisationStars(dataset) {
         .attr("class", "container")
         .attr("id", "svgPiechart")
         .attr("width", widthPiechart)
-        .attr("height", totalHeight);
+        .attr("height", heightPiechart);
 
     // Define a "svg" for the temperature histogram
     var svgTemperatureHist = d3.select("#temperatureHist")
@@ -78,7 +77,7 @@ function visualisationStars(dataset) {
         .attr("class", "container")
         .attr("id", "svgTemperatureHist")
         .attr("width", widthTemperatureHist)
-        .attr("height", totalHeight);
+        .attr("height", heightTemperatureHist);
 
     // Define a "svg" for the mass-radius histogram
     var svgMassRadiusHist = d3.select("#massRadiusHist")
@@ -86,13 +85,27 @@ function visualisationStars(dataset) {
         .attr("class", "container")
         .attr("id", "svgMassRadiusHist")
         .attr("width", widthMassRadiusHist)
-        .attr("height", totalHeight);
+        .attr("height", heightMassRadiusHist);
+
+    // Create the dropdown menu for the stars with proper names
+    properDropdown(dataset)
+
+    // Create the distance slider
+    distanceSlider(dataset)
 
     // Draw a scatterplot of stars
     scatterPlot(dataset)
 
     // Draw a piechart of star types
     pieChart(dataset)
+
+    // Draw a histogram of the stars' effective temperatures
+    temperatureHist(dataset)
+
+    // Draw a histogram of the stars' masses or radii
+    massRadiusHist(dataset)
+
+
 };
 
 // window.onresize = resize;

@@ -30,13 +30,13 @@ def prepare_data(df):
     '''
 
     '''
-    dictionary = {
-        "Rode dwergen" : {},
-        "Hoofdreeks" : {},
-        "Reuzen" : {},
-        "Superreuzen" : {},
-        "Witte dwergen" : {}
-    }
+    # dictionary = {
+    #     "Rode dwergen" : {},
+    #     "Hoofdreeks" : {},
+    #     "Reuzen" : {},
+    #     "Superreuzen" : {},
+    #     "Witte dwergen" : {}
+    # }
 
     star_dictionary = {}
 
@@ -48,6 +48,7 @@ def prepare_data(df):
         type = row["type"]
         proper = row["proper"]
         properties = {
+            "Type" : row["type"],
             "Temperatuur" : row["Teff"],
             "Lichtkracht" : row["lum"],
             "Afstand" : row["dist"],

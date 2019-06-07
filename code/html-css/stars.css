@@ -5,6 +5,7 @@ text {
     font: 13px Verdana;
 }
 
+/* Hertzsprung-Russell diagram styles */
 .star {
     r: 5px;
     stroke: black;
@@ -14,14 +15,7 @@ text {
     r: 7px;
 }
 
-.bar {
-    fill: royalblue;
-}
-
-.bar:hover {
-     fill: crimson;
-}
-
+/* Pichart styles */
 .wedge {
     stroke: black;
     stroke-width: 2px;
@@ -30,8 +24,17 @@ text {
 
 .wedge:hover {
     opacity: 1.0
-
 }
+
+/* old code */
+.bar {
+    fill: royalblue;
+}
+
+.bar:hover {
+     fill: crimson;
+}
+
 .barTooltip {
      color: white;
      position: absolute;

@@ -3,10 +3,10 @@
 
 function temperatureHist(dataset) {
     /*
-    Draws an interactive barchart of the given data
+    Draws an interactive histogram of the stars' temperatures
     */
 
-    // Padding for the barchart
+    // Padding for the histogram
     var padding = {
         top: 50,
         right: 50,
@@ -20,15 +20,15 @@ function temperatureHist(dataset) {
     var chartWidth = svgWidth - padding.left - padding.right;
     var chartHeight = svgHeight - padding.top - padding.bottom;
 
-    // Select the "svg" for the barchart
+    // Select the "svg" for the histogram
     var svgHistogram = d3.select("#svgTemperatureHist")
 
     // Select the "div" for the tooltip
     var tooltip = d3.select(".temperature-tooltip");
 
-    // Define a "g" for the barchart
+    // Define a "g" for the histogram
     var histogram = svgHistogram.append("g")
-        .attr("class", "barchart")
+        .attr("class", "histogram")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
     var stars = Object.values(dataset);
@@ -38,6 +38,7 @@ function temperatureHist(dataset) {
         .range([0, chartWidth])
         .domain([maxValue(stars, "Temperatuur") * 1.1, minValue(stars, "Temperatuur") * 0.9]);
 
+    // Determine which values go into which bin
     var bins = d3.histogram()
         .value(function(star) {
             return star["Temperatuur"];
@@ -53,8 +54,8 @@ function temperatureHist(dataset) {
 
     // Draw x-axis
     histogram.append("g")
-        .call(d3.axisBottom(xScale)
-            .ticks(6))
+    .call(d3.axisBottom(xScale)
+        .ticks(6))
         .attr("class", "axis")
         .attr("transform", `translate(0, ${chartHeight})`);
 
@@ -96,7 +97,7 @@ function temperatureHist(dataset) {
         .attr("text-anchor", "middle")
         .text("titel");
 
-    // Draw bars with tooltips and updating the calendar when pressed
+    // Draw the histogram
     var bars = histogram.selectAll(".bar")
         .data(bins)
         .enter()
@@ -109,19 +110,17 @@ function temperatureHist(dataset) {
                 return yScale(bin.length);
             })
             .attr("width", function(bin) {
-                return Math.abs(xScale(bin.x1) - xScale(bin.x0)) - 0.1 * Math.abs(xScale(bin.x1) - xScale(bin.x0));
+                return Math.abs(xScale(bin.x1) - xScale(bin.x0)) * 0.9;
             })
             .attr("height", function(bin) {
                 return Math.abs(yScale(0) - yScale(bin.length));
             });
-
 };
 
 function maxValue(stars, valueName) {
     /*
-     * Determines the maximum value
+     * Determines the maximum value of an array of objects
      */
-
     return d3.max(stars, function(star) {
         return star[valueName];
     });
@@ -129,7 +128,7 @@ function maxValue(stars, valueName) {
 
 function minValue(stars, valueName) {
     /*
-     * Determines the minimum value
+     * Determines the minimum value of an array of objects
      */
 
     return d3.min(stars, function(star) {

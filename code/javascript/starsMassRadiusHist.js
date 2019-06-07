@@ -3,47 +3,58 @@
 
 function massRadiusHist(dataset) {
     /*
-    Draws an interactive barchart of the given data
+    Draws an interactive histogram of the stars' masses or radii
     */
 
-    // Padding for the barchart
+    // Padding for the histogram
     var padding = {
         top: 50,
-        right: 25,
+        right: 50,
         bottom: 25,
         left: 75
     };
 
     var svgWidth = document.getElementById("svgMassRadiusHist").clientWidth;
-    var svgHeight = document.getElementById("svgMassRadiusHist").clientHeight;
+    var svgHeight = document.getElementById("svgTemperatureHist").clientHeight;
 
     var chartWidth = svgWidth - padding.left - padding.right;
     var chartHeight = svgHeight - padding.top - padding.bottom;
 
-    // Select the "svg" for the barchart
+    // Select the "svg" for the histogram
     var svgHistogram = d3.select("#svgMassRadiusHist")
 
     // Select the "div" for the tooltip
     var tooltip = d3.select(".mass-radius-tooltip");
 
-    // Define a "g" for the barchart
+    // Define a "g" for the histogram
     var histogram = svgHistogram.append("g")
-        .attr("class", "barchart")
+        .attr("class", "histogram")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
+    var stars = Object.values(dataset);
+
     // Scaling function for x values
-    var xScale = d3.scaleBand()
+    var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain(["1", "2", "3", "4", "5"])
-        .padding(0.2);
+        .domain([minValue(stars, "Straal") * 0.9, maxValue(stars, "Straal") * 1.1]);
+
+    // Determine which values go into which bin
+    var bins = d3.histogram()
+        .value(function(star) {
+            return star["Straal"];
+        })
+        .domain(xScale.domain())
+        .thresholds(xScale.ticks(10))
+        (stars)
 
     // Scaling function for y values
     var yScale = d3.scaleLinear()
         .range([0, chartHeight])
-        .domain([10, 0]);
+        .domain([20, 0]);
 
     // Draw x-axis
-    histogram.append("g").call(d3.axisBottom(xScale))
+    histogram.append("g")
+    .call(d3.axisBottom(xScale))
         .attr("class", "axis")
         .attr("transform", `translate(0, ${chartHeight})`);
 
@@ -85,21 +96,41 @@ function massRadiusHist(dataset) {
         .attr("text-anchor", "middle")
         .text("titel");
 
-    // // Draw bars with tooltips and updating the calendar when pressed
-    // var bars = histogram.selectAll(".bar")
-    //     .data(Object.entries(datasetBar))
-    //     .enter()
-    //     .append("rect")
-    //     .attr("class", "bar")
-    //     .attr("x", function(data) {
-    //         return 0;
-    //     })
-    //     .attr("y", function(data) {
-    //         return yScale(data[0]);
-    //     })
-    //     .attr("height", yScale.bandwidth())
-    //     .attr("width", function(data) {
-    //         return xScale(data[1]);
-    //     })
-    //
+    // Draw the histogram
+    var bars = histogram.selectAll(".bar")
+        .data(bins)
+        .enter()
+        .append("rect")
+            .attr("class", "bar")
+            .attr("x", function(bin) {
+                return xScale(bin.x0) + 0.1 * Math.abs(xScale(bin.x0) - xScale(bin.x1));
+            })
+            .attr("y", function(bin) {
+                return yScale(bin.length);
+            })
+            .attr("width", function(bin) {
+                return Math.abs(xScale(bin.x0) - xScale(bin.x1)) * 0.9;
+            })
+            .attr("height", function(bin) {
+                return Math.abs(yScale(0) - yScale(bin.length));
+            });
+};
+
+function maxValue(stars, valueName) {
+    /*
+     * Determines the maximum value of an array of objects
+     */
+    return d3.max(stars, function(star) {
+        return star[valueName];
+    });
+};
+
+function minValue(stars, valueName) {
+    /*
+     * Determines the minimum value of an array of objects
+     */
+
+    return d3.min(stars, function(star) {
+        return star[valueName];
+    });
 };

@@ -33,27 +33,47 @@ function pieChart(dataset) {
         .attr("class", "piechart")
         .attr("transform", `translate(${(chartWidth + padding.left) / 2}, ${(chartHeight + padding.top) / 2})`);
 
-    // -------------------------------------------------------------------------
+    var stars = Object.values(dataset);
 
-    var data = {a: 2, b: 5, c: 5, d: 6, e: 5}
+    // Create an empty object for the piechart data
+    var data = {
+        "Rode dwergen" : 0,
+        "Hoofdreeks" : 0,
+        "Reuzen" : 0,
+        "Superreuzen" : 0,
+        "Witte dwergen" : 0
+        }
 
-    var color = d3.scaleOrdinal()
-        .domain(data)
+    // Scaling function for the wedges
+    var colorScale = d3.scaleOrdinal()
+        .domain(Object.keys(data))
         .range(["#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"])
 
-    var pie = d3.pie()
-        .value(function(d) {return d.value; })
+    // Determine the occurence of each type of star
+    stars.forEach(function(star) {
+        data[`${star["Type"]}`]++;
+    });
 
-    var data_ready = pie(d3.entries(data))
+    // Do some magic with d3.pie and create a function for the wedge paths
+    var wedgeFunction = d3.pie()
+        .value(function(type) {
+            return type.value;
+        });
 
+    // Apply the wedge function to the data entries
+    var piechartData = wedgeFunction(d3.entries(data))
+
+    // Draw each wedge of the piechart
     pieChart.selectAll(".wedge")
-        .data(data_ready)
+        .data(piechartData)
         .enter()
         .append("path")
             .attr("class", "wedge")
             .attr("d", d3.arc()
                 .innerRadius(0)
-                .outerRadius(radius))
-            .attr("fill", function(d) {
-                return(color(d.data.key)) });
+                .outerRadius(radius)
+            )
+            .attr("fill", function(wedge) {
+                return(colorScale(wedge.data.key));
+            });
 };

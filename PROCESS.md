@@ -97,7 +97,7 @@ De eerste stand-up waar iedereen aanwezig was. Volgens het team ziet mijn protot
 
 #### Huidige visualisatie
 
-![Visualisatie-7-6-19](Visualisatie-7-6-19.png)
+![Visualisatie-7-6-19](doc/process/week_1/Visualisatie-7-6-19.png)
 
 ### Weekend 1:
 

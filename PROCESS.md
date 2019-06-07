@@ -64,7 +64,7 @@ Verder werd er opgemerkt over het python HR-diagram dat door zo'n groot aantal s
 
 De python code is op het moment vrij rommelig, later zal er een hoofdbestand komen die alles in één keer zal laten runnen.
 
-##### Html / CSS
+##### HTML / CSS
 - [Html](code/html-css/stars.html) en [css](code/html-css/stars.css) bestanden van de visualisatie pagina aangmeaakt. De html pagina maakt gebruik van een bootstrap indeling. Link naar de visualisatie toegevoegd aan het [index.html](index.html) bestand.
 
 ##### Javascript
@@ -78,6 +78,26 @@ De huidige Hertzsprung-Russell en taart- diagrammen in de visualisatie:
 ![huidige visualisatie](doc/process/week_1/scatterplot&piechart.png)
 
 ### Dag 5:
+
+#### Stand-up
+De eerste stand-up waar iedereen aanwezig was. Volgens het team ziet mijn prototype er goed uit, met een kleine aanmerking over de grid van het HR-diagram. Omdat de y-as logaritmisch is verschijnen er veel lijnen dicht op elkaar.
+
+#### Geschreven code
+
+##### HTML / CSS
+- Nieuwe javascript bestanden toegevoegd aan [stars.html](code/html-css/stars.html). Het defineren van een "div" voor de verschillende tooltips staat nu in een functie.
+
+##### javascript
+- Het [taartdiagram script](code/javascript/starsPiechart.js) aangepast zodat het de [stars.json](data/stars.json) data gebruikt.
+- Code voor de twee histogrammen geschreven:
+    - Het [temperatuur script](code/javascript/starsTemperatureHist.js) maakt een histogram van de sterren gebaseerd op hun temperatuur. De x-as is hetzelfde als die van het HR-diagram. De waardes van het histogram komen uit [stars.json](data/stars.json).
+    - Het [massa/straal script](code/javascript/starsMassRadiusHist.js) maakt een histogram van de sterren gebaseerd op hun straal. Massa is nog niet geïmplementeerd. De waardes komen ook uit [stars.json](data/stars.json).
+- Het dropdown menu van proper namen heeft staat nu in een eigen [script](code/javascript/starsProperDropdown.js). De opties komen van de [stars.json](data/stars.json) keys, dus in de toekomst moet er een starsProper.json komen wanneer meerdere sterren zullen worden gepbruikt.
+- Een [bestand](code/javascript/starsDistanceSlider.js) aangemaakt voor de afstand slider.
+
+#### Huidige visualisatie
+
+![Visualisatie-7-6-19](Visualisatie-7-6-19.png)
 
 ### Weekend 1:
 

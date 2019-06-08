@@ -50,6 +50,7 @@ In dit histogram wordt het aantal sterren van een bepaalde massa of straal weerg
 
 ### Overige opties
 Boven de ster info staat nog een dropdowm menu voor sterren met een naam, zoals: Sol, Sirius, Vega, Proxima Centauri, etc. In plaats van deze sterren te vinden in het HR-diagram kunnen ze ook via dit menu geselecteerd worden.
+Verder zal er een afstandsslider worden toegevoegd naast het HR-diagram die het aantal sterren om te visualiseren kan limiteren. 
 
 ## Voorwaarden
 
@@ -60,7 +61,8 @@ Voor het project wordt er gebruik gemaakt van de [HYG-database v.3](https://gith
 - Gliese Catalog of Nearby Stars (3rd edition)
 
 ### Externe componenten
-Er zal gebruikt worden gemaakt van D3 versie 5 en de externe D3 library: [d3-tip](https://github.com/Caged/d3-tip)
+In dit project zal gebruik worden gemaakt van [D3 v5](https://github.com/d3/d3).
+Voor een mooie indeling van de website zal [bootstrap v3.4.1](https://getbootstrap.com/) gebruikt worden.
 
 ### Vergelijkbare visualisaties
 Ik heb geen visualisaties kunnen vinden die hetzelfde hebben gedaan als wat ik wil gaan doen. ESA en Google hebben echter wel een andere visualisaties gemaakt voor sterren. In de visualisatie van ESA bevindt zich onder andere een Hertzsprung-Russell diagram waarin sterren met verschillende groottes en kleuren weergegeven, ongeveer gelijk met hoe ik mijn HR-diagram wil weergeven. In de visualisatie van Google zijn de sterren in een 3D-ruimte geplot. Ook hier is er een mogelijkheid om de kleuren van de sterren weer te geven. Google heeft voor deze visualisatie dezelfde database gebruikt die ik ook zal gebruiken.

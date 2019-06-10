@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     # Assign a color to each star by turning the color index into a RGB color value (3x 0-255 or hex?)
 
-    # Assign a radius to each star with the temperature and luminosity
+    # Assign a radius to each star relative to the sun with the temperature and luminosity
     dataframe = add_radius(dataframe)
 
     # Assign a category to each star based on predetermined polygons

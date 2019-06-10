@@ -7,8 +7,7 @@ Week: [1](#week-1-3-9-juni) - [2](#week-2-10-16-juni) - [3](#week-3-17-23-juni) 
 ## Week 1 (3-9 juni)
 
 ### Weekoverzicht
-Dag: [1](#dag-1) - [2](#dag-2) - [3](#dag-3) - [4](#dag-4) - [5](#dag-5) - [weekend](#weekend-1)
-
+Dag: [1](#dag-1) - [2](#dag-2) - [3](#dag-3) - [4](#dag-4) - [5](#dag-5)
 ### Dag 1:
 
 #### Projectvoorstel
@@ -98,9 +97,6 @@ De eerste stand-up waar iedereen aanwezig was. Volgens het team ziet mijn protot
 #### Huidige visualisatie
 
 ![Visualisatie-7-6-19](doc/process/week_1/Visualisatie-7-6-19.png)
-
-### Weekend 1:
-
 
 ## Week 2 (10-16 juni)
 

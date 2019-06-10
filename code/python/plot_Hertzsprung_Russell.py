@@ -15,9 +15,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from matplotlib.patches import Polygon
-from matplotlib.collections import PatchCollection
-
 def open_csv(input_csv, wanted_data):
     '''
     Opens a csv file and returns a pandas dataframe
@@ -75,33 +72,14 @@ def polygon_coordinates():
 
     return polygons
 
-def plot_HR(temperatures, luminosities):
+def plot_HR(temperatures, luminosities, polygons):
     '''
     Plots a Hertzsprung-Russell scatterplot with logarithmic axes
     '''
 
-    plt.figure("Hertzsprung-Russell diagram", figsize = (6,6))
-
-    plt.scatter(temperatures, luminosities, 0.05)
-
-    plt.title("Hertzsprung-Russell diagram all stars")
-
-    plt.xlabel("Effective temperature (K)")
-    plt.xlim(min(temperatures), max(temperatures))
-    plt.xscale("log")
-
-    plt.ylabel("Luminosity relative to sun")
-    plt.ylim(min(luminosities), max(luminosities))
-    plt.yscale("log")
-
-    ax = plt.gca()
-    ax.invert_xaxis()
-
-def plot_polygons(polygons):
-
     colors = ["blue", "red", "green", "orange", "purple"]
 
-    fig = plt.figure("Hertzsprung-Russell diagram", figsize = (6,6))
+    plt.figure("Hertzsprung-Russell diagram", figsize = (6,6))
 
     for i, polygon in enumerate(polygons):
         L_x = []
@@ -113,7 +91,21 @@ def plot_polygons(polygons):
 
         plt.plot(L_x, L_y, color = colors[i], label = polygon)
 
+    plt.scatter(temperatures, luminosities, 0.05)
+
+    plt.xlabel("Effective temperature (K)")
+    plt.xlim(min(temperatures), max(temperatures))
+    plt.xscale("log")
+
+    plt.ylabel("Luminosity relative to sun")
+    plt.ylim(min(luminosities), max(luminosities))
+    plt.yscale("log")
+
+    plt.title("Hertzsprung-Russell diagram all stars")
     plt.legend(loc = "upper right")
+
+    ax = plt.gca()
+    ax.invert_xaxis()
 
 if __name__ == "__main__":
 
@@ -125,10 +117,7 @@ if __name__ == "__main__":
     # Get the coordinates of each category polygon
     polygons = polygon_coordinates()
 
-    # Plot the polygons in the HR-diagram
-    plot_polygons(polygons)
-
     # Plot the Herzsprung-Russell diagram
-    plot_HR(df_HR["Teff"].tolist(), df_HR["lum"].tolist())
-
+    plot_HR(df_HR["Teff"].tolist(), df_HR["lum"].tolist(), polygons)
+    
     plt.show()

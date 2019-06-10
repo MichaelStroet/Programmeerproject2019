@@ -38,27 +38,42 @@ def open_txt(input_txt):
 
 def convert_txt(input_txt):
     '''
-    Parses a text file and returns a dictionary of the rows with
-    the first row value as key
+    Parses a text file and returns a dictionary with the first element as keys
+    and the rest as a list
     '''
-    # Get the line of the file
+    # Get the lines of the text file
     lines = open_txt(input_txt)
 
-    polygons = {}
+    dictionary = {}
 
     # For each line, add the polygon information to the dictionary
     for line in lines:
-        elements = line.split(",")
-        category = elements[0]
-        del elements[0]
-        points = list(map(int, elements))
+        values = line.split(",")
+        key = values[0]
+        del values[0]
 
-        polygons[category] = points
+        dictionary[key] = values
+
+    return dictionary
+
+def polygon_coordinates():
+    '''
+    Convert the polygon text files to a list of polygons
+    '''
+    # Open the polygon_connections txt and convert it to a dictionary of polygons
+    input = os.path.join(data_directory, "polygon_connections.txt")
+    polygons = convert_txt(input)
+
+    # Open the polygon_connections txt and convert it to a dictionary of coordinates
+    input = os.path.join(data_directory, "polygon_points.txt")
+    coordinates = convert_txt(input)
+
+    # Replace each point in polygons with its coordinate
+    for polygon in polygons:
+        for i, point in enumerate(polygons[polygon]):
+            polygons[polygon][i] = list(map(float, coordinates[point]))
 
     return polygons
-
-def points_to_coords(coordinates, polygons):
-    pass
 
 def plot_HR(temperatures, luminosities):
     '''
@@ -82,10 +97,23 @@ def plot_HR(temperatures, luminosities):
     ax = plt.gca()
     ax.invert_xaxis()
 
-def plot_polygons(coordinates, polygons):
+def plot_polygons(polygons):
+
+    colors = ["blue", "red", "green", "orange", "purple"]
 
     fig = plt.figure("Hertzsprung-Russell diagram", figsize = (6,6))
 
+    for i, polygon in enumerate(polygons):
+        L_x = []
+        L_y = []
+
+        for coordinate in polygons[polygon]:
+            L_x.append(coordinate[0])
+            L_y.append(coordinate[1])
+
+        plt.plot(L_x, L_y, color = colors[i], label = polygon)
+
+    plt.legend(loc = "upper right")
 
 if __name__ == "__main__":
 
@@ -94,25 +122,13 @@ if __name__ == "__main__":
     data = ["Teff", "lum"]
     df_HR = open_csv(input, data)
 
-    # # Open the polygon_connections txt and convert it to a dictionary of polygons
-    # input = os.path.join(data_directory, "polygon_connections.txt")
-    # polygons = convert_txt(input)
-    # print(polygons)
-    #
-    # for category, points in polygons.items():
-    #     print(category, points)
-    #
-    # # Open the polygon_points csv and convert it to a pandas dataframe object
-    # input = os.path.join(data_directory, "polygon_points.csv")
-    # data = ["Teff", "lum"]
-    # df_pol = open_csv(input, data)
-    #
-    # polygons = points_to_coords(df_pol.values.tolist(), polygons)
+    # Get the coordinates of each category polygon
+    polygons = polygon_coordinates()
+
+    # Plot the polygons in the HR-diagram
+    plot_polygons(polygons)
 
     # Plot the Herzsprung-Russell diagram
     plot_HR(df_HR["Teff"].tolist(), df_HR["lum"].tolist())
-    #
-    # # Plot the polygons in the HR-diagram
-    # plot_polygons(df_pol.values.tolist(), polygons)
 
     plt.show()

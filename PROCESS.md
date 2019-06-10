@@ -31,7 +31,7 @@ Met twee van de vier mensen aanwezig waren we snel klaar met de eerste standup m
 #### Geschreven code
 
 ##### Python
-- [Script](code/python/create_temperatureCSV.py) geschreven die de data in een pandas dataframe zet. De data wordt geïsoleert en de sterren met ontbrekende gegevens verwijdert. De waardes van de effectieve temperaturen worden berekent in een ander [script](code/python/calculate_temperature.py) en deze worden als extra kolom toegevoegd aan de dataframe. Deze dataframe creëert een nieuwe csv genaamd: [temperature](data/temperature.csv).
+- create_temperatureCSV.py geschreven die de data in een pandas dataframe zet. De data wordt geïsoleert en de sterren met ontbrekende gegevens verwijdert. De waardes van de effectieve temperaturen worden berekent in calculate_temperature.py en deze worden als extra kolom toegevoegd aan de dataframe. Deze dataframe creëert een nieuwe csv: [temperature.csv](data/temperature.csv).
 - [Script](code/python/plot_Hertzsprung-Russell.py) geschreven die een Hertzsprung-Russell diagram plot met matplotlib.
 
 #### Keuzes categorie grenzen
@@ -58,8 +58,8 @@ Verder werd er opgemerkt over het python HR-diagram dat door zo'n groot aantal s
 
 ##### Python
 - Begonnen aan het bepalen van de polygonen coördinaten in het [plot_HR bestand](code/python/plot_Hertzsprung-Russell.py).
-- [Script](code/python/add_category_color_radius_mass.py) aangemaakt die alle variabelen, op het moment random, toevoegt aan de [temperature csv](data/temperature.csv) en daarmee [stars.csv](data/stars.csv) aanmaakt.
-- Begonnen aan het [convertCSV2JSON](code/python/convertCSV2JSON.py) script die de data om zal zetten naar json bestanden.
+- add_category_color_radius_mass.py aangemaakt die alle variabelen, op het moment random, toevoegt aan de [temperature csv](data/temperature.csv) en daarmee [stars.csv](data/stars.csv) aanmaakt.
+- Begonnen aan het convertCSV2JSON.py script die de data om zal zetten naar json bestanden.
 
 De python code is op het moment vrij rommelig, later zal er een hoofdbestand komen die alles in één keer zal laten runnen.
 
@@ -105,6 +105,22 @@ Dag: [6](#dag-6) - [7](#dag-7) - [8](#dag-8) - [9](#dag-9) - [10](#dag-10) - [we
 
 ### Dag 6:
 
+#### Stand-up
+Pinksteren: geen stand-up
+
+##### Python
+- Python code en structuur opgeschoond. Er is nu één hoofdbestand (main.py) die de hyg data inlaad en omzet naar een json bestand.
+- Elke toevoeging aan de dataframe in main staat in zijn eigen bestand: add_temperature.py, add_radius.py en add_type.py
+- get_polygons.py is een tijdelijke code die de twee polygon tekst bestanden omzet naar een dictionary van polygonen met coördinaten.
+
+#### Figuren
+De Hertzsprung-Russell en taart- diagrammen met data. Hier zijn alleen de sterren met een proper naam te zien:
+![HR&pie-proper](doc/process/week_2/HR&pie-proper.png)
+
+Hier is dezelfde visualisatie, maar dan met alle 100.000+ sterren:
+![HR&pie-alles](doc/process/week_2/HR&pie-alles.png)
+
+Het aantal hoofdreeks en reuzen sterren is duidelijk vele malen groter dan het aantal rode/witte dwergen en superreuzen. Om het taartdiagram toch nog interactief te maken zal er ook op de uiteindelijke legenda geklikt moeten kunnen worden.
 ### Dag 7:
 
 ### Dag 8:

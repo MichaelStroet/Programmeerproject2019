@@ -119,5 +119,5 @@ if __name__ == "__main__":
 
     # Plot the Herzsprung-Russell diagram
     plot_HR(df_HR["Teff"].tolist(), df_HR["lum"].tolist(), polygons)
-    
+
     plt.show()

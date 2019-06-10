@@ -15,6 +15,7 @@ import json
 import numpy as np
 import pandas as pd
 
+from add_type import add_type
 from add_radius import add_radius
 from add_temperature import add_temperature
 
@@ -104,18 +105,15 @@ if __name__ == "__main__":
 
     # Assign a radius to each star with the temperature and luminosity
     dataframe = add_radius(dataframe)
-    print(dataframe)
 
     # Assign a category to each star based on predetermined polygons
+    dataframe = add_type(dataframe, data_directory)
+    print(dataframe)
 
     # Assign a mass to each star with the category and the mass-luminosity relation
 
     # RANDOM DATA
-    categories = ["Rode dwergen", "Hoofdreeks", "Reuzen", "Superreuzen", "Witte dwergen"]
-    dataframe["type"] = np.random.choice(categories, dataframe.shape[0])
-
     dataframe["color"] = "#4169e1"
-
     dataframe["mass"] = np.random.randint(0, 70, dataframe.shape[0])
 
     # Convert the data into a useful dictionary

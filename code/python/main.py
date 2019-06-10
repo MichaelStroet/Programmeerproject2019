@@ -15,7 +15,9 @@ import json
 import numpy as np
 import pandas as pd
 
-from add_temperature import add_temperature, add_radius
+from add_radius import add_radius
+from add_temperature import add_temperature
+
 # Global constants for in and out put files and the required columns
 INPUT_CSV = os.path.join(data_directory, "hygdata_v3.csv")
 OUTPUT_JSON = os.path.join(data_directory, "stars.json")
@@ -29,15 +31,20 @@ def open_csv():
     df = pd.read_csv(INPUT_CSV, usecols = WANTED_DATA)
     return(df)
 
-def clean_data(df):
+def clean_data(df, only_proper):
     '''
     Remove missing or invalid data
     '''
     # Replace all invalid distance values with NaN
     df.loc[df["dist"] >= 100000, "dist"] = np.nan
 
+    # Columns to check for missing data
+    columns = ["dist", "ci", "lum"]
+    if only_proper:
+        columns.append("proper")
+
     # Remove all rows with missing and/or invalid data
-    df.dropna(subset = ["dist", "ci", "lum"], inplace = True)
+    df.dropna(subset = columns, inplace = True)
 
     return df
 
@@ -86,8 +93,9 @@ if __name__ == "__main__":
     # Open the csv and convert it to a pandas dataframe object
     dataframe = open_csv()
 
-    # Remove invalid or missing data from the dataframe
-    dataframe = clean_data(dataframe)
+    # Remove invalid or missing data from the dataframe, optionally: only keep stars with proper names
+    only_proper = True
+    dataframe = clean_data(dataframe, only_proper)
 
     # Assign an effective temperature to each star with the color index
     dataframe = add_temperature(dataframe)

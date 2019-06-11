@@ -121,7 +121,29 @@ Hier is dezelfde visualisatie, maar dan met alle 100.000+ sterren:
 ![HR&pie-alles](doc/process/week_2/HR&pie-alles.png)
 
 Het aantal hoofdreeks en reuzen sterren is duidelijk vele malen groter dan het aantal rode/witte dwergen en superreuzen. Om het taartdiagram toch nog interactief te maken zal er ook op de uiteindelijke legenda geklikt moeten kunnen worden.
+
 ### Dag 7:
+
+#### Stand-up
+Deze week wil ik voornamelijk besteden aan het updaten van de figuren. Er werd een opmerking gemaakt over de piechart en de ontbrekende taartpunten. Deze bleken echter te missen vanwege een bug in de piechart code.
+
+#### Geschreven code
+
+##### Python
+- main.py heeft nu een globale boolean PROPER_ONLY. Afhankelijk van deze boolean worden alleen de sterren met een proper naam omgezet naar een json (properStars.json) bestand, of alle sterren (stars.json).
+
+##### Javascript
+- Afstandsslider gemaakt met behulp van de [d3-simple-slider](https://github.com/johnwalley/d3-simple-slider) externe library.
+- Bug in de piechart gefixed waardoor er twee taartpunten ontbraken. (Rode dwergen =/= Rode_dwergen)
+- Functies voor minimale en maximale waardes in een eigen bestand gezet.
+- Aanpassingen gemaakt aan het uiterlijk van de histogrammen.
+
+##### HTML / CSS
+- Paginastructuur aangepast voor de slider
+
+#### Huidige visualisatie
+
+![Visualisatie-11-6-19](doc/process/week_2/Visualisatie-11-6-19.png)
 
 ### Dag 8:
 

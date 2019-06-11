@@ -6,21 +6,52 @@ function distanceSlider(dataset) {
     /*
 
     */
+    // Padding for the slider
+    var padding = {
+        top: 20,
+        right: 0,
+        bottom: 100,
+        left: 10
+    };
 
-    // DROPDOWN MENU SO SOMETHING IS PLACED IN THE DIV
+    var svgWidth = document.getElementById("svgDistanceSlider").clientWidth;
+    var svgHeight = document.getElementById("svgDistanceSlider").clientHeight;
 
-    // Create a dropdown menu for the different stars with proper names
-    var properMenu = d3.select("#distanceSlider")
+    var chartWidth = svgWidth - padding.left - padding.right;
+    var chartHeight = svgHeight - padding.top - padding.bottom;
 
-    properMenu.append("select")
-        .selectAll("option")
-        .data(Object.keys(dataset).sort())
-        .enter()
-        .append("option")
-        .attr("value", function (star) {
-            return star;
+    var svgDistanceSlider = d3.select("#svgDistanceSlider");
+
+    var distanceSlider = svgDistanceSlider.append("g")
+        .attr("class", "slider")
+        .attr("transform", `translate(${padding.left}, ${padding.top})`);
+
+    var stars = Object.values(dataset);
+    var maxDistance = maxValue(stars, "Afstand");
+
+    var sliderRange = d3.sliderRight()
+        .domain([0, Math.ceil(maxDistance)])
+        .height(chartHeight)
+        .tickFormat(d3.format("d"))
+        .ticks(10)
+        .default([0, 100])
+        .step(0.01)
+        .fill("#2196f3")
+        .on("onchange ", val => {
+            d3.select("#sliderValues").text(`${val.map(d3.format(".2f")).join(" - ")} parsec`);
         })
-        .text(function (star) {
-            return star;
+        .on("end", val => {
+            console.log(`New values:\n ${val.map(d3.format(".2f")).join(" - ")}`)
+            d3.select("#sliderValues").text(`${val.map(d3.format(".2f")).join(" - ")} parsec`);
         });
+
+    distanceSlider.call(sliderRange);
+
+    d3.select("#values")
+    .text(sliderRange
+    .value()
+    .map(d3.format(".2f"))
+    .join("-")
+    );
+
 };

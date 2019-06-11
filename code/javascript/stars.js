@@ -6,6 +6,7 @@ window.onload = function() {
      * Main function
      */
     var inputJSON = "../../data/stars.json";
+    // var inputJSON = "../../data/properStars.json";
 
     // Import the json and visualise its contents
     d3.json(inputJSON).then(function(dataset) {
@@ -32,6 +33,9 @@ function visualisationStars(dataset) {
 
     var widthHRdiagram = document.getElementById("HRdiagram").clientWidth;
     var heightHRdiagram = widthHRdiagram;
+
+    var widthSlider = document.getElementById("distanceSlider").clientWidth;
+    var heightSlider = heightHRdiagram;
 
     var widthPiechart = document.getElementById("piechart").clientWidth;
     var heightPiechart = widthPiechart;
@@ -62,6 +66,13 @@ function visualisationStars(dataset) {
         .attr("id", "svgHRdiagram")
         .attr("width", widthHRdiagram)
         .attr("height", heightHRdiagram);
+
+    var svgDistanceSlider = d3.select("#distanceSlider")
+        .append("svg")
+        .attr("class", "container")
+        .attr("id", "svgDistanceSlider")
+        .attr("width", widthSlider)
+        .attr("height", heightSlider)
 
     // Define a "svg" for the piechart
     var svgPiechart = d3.select("#piechart")

@@ -3,9 +3,8 @@
 
 function maxValue(stars, valueName) {
     /*
-     * Determines the maximum value
+     * Determines the maximum value of a specific column of data
      */
-
     return d3.max(stars, function(star) {
         return star[valueName];
     });
@@ -13,9 +12,8 @@ function maxValue(stars, valueName) {
 
 function minValue(stars, valueName) {
     /*
-     * Determines the minimum value
+     * Determines the minimum value of a specific column of data
      */
-
     return d3.min(stars, function(star) {
         return star[valueName];
     });

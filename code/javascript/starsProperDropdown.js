@@ -24,10 +24,19 @@ function properDropdown(dataset) {
         .enter()
         .append("option")
         .attr("value", function (star) {
-            console.log(`Selected star:\n${star}`)
             return star;
         })
         .text(function (star) {
             return star;
+        });
+
+    //
+    properMenu.on("change", function() {
+            // Find which star was selected from the dropdown menu
+            var star = d3.select(this)
+                .select("select")
+                .property("value")
+
+            console.log(`Selected star:\n${star}`);
         });
 };

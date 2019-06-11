@@ -5,8 +5,8 @@ window.onload = function() {
     /*
      * Main function
      */
-    var inputJSON = "../../data/stars.json";
-    // var inputJSON = "../../data/properStars.json";
+    // var inputJSON = "../../data/stars.json";
+    var inputJSON = "../../data/properStars.json";
 
     // Import the json and visualise its contents
     d3.json(inputJSON).then(function(dataset) {

@@ -19,9 +19,16 @@ from add_type import add_type
 from add_radius import add_radius
 from add_temperature import add_temperature
 
+# Only include stars with proper stars?
+PROPER_ONLY = False
+
 # Global constants for in and out put files and the required columns
 INPUT_CSV = os.path.join(data_directory, "hygdata_v3.csv")
-OUTPUT_JSON = os.path.join(data_directory, "stars.json")
+
+if PROPER_ONLY:
+    OUTPUT_JSON = os.path.join(data_directory, "properStars.json")
+else:
+    OUTPUT_JSON = os.path.join(data_directory, "stars.json")
 
 WANTED_DATA = ["proper", "dist", "ci", "lum"]
 
@@ -32,7 +39,7 @@ def open_csv():
     df = pd.read_csv(INPUT_CSV, usecols = WANTED_DATA)
     return(df)
 
-def clean_data(df, only_proper):
+def clean_data(df):
     '''
     Remove missing or invalid data
     '''
@@ -41,7 +48,7 @@ def clean_data(df, only_proper):
 
     # Columns to check for missing data
     columns = ["dist", "ci", "lum"]
-    if only_proper:
+    if PROPER_ONLY:
         columns.append("proper")
 
     # Remove all rows with missing and/or invalid data
@@ -95,8 +102,7 @@ if __name__ == "__main__":
     dataframe = open_csv()
 
     # Remove invalid or missing data from the dataframe, optionally: only keep stars with proper names
-    only_proper = True
-    dataframe = clean_data(dataframe, only_proper)
+    dataframe = clean_data(dataframe)
 
     # Assign an effective temperature to each star with the color index
     dataframe = add_temperature(dataframe)

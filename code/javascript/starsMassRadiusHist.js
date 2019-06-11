@@ -36,7 +36,7 @@ function massRadiusHist(dataset) {
     // Scaling function for x values
     var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([minValue(stars, "Straal") * 0.9, maxValue(stars, "Straal") * 1.1]);
+        .domain([minValue(stars, "Straal"), maxValue(stars, "Straal")]);
 
     // Determine which values go into which bin
     var bins = d3.histogram()
@@ -44,7 +44,7 @@ function massRadiusHist(dataset) {
             return star["Straal"];
         })
         .domain(xScale.domain())
-        .thresholds(xScale.ticks(11))
+        .thresholds(xScale.ticks(50))
         (stars)
 
     // Find the length of the longest array in bins

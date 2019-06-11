@@ -36,7 +36,7 @@ function temperatureHist(dataset) {
     // Scaling function for x values
     var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([maxValue(stars, "Temperatuur") * 1.1, minValue(stars, "Temperatuur") * 0.9]);
+        .domain([maxValue(stars, "Temperatuur"), minValue(stars, "Temperatuur")]);
 
     // Determine which values go into which bin
     var bins = d3.histogram()
@@ -44,13 +44,21 @@ function temperatureHist(dataset) {
             return star["Temperatuur"];
         })
         .domain(xScale.domain().reverse())
-        .thresholds(xScale.ticks(10).reverse())
+        .thresholds(xScale.ticks(50).reverse())
         (stars)
+
+    // Find the length of the longest array in bins
+    var longestArray = 0;
+    bins.forEach(function(bin) {
+        if (bin.length > longestArray) {
+            longestArray = bin.length;
+        };
+    });
 
     // Scaling function for y values
     var yScale = d3.scaleLinear()
         .range([0, chartHeight])
-        .domain([100, 0]);
+        .domain([longestArray * 1.1, 0]);
 
     // Draw x-axis
     histogram.append("g")
@@ -111,12 +119,12 @@ function temperatureHist(dataset) {
                 return xScale(bin.x1) + 0.1 * Math.abs(xScale(bin.x1) - xScale(bin.x0));
             })
             .attr("y", function(bin) {
-                return yScale((bin.length / totalStars) * 100);
+                return yScale(bin.length);
             })
             .attr("width", function(bin) {
                 return Math.abs(xScale(bin.x1) - xScale(bin.x0)) * 0.9;
             })
             .attr("height", function(bin) {
-                return Math.abs(yScale(0) - yScale((bin.length / totalStars) * 100));
+                return Math.abs(yScale(0) - yScale(bin.length));
             });
 };

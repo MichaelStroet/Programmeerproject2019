@@ -34,11 +34,14 @@ function scatterPlot(dataset) {
     var stars = Object.values(dataset);
 
     // Scaling function for x values
-    var xScale = d3.scaleLinear()
+    var xlinScale = d3.scaleLinear()
         .range([0, chartWidth])
         .domain([maxValue(stars, "Temperatuur") * 1.1, minValue(stars, "Temperatuur") * 0.9]);
 
-    console.log(xScale.ticks())
+    // Scaling function for x values
+    var xScale = d3.scaleLog()
+        .range([0, chartWidth])
+        .domain([maxValue(stars, "Temperatuur") * 1.1, minValue(stars, "Temperatuur") * 0.9]);
 
     // Scaling function for y values
     var yScale = d3.scaleLog()
@@ -48,7 +51,9 @@ function scatterPlot(dataset) {
     // Draw x-axis
     scatterPlot.append("g")
         .call(d3.axisBottom(xScale)
-            .ticks(6))
+            .tickValues([3700, 5200, 6000, 7500, 10000, 30000]) // M K G F A B O
+            .tickFormat(d3.format("d"))
+        )
         .attr("class", "axis")
         .attr("transform", `translate(0, ${chartHeight})`);
 
@@ -60,14 +65,14 @@ function scatterPlot(dataset) {
         .attr("text-anchor", "middle")
         .text("Effectieve temperatuur (K)");
 
-    // Draw vertical gridlines
-    scatterPlot.append("g")
-        .attr("class", "grid")
-        .attr("opacity", 0.3)
-        .call(d3.axisBottom(xScale)
-            .tickSize(chartHeight, 0, 0)
-            .tickFormat("")
-    );
+    // // Draw vertical gridlines
+    // scatterPlot.append("g")
+    //     .attr("class", "grid")
+    //     .attr("opacity", 0.3)
+    //     .call(d3.axisBottom(xScale)
+    //         .tickSize(chartHeight, 0, 0)
+    //         .tickFormat("")
+    // );
 
     // Draw y-axis
     scatterPlot.append("g").call(d3.axisLeft(yScale))
@@ -82,14 +87,14 @@ function scatterPlot(dataset) {
         .attr("text-anchor", "middle")
         .text("Lichtkracht (zon = 1)");
 
-    // Draw horizontal gridlines
-    scatterPlot.append("g")
-        .attr("class", "grid")
-        .attr("opacity", 0.3)
-        .call(d3.axisRight(yScale)
-            .tickSize(chartWidth, 0, 0)
-            .tickFormat("")
-        );
+    // // Draw horizontal gridlines
+    // scatterPlot.append("g")
+    //     .attr("class", "grid")
+    //     .attr("opacity", 0.3)
+    //     .call(d3.axisRight(yScale)
+    //         .tickSize(chartWidth, 0, 0)
+    //         .tickFormat("")
+    //     );
 
     // Draw title
     svgScatter.append("text")

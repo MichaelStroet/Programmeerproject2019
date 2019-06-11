@@ -8,9 +8,9 @@ function massRadiusHist(dataset) {
 
     // Padding for the histogram
     var padding = {
-        top: 50,
+        top: 30,
         right: 50,
-        bottom: 25,
+        bottom: 50,
         left: 75
     };
 
@@ -44,13 +44,21 @@ function massRadiusHist(dataset) {
             return star["Straal"];
         })
         .domain(xScale.domain())
-        .thresholds(xScale.ticks(10))
+        .thresholds(xScale.ticks(11))
         (stars)
+
+    // Find the length of the longest array in bins
+    var longestArray = 0;
+    bins.forEach(function(bin) {
+        if (bin.length > longestArray) {
+            longestArray = bin.length;
+        };
+    });
 
     // Scaling function for y values
     var yScale = d3.scaleLinear()
         .range([0, chartHeight])
-        .domain([20, 0]);
+        .domain([longestArray * 1.1, 0]);
 
     // Draw x-axis
     histogram.append("g")
@@ -62,7 +70,7 @@ function massRadiusHist(dataset) {
     svgHistogram.append("text")
         .attr("class", "label")
         .attr("x", chartWidth / 2 + padding.left)
-        .attr("y", padding.top / 1.5)
+        .attr("y", chartHeight + padding.top + padding.bottom / 1.5)
         .attr("text-anchor", "middle")
         .text("x label");
 
@@ -92,9 +100,9 @@ function massRadiusHist(dataset) {
     svgHistogram.append("text")
         .attr("class", "title")
         .attr("x", chartWidth / 2 + padding.left)
-        .attr("y", padding.top / 4)
+        .attr("y", padding.top / 2)
         .attr("text-anchor", "middle")
-        .text("titel");
+        .text("---------------title---------------");
 
     // Draw the histogram
     var bars = histogram.selectAll(".bar")

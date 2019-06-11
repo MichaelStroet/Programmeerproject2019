@@ -8,9 +8,9 @@ function temperatureHist(dataset) {
 
     // Padding for the histogram
     var padding = {
-        top: 50,
+        top: 30,
         right: 50,
-        bottom: 25,
+        bottom: 50,
         left: 75
     };
 
@@ -50,12 +50,14 @@ function temperatureHist(dataset) {
     // Scaling function for y values
     var yScale = d3.scaleLinear()
         .range([0, chartHeight])
-        .domain([50, 0]);
+        .domain([100, 0]);
 
     // Draw x-axis
     histogram.append("g")
-    .call(d3.axisBottom(xScale)
-        .ticks(6))
+        .call(d3.axisBottom(xScale)
+            .ticks(6)//Values([3700, 5200, 6000, 7500, 10000, 30000])
+            .tickFormat(d3.format("d"))
+        )
         .attr("class", "axis")
         .attr("transform", `translate(0, ${chartHeight})`);
 
@@ -63,7 +65,7 @@ function temperatureHist(dataset) {
     svgHistogram.append("text")
         .attr("class", "label")
         .attr("x", chartWidth / 2 + padding.left)
-        .attr("y", padding.top / 1.5)
+        .attr("y", chartHeight + padding.top + padding.bottom / 1.5)
         .attr("text-anchor", "middle")
         .text("x label");
 
@@ -93,9 +95,11 @@ function temperatureHist(dataset) {
     svgHistogram.append("text")
         .attr("class", "title")
         .attr("x", chartWidth / 2 + padding.left)
-        .attr("y", padding.top / 4)
+        .attr("y", padding.top / 2)
         .attr("text-anchor", "middle")
-        .text("titel");
+        .text("---------------title---------------");
+
+    var totalStars = Object.keys(dataset).length
 
     // Draw the histogram
     var bars = histogram.selectAll(".bar")
@@ -107,13 +111,13 @@ function temperatureHist(dataset) {
                 return xScale(bin.x1) + 0.1 * Math.abs(xScale(bin.x1) - xScale(bin.x0));
             })
             .attr("y", function(bin) {
-                return yScale(bin.length);
+                return yScale((bin.length / totalStars) * 100);
             })
             .attr("width", function(bin) {
                 return Math.abs(xScale(bin.x1) - xScale(bin.x0)) * 0.9;
             })
             .attr("height", function(bin) {
-                return Math.abs(yScale(0) - yScale(bin.length));
+                return Math.abs(yScale(0) - yScale((bin.length / totalStars) * 100));
             });
 };
 

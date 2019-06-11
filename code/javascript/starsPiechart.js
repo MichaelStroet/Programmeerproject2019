@@ -37,11 +37,11 @@ function pieChart(dataset) {
 
     // Create an empty object for the piechart data
     var data = {
-        "Rode dwergen" : 0,
+        "Rode_dwergen" : 0,
         "Hoofdreeks" : 0,
         "Reuzen" : 0,
         "Superreuzen" : 0,
-        "Witte dwergen" : 0
+        "Witte_dwergen" : 0
         }
 
     // Scaling function for the wedges
@@ -62,6 +62,8 @@ function pieChart(dataset) {
 
     // Apply the wedge function to the data entries
     var piechartData = wedgeFunction(d3.entries(data))
+
+    console.log(data);
 
     // Draw each wedge of the piechart
     pieChart.selectAll(".wedge")

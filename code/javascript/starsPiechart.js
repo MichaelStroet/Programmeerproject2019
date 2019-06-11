@@ -63,8 +63,6 @@ function pieChart(dataset) {
     // Apply the wedge function to the data entries
     var piechartData = wedgeFunction(d3.entries(data))
 
-    console.log(data);
-
     // Draw each wedge of the piechart
     pieChart.selectAll(".wedge")
         .data(piechartData)

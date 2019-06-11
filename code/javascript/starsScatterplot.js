@@ -9,7 +9,7 @@ function scatterPlot(dataset) {
     // Padding for the HRdiagram
     var padding = {
         top: 50,
-        right: 50,
+        right: 30,
         bottom: 50,
         left: 75
     };
@@ -119,24 +119,4 @@ function scatterPlot(dataset) {
             .attr("fill", function(star) {
             return star["Kleur"];
             });
-};
-
-function maxValue(stars, valueName) {
-    /*
-     * Determines the maximum value
-     */
-
-    return d3.max(stars, function(star) {
-        return star[valueName];
-    });
-};
-
-function minValue(stars, valueName) {
-    /*
-     * Determines the minimum value
-     */
-
-    return d3.min(stars, function(star) {
-        return star[valueName];
-    });
 };

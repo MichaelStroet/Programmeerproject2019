@@ -123,22 +123,3 @@ function massRadiusHist(dataset) {
                 return Math.abs(yScale(0) - yScale(bin.length));
             });
 };
-
-function maxValue(stars, valueName) {
-    /*
-     * Determines the maximum value of an array of objects
-     */
-    return d3.max(stars, function(star) {
-        return star[valueName];
-    });
-};
-
-function minValue(stars, valueName) {
-    /*
-     * Determines the minimum value of an array of objects
-     */
-
-    return d3.min(stars, function(star) {
-        return star[valueName];
-    });
-};

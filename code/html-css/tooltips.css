@@ -1,54 +1,33 @@
 /* Name: Michael Stroet
    Student number: 11293284 */
 
-.HR-tooltip {
-     color: white;
-     position: absolute;
-     text-align: center;
+.tooltip {
+    color: white;
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgba(0,0,0,.8);
+    border: 2px solid black;
+    pointer-events: none;
+}
+
+.tooltip#HR-diagram {
      width: 160px;
      height: 35px;
-     padding: 2px;
-     font: 12px sans-serif;
-     background: rgba(0,0,0,.8);
-     border: 2px solid black;
-     pointer-events: none;
 }
 
-.pie-tooltip {
-     color: white;
-     position: absolute;
-     text-align: center;
+.tooltip#piechart {
      width: 125px;
      height: 35px;
-     padding: 2px;
-     font: 12px sans-serif;
-     background: rgba(0,0,0,.8);
-     border: 2px solid black;
-     pointer-events: none;
 }
 
-.temperature-tooltip {
-     color: white;
-     position: absolute;
-     text-align: center;
+.tooltip#temperature {
      width: 160px;
      height: 35px;
-     padding: 2px;
-     font: 12px sans-serif;
-     background: rgba(0,0,0,.8);
-     border: 2px solid black;
-     pointer-events: none;
 }
 
-.mass-radius-tooltip {
-     color: white;
-     position: absolute;
-     text-align: center;
+.tooltip#mass-radius {
      width: 125px;
      height: 35px;
-     padding: 2px;
-     font: 12px sans-serif;
-     background: rgba(0,0,0,.8);
-     border: 2px solid black;
-     pointer-events: none;
 }

@@ -24,7 +24,7 @@ function scatterPlot(dataset) {
     var svgScatter = d3.select("#svgHRdiagram");
 
     // Select the "div" for the tooltip
-    var tooltip = d3.select(".HR-tooltip");
+    var tooltip = d3.select("#HR-diagramTip");
 
     // Define a "g" for the HRdiagram
     var scatterPlot = svgScatter.append("g")

@@ -26,7 +26,7 @@ function pieChart(dataset) {
     var svgPie = d3.select("#svgPiechart");
 
     // Select the "div" for the tooltip
-    var tooltip = d3.select(".pie-tooltip");
+    var tooltip = d3.select("#piechartTip");
 
     // Define a "g" for the piechart
     var pieChart = svgPie.append("g")

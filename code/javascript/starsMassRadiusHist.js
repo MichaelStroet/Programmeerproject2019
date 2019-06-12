@@ -24,7 +24,7 @@ function massRadiusHist(dataset) {
     var svgHistogram = d3.select("#svgMassRadiusHist")
 
     // Select the "div" for the tooltip
-    var tooltip = d3.select(".mass-radius-tooltip");
+    var tooltip = d3.select("#mass-radiusTip");
 
     // Define a "g" for the histogram
     var histogram = svgHistogram.append("g")

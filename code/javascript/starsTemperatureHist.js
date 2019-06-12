@@ -24,7 +24,7 @@ function temperatureHist(dataset) {
     var svgHistogram = d3.select("#svgTemperatureHist")
 
     // Select the "div" for the tooltip
-    var tooltip = d3.select(".temperature-tooltip");
+    var tooltip = d3.select("#temperatureTip");
 
     // Define a "g" for the histogram
     var histogram = svgHistogram.append("g")

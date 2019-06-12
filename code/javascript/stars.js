@@ -50,14 +50,15 @@ function visualisationStars(dataset) {
 
     var addTooltipDiv = function(className) {
         body.append("div")
-            .attr("class", `${className}`)
+            .attr("class", "tooltip")
+            .attr("id", `${className}`)
             .style("opacity", 0);
     };
     // Define "div"s of tooltips for all figures
-    addTooltipDiv("HR-tooltip");
-    addTooltipDiv("pie-tooltip");
-    addTooltipDiv("temperature-tooltip");
-    addTooltipDiv("mass-radius-tooltip");
+    addTooltipDiv("HR-diagramTip");
+    addTooltipDiv("piechartTip");
+    addTooltipDiv("temperatureTip");
+    addTooltipDiv("mass-radiusTip");
 
     // Define a "svg" for the HRdiagram
     var svgHRdiagram = d3.select("#HRdiagram")

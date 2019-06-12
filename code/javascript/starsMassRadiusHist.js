@@ -36,7 +36,7 @@ function massRadiusHist(dataset) {
     // Scaling function for x values
     var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([minValue(stars, "Straal") * 0.9, maxValue(stars, "Straal") * 1.1]);
+        .domain([0, maxValue(stars, "Straal") * 1.1]);
 
     // Determine which values go into which bin
     var bins = d3.histogram()
@@ -121,5 +121,24 @@ function massRadiusHist(dataset) {
             })
             .attr("height", function(bin) {
                 return Math.abs(yScale(0) - yScale(bin.length));
+            })
+            .on("click", function(bin) {
+                console.log(`Straal:\n    ${bin.x0} - ${bin.x1}\nAantal sterren:\n    ${bin.length}`);
+            })
+            .on("mousemove", function(bin) {
+                tooltip
+                    .transition()
+                    .duration(50)
+                    .style("opacity", 0.9);
+                tooltip
+                    .html(`Straal: ${bin.x0} - ${bin.x1}<br>Aantal sterren: ${bin.length}`)
+                    .style("left", (d3.event.pageX + 15) + "px")
+                    .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on("mouseout", () => {
+                tooltip
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0);
             });
 };

@@ -31,22 +31,23 @@ function scatterPlot(dataset) {
         .attr("class", "scatterplot")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
-    var stars = Object.values(dataset);
+    var stars = Object.entries(dataset);
+    var properties = Object.values(dataset);
 
     // Scaling function for x values
     var xlinScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([maxValue(stars, "Temperatuur") * 1.1, minValue(stars, "Temperatuur") * 0.9]);
+        .domain([maxValue(properties, "Temperatuur") * 1.1, minValue(properties, "Temperatuur") * 0.9]);
 
     // Scaling function for x values
     var xScale = d3.scaleLog()
         .range([0, chartWidth])
-        .domain([maxValue(stars, "Temperatuur") * 1.1, minValue(stars, "Temperatuur") * 0.9]);
+        .domain([maxValue(properties, "Temperatuur") * 1.1, minValue(properties, "Temperatuur") * 0.9]);
 
     // Scaling function for y values
     var yScale = d3.scaleLog()
         .range([0, chartHeight])
-        .domain([maxValue(stars, "Lichtkracht") * 1.1, minValue(stars, "Lichtkracht") * 0.9]);
+        .domain([maxValue(properties, "Lichtkracht") * 1.1, minValue(properties, "Lichtkracht") * 0.9]);
 
     // Draw x-axis
     scatterPlot.append("g")
@@ -65,14 +66,14 @@ function scatterPlot(dataset) {
         .attr("text-anchor", "middle")
         .text("Effectieve temperatuur (K)");
 
-    // // Draw vertical gridlines
-    // scatterPlot.append("g")
-    //     .attr("class", "grid")
-    //     .attr("opacity", 0.3)
-    //     .call(d3.axisBottom(xScale)
-    //         .tickSize(chartHeight, 0, 0)
-    //         .tickFormat("")
-    // );
+    // Draw vertical gridlines
+    scatterPlot.append("g")
+        .attr("class", "grid")
+        .attr("opacity", 0.15)
+        .call(d3.axisBottom(xScale)
+            .tickSize(chartHeight, 0, 0)
+            .tickFormat("")
+    );
 
     // Draw y-axis
     scatterPlot.append("g").call(d3.axisLeft(yScale))
@@ -87,14 +88,14 @@ function scatterPlot(dataset) {
         .attr("text-anchor", "middle")
         .text("Lichtkracht (zon = 1)");
 
-    // // Draw horizontal gridlines
-    // scatterPlot.append("g")
-    //     .attr("class", "grid")
-    //     .attr("opacity", 0.3)
-    //     .call(d3.axisRight(yScale)
-    //         .tickSize(chartWidth, 0, 0)
-    //         .tickFormat("")
-    //     );
+    // Draw horizontal gridlines
+    scatterPlot.append("g")
+        .attr("class", "grid")
+        .attr("opacity", 0.15)
+        .call(d3.axisRight(yScale)
+            .tickSize(chartWidth, 0, 0)
+            .tickFormat("")
+        );
 
     // Draw title
     svgScatter.append("text")
@@ -111,15 +112,38 @@ function scatterPlot(dataset) {
         .append("circle")
             .attr("class", "star")
             .attr("cx", function(star) {
-                return xScale(star["Temperatuur"]);
+                console.log(star);
+                console.log(star[1]);
+                console.log(star[1]["Temperatuur"]);
+                return xScale(star[1]["Temperatuur"]);
             })
             .attr("cy", function(star) {
-                return yScale(star["Lichtkracht"]);
+                return yScale(star[1]["Lichtkracht"]);
             })
             .attr("fill", function(star) {
-                return star["Kleur"];
+                return star[1]["Kleur"];
             })
             .attr("r", function(star) {
-                return Math.pow(star["Straal"], 1/2);
+                return 2 + Math.pow(star[1]["Straal"], 1/2);
             })
+            .on("click", function(star) {
+                console.log(`Geselecteerde ster:\n  ${star[0]}\nEigenschappen:\n    ${star[1]}`);
+            })
+            .on("mousemove", function(star) {
+                tooltip
+                    .transition()
+                    .duration(50)
+                    .style("opacity", 0.9);
+                tooltip
+                    .html(`Ster: ${star[0]}<br>
+                        Type: ${star[1]["Type"]}`)
+                    .style("left", (d3.event.pageX + 15) + "px")
+                    .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on("mouseout", () => {
+                tooltip
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
 };

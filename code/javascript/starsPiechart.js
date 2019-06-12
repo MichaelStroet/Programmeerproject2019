@@ -75,5 +75,24 @@ function pieChart(dataset) {
             )
             .attr("fill", function(wedge) {
                 return(colorScale(wedge.data.key));
+            })
+            .on("click", function(wedge) {
+                console.log(`Type:\n    ${wedge.data.key}\nAantal sterren:\n    ${wedge.data.value}`);
+            })
+            .on("mousemove", function(wedge) {
+                tooltip
+                    .transition()
+                    .duration(50)
+                    .style("opacity", 0.9);
+                tooltip
+                    .html(`${wedge.data.key}<br>Aantal sterren: ${wedge.data.value}`)
+                    .style("left", (d3.event.pageX + 15) + "px")
+                    .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on("mouseout", () => {
+                tooltip
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0);
             });
 };

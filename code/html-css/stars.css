@@ -33,29 +33,3 @@ text {
 .bar:hover {
      fill: crimson;
 }
-
-.barTooltip {
-     color: white;
-     position: absolute;
-     text-align: center;
-     width: 125px;
-     height: 33px;
-     padding: 2px;
-     font: 12px sans-serif;
-     background: rgba(0,0,0,.8);
-     border: 2px solid black;
-     pointer-events: none;
-}
-
-.calTooltip {
-     color: white;
-     position: absolute;
-     text-align: center;
-     width: 75px;
-     height: 33px;
-     padding: 2px;
-     font: 12px sans-serif;
-     background: rgba(0,0,0,.8);
-     border: 2px solid black;
-     pointer-events: none;
-}

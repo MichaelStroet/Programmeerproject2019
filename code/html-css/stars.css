@@ -7,12 +7,11 @@ text {
 
 /* Hertzsprung-Russell diagram styles */
 .star {
-    r: 5px;
     stroke: black;
 }
 
 .star:hover {
-    r: 7px;
+    fill: lime;
 }
 
 /* Pichart styles */

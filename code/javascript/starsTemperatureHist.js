@@ -9,7 +9,7 @@ function temperatureHist(dataset) {
     // Padding for the histogram
     var padding = {
         top: 30,
-        right: 50,
+        right: 30,
         bottom: 50,
         left: 75
     };

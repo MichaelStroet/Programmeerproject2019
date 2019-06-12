@@ -111,12 +111,15 @@ function scatterPlot(dataset) {
         .append("circle")
             .attr("class", "star")
             .attr("cx", function(star) {
-            return xScale(star["Temperatuur"]);
+                return xScale(star["Temperatuur"]);
             })
             .attr("cy", function(star) {
-            return yScale(star["Lichtkracht"]);
+                return yScale(star["Lichtkracht"]);
             })
             .attr("fill", function(star) {
-            return star["Kleur"];
-            });
+                return star["Kleur"];
+            })
+            .attr("r", function(star) {
+                return Math.pow(star["Straal"], 1/2);
+            })
 };

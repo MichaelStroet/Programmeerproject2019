@@ -36,7 +36,7 @@ function massRadiusHist(dataset) {
     // Scaling function for x values
     var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([minValue(stars, "Straal"), maxValue(stars, "Straal")]);
+        .domain([minValue(stars, "Straal") * 0.9, maxValue(stars, "Straal") * 1.1]);
 
     // Determine which values go into which bin
     var bins = d3.histogram()
@@ -72,7 +72,7 @@ function massRadiusHist(dataset) {
         .attr("x", chartWidth / 2 + padding.left)
         .attr("y", chartHeight + padding.top + padding.bottom / 1.5)
         .attr("text-anchor", "middle")
-        .text("x label");
+        .text("Straal (zonsstralen)");
 
     // Draw y-axis
     histogram.append("g").call(d3.axisLeft(yScale))
@@ -85,7 +85,7 @@ function massRadiusHist(dataset) {
         .attr("y", padding.left / 6)
         .attr("transform", "rotate(270)")
         .attr("text-anchor", "middle")
-        .text("y label)");
+        .text("Aantal sterren");
 
     // Draw horizontal gridlines
     histogram.append("g")
@@ -102,7 +102,7 @@ function massRadiusHist(dataset) {
         .attr("x", chartWidth / 2 + padding.left)
         .attr("y", padding.top / 2)
         .attr("text-anchor", "middle")
-        .text("---------------title---------------");
+        .text("Verdeling van de straal van sterren relatief aan de zon");
 
     // Draw the histogram
     var bars = histogram.selectAll(".bar")

@@ -9,7 +9,7 @@ function distanceSlider(dataset) {
     // Padding for the slider
     var padding = {
         top: 20,
-        right: 0,
+        right: 30,
         bottom: 100,
         left: 10
     };
@@ -38,11 +38,10 @@ function distanceSlider(dataset) {
         .step(0.01)
         .fill("#2196f3")
         .on("onchange ", val => {
-            d3.select("#sliderValues").text(`${val.map(d3.format(".2f")).join(" - ")} parsec`);
+            d3.select("#sliderValues").html(`Afstanden (parsec)<br>${val.map(d3.format(".2f")).join(" - ")}`);
         })
         .on("end", val => {
-            console.log(`New values:\n ${val.map(d3.format(".2f")).join(" - ")}`)
-            d3.select("#sliderValues").text(`${val.map(d3.format(".2f")).join(" - ")} parsec`);
+            console.log(`New values:\n ${val.map(d3.format(".2f")).join(" - ")}`);
         });
 
     distanceSlider.call(sliderRange);

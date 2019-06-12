@@ -9,8 +9,8 @@ function pieChart(dataset) {
     // Padding for the piechart
     var padding = {
         top: 20,
-        right: 100,
-        bottom: 5,
+        right: 30,
+        bottom: 30,
         left: 5
     };
 

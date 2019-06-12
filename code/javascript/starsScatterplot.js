@@ -61,7 +61,7 @@ function scatterPlot(dataset) {
     svgScatter.append("text")
         .attr("class", "label")
         .attr("x", chartWidth / 2 + padding.left)
-        .attr("y", chartHeight + padding.top + padding.bottom / 1.25)
+        .attr("y", chartHeight + padding.top + padding.bottom / 1.05)
         .attr("text-anchor", "middle")
         .text("Effectieve temperatuur (K)");
 

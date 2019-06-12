@@ -36,7 +36,7 @@ function temperatureHist(dataset) {
     // Scaling function for x values
     var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([maxValue(stars, "Temperatuur"), minValue(stars, "Temperatuur")]);
+        .domain([maxValue(stars, "Temperatuur") * 1.1, minValue(stars, "Temperatuur") * 0.9]);
 
     // Determine which values go into which bin
     var bins = d3.histogram()
@@ -75,7 +75,7 @@ function temperatureHist(dataset) {
         .attr("x", chartWidth / 2 + padding.left)
         .attr("y", chartHeight + padding.top + padding.bottom / 1.5)
         .attr("text-anchor", "middle")
-        .text("x label");
+        .text("Effectieve temperatuur (K)");
 
     // Draw y-axis
     histogram.append("g").call(d3.axisLeft(yScale))
@@ -88,7 +88,7 @@ function temperatureHist(dataset) {
         .attr("y", padding.left / 6)
         .attr("transform", "rotate(270)")
         .attr("text-anchor", "middle")
-        .text("y label)");
+        .text("Aantal sterren");
 
     // Draw horizontal gridlines
     histogram.append("g")
@@ -105,7 +105,7 @@ function temperatureHist(dataset) {
         .attr("x", chartWidth / 2 + padding.left)
         .attr("y", padding.top / 2)
         .attr("text-anchor", "middle")
-        .text("---------------title---------------");
+        .text("Verdeling van de effectieve temperatuur van sterren");
 
     var totalStars = Object.keys(dataset).length
 

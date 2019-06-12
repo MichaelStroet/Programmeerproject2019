@@ -86,7 +86,7 @@ De eerste stand-up waar iedereen aanwezig was. Volgens het team ziet mijn protot
 ##### HTML / CSS
 - Nieuwe javascript bestanden toegevoegd aan [stars.html](code/html-css/stars.html). Het defineren van een "div" voor de verschillende tooltips staat nu in een functie.
 
-##### javascript
+##### Javascript
 - Het [taartdiagram script](code/javascript/starsPiechart.js) aangepast zodat het de [stars.json](data/stars.json) data gebruikt.
 - Code voor de twee histogrammen geschreven:
     - Het [temperatuur script](code/javascript/starsTemperatureHist.js) maakt een histogram van de sterren gebaseerd op hun temperatuur. De x-as is hetzelfde als die van het HR-diagram. De waardes van het histogram komen uit [stars.json](data/stars.json).
@@ -146,6 +146,39 @@ Deze week wil ik voornamelijk besteden aan het updaten van de figuren. Er werd e
 ![Visualisatie-11-6-19](doc/process/week_2/Visualisatie-11-6-19.png)
 
 ### Dag 8:
+
+#### Stand-up
+Style guide laten we voor morgen, aangezien één van de leden niet aanwezig was.
+Er werd gesproken ovr het inplementeren van een schaal functie voor de grootte van de HR-diagram punten, inplaats van een wortel.
+
+#### Geschreven code
+
+##### Python
+- Een aantal punten van de polygonen verplaatst en main.py opnieuw gedraaid.
+
+##### Javascript
+- Labels en titels toegevoegd aan de histogrammen.
+- Tooltips en klikbare toevoegingen voor de figuren.
+- HR-diagram sterren hebben verschillende groottes, bepaald uit de derde-machts wortel van de straal in zonsstralen
+- De afstandsslider update het taartdiagram.
+
+##### HTML / CSS
+- tooltips.css aangmeaakt voor de tooltip styles
+- Verhoudingen van de slider en dropdown/info/taartdiagram kolommen aangepast
+
+#### Figuren
+
+De nieuwe polygonen geplot in het scatterplot in python:
+
+![Polygonen](doc/process/week_2/HR-diagramPolygonen.png)
+
+Het met de slider geüpdate taartdiagram:
+
+![TaartUpdate](doc/process/week_2/pichartUpdate.png)
+
+#### Huidige visualisatie
+
+![Visualisatie-12-6-19](doc/process/week_2/Visualisatie-12-6-19.png)
 
 ### Dag 9:
 

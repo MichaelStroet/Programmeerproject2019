@@ -124,7 +124,7 @@ function scatterPlot(dataset) {
                 return 2 + Math.pow(star[1]["Straal"], 1/2);
             })
             .on("click", function(star) {
-                console.log(`Geselecteerde ster:\n  ${star[0]}\nEigenschappen:\n    ${star[1]}`);
+                console.log(`Geselecteerde ster:\n  ${star[0]}\nType:\n  ${star[1]["Type"]}\nTemperatuur:\n  ${star[1]["Temperatuur"]}\nLichtkracht:\n  ${star[1]["Lichtkracht"]}\nStraal:\n  ${star[1]["Straal"]}\nAfstand:\n  ${star[1]["Afstand"]}`);
             })
             .on("mousemove", function(star) {
                 tooltip

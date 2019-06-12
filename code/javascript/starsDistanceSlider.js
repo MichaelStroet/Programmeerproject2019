@@ -1,7 +1,6 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-
 function distanceSlider(dataset) {
     /*
 
@@ -37,20 +36,37 @@ function distanceSlider(dataset) {
         .default([0, 100])
         .step(0.01)
         .fill("#2196f3")
-        .on("onchange ", val => {
-            d3.select("#sliderValues").html(`Afstanden (parsec)<br>${val.map(d3.format(".2f")).join(" - ")}`);
+        .on("onchange ", function(values) {
+            d3.select("#sliderValues").html(`Afstanden (parsec)<br>${values.map(d3.format(".2f")).join(" - ")}`);
         })
-        .on("end", val => {
-            console.log(`New values:\n ${val.map(d3.format(".2f")).join(" - ")}`);
+        .on("end", function(values) {
+            var newData = {};
+
+            Object.entries(dataset).forEach(function(star) {
+                var distance = star[1]["Afstand"];
+                if (distance >= values[0] && distance <= values[1]) {
+                    newData[star[0]] = star[1];
+                };
+            });
+
+            updateGraphs(newData);
+
         });
 
     distanceSlider.call(sliderRange);
 
     d3.select("#values")
     .text(sliderRange
-    .value()
-    .map(d3.format(".2f"))
-    .join("-")
+        .value()
+        .map(d3.format(".2f"))
+        .join("-")
     );
 
+};
+
+function updateGraphs(newData) {
+    console.log("Updating graphs:");
+
+    console.log("Piechart");
+    updatePiechart(newData);
 };

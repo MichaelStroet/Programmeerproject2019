@@ -112,9 +112,6 @@ function scatterPlot(dataset) {
         .append("circle")
             .attr("class", "star")
             .attr("cx", function(star) {
-                console.log(star);
-                console.log(star[1]);
-                console.log(star[1]["Temperatuur"]);
                 return xScale(star[1]["Temperatuur"]);
             })
             .attr("cy", function(star) {

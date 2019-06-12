@@ -60,44 +60,21 @@ function visualisationStars(dataset) {
     addTooltipDiv("temperatureTip");
     addTooltipDiv("mass-radiusTip");
 
-    // Define a "svg" for the HRdiagram
-    var svgHRdiagram = d3.select("#HRdiagram")
-        .append("svg")
-        .attr("class", "container")
-        .attr("id", "svgHRdiagram")
-        .attr("width", widthHRdiagram)
-        .attr("height", heightHRdiagram);
+    var addFigureSvg = function(divId, svgWidth, svgHeight, svgId) {
+        d3.select(divId)
+            .append("svg")
+                .attr("class", "container")
+                .attr("id", svgId)
+                .attr("width", svgWidth)
+                .attr("height", svgHeight);
+    };
 
-    var svgDistanceSlider = d3.select("#distanceSlider")
-        .append("svg")
-        .attr("class", "container")
-        .attr("id", "svgDistanceSlider")
-        .attr("width", widthSlider)
-        .attr("height", heightSlider)
-
-    // Define a "svg" for the piechart
-    var svgPiechart = d3.select("#piechart")
-        .append("svg")
-        .attr("class", "container")
-        .attr("id", "svgPiechart")
-        .attr("width", widthPiechart)
-        .attr("height", heightPiechart);
-
-    // Define a "svg" for the temperature histogram
-    var svgTemperatureHist = d3.select("#temperatureHist")
-        .append("svg")
-        .attr("class", "container")
-        .attr("id", "svgTemperatureHist")
-        .attr("width", widthTemperatureHist)
-        .attr("height", heightTemperatureHist);
-
-    // Define a "svg" for the mass-radius histogram
-    var svgMassRadiusHist = d3.select("#massRadiusHist")
-        .append("svg")
-        .attr("class", "container")
-        .attr("id", "svgMassRadiusHist")
-        .attr("width", widthMassRadiusHist)
-        .attr("height", heightMassRadiusHist);
+    // Define "svg"s for all figures and the slider
+    addFigureSvg("#HRdiagram", widthHRdiagram, heightHRdiagram, "svgHRdiagram");
+    addFigureSvg("#distanceSlider", widthSlider, heightSlider, "svgDistanceSlider");
+    addFigureSvg("#piechart", widthPiechart, heightPiechart, "svgPiechart");
+    addFigureSvg("#temperatureHist", widthTemperatureHist, heightTemperatureHist, "svgTemperatureHist");
+    addFigureSvg("#massRadiusHist", widthMassRadiusHist, heightMassRadiusHist, "svgMassRadiusHist");
 
     // Create the dropdown menu for the stars with proper names
     properDropdown(dataset)

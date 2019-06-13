@@ -9,7 +9,7 @@ function pieChart(dataset) {
     // Padding for the piechart
     var padding = {
         top: 20,
-        right: 30,
+        right: 125,
         bottom: 30,
         left: 5
     };
@@ -96,6 +96,75 @@ function pieChart(dataset) {
                     .duration(500)
                     .style("opacity", 0);
             });
+
+    var legendWidth = padding.right;
+    var legendHeight = chartHeight;
+    var legendPadding = {
+        top: padding.top,
+        right: 0,
+        bottom: 0,
+        left: (chartWidth + padding.left) + 10
+    };
+
+    // Define a "g" for the legend
+    var legend = svgPie.append("g")
+        .attr("class", "legend")
+        .attr("width", legendWidth)
+        .attr("height", legendHeight)
+        .attr("transform", function() {
+            var xTranslation = legendPadding.left;
+            var yTranslation = legendPadding.top;
+            return `translate(${xTranslation}, ${yTranslation})`;
+        });
+
+    var itemHeight = legendHeight / (Object.keys(stars).length + 1);
+    var boxSize = 0.3 * itemHeight;
+    var boxPadding = (itemHeight - boxSize);
+
+    // Add a "g" for all star types to the legend
+    legend.selectAll(".legendItem")
+        .data(Object.entries(stars))
+        .enter()
+        .append("g")
+            .attr("class", "legendItem")
+            .attr("id", type => {return type[0]})
+            .attr("width", legendWidth)
+            .attr("height", itemHeight)
+            .attr("transform", function(type, i) {
+                var xTranslation = 0;
+                var yTranslation = i * (boxSize + boxPadding) + legendPadding.top;
+                return `translate(${xTranslation}, ${yTranslation})`;
+            })
+            .append("rect")
+                .attr("class", "legendBox")
+                .attr("x", 0)
+                .attr("y", 0)
+                .attr("width", boxSize)
+                .attr("height", boxSize)
+                .style("fill", type => {return colorScale(type[0])})
+                .style("stroke", "black");
+
+    var legendTexts = {
+        "Rode_dwergen" : ["Rode", "dwergen"],
+        "Hoofdreeks" : ["Hoofd-", "reeks"],
+        "Reuzen" : ["Reuzen", ""],
+        "Superreuzen" : ["Super-", "reuzen"],
+        "Witte_dwergen" : ["Witte", "dwergen"]
+        }
+
+    legend.selectAll(".legendItem")
+        .append("text")
+            .attr("x", boxSize + 5)
+            .attr("y", boxSize / 2.5)
+            .style("font", "11px Verdana")
+            .text(type => {return legendTexts[type[0]][0]})
+
+    legend.selectAll(".legendItem")
+        .append("text")
+            .attr("x", boxSize + 5)
+            .attr("y", boxSize + 5)
+            .style("font", "11px Verdana")
+            .text(type => {return legendTexts[type[0]][1]})
 };
 
 function updatePiechart(newDataset) {
@@ -106,7 +175,7 @@ function updatePiechart(newDataset) {
     // Padding for the piechart
     var padding = {
         top: 20,
-        right: 30,
+        right: 125,
         bottom: 30,
         left: 5
     };

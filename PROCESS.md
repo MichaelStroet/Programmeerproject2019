@@ -174,7 +174,7 @@ De nieuwe polygonen geplot in het scatterplot in python:
 
 Het met de slider geüpdate taartdiagram:
 
-![TaartUpdate](doc/process/week_2/pichartUpdate.png)
+![TaartUpdate](doc/process/week_2/piechartUpdate.png)
 
 #### Huidige visualisatie
 

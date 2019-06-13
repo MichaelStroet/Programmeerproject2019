@@ -182,6 +182,16 @@ Het met de slider geüpdate taartdiagram:
 
 ### Dag 9:
 
+#### Stand-up
+Twee mensen niet aanwezig, geen stand-up.
+
+#### Geschreven code
+
+##### Javascript
+- Legenda gemaakt voor het taartdiagram
+- Afstandsslider update het HR-diagram door sterren buiten de afstandsrange een straal van 0 te geven.
+- Start gemaakt aan het updaten van de massa/straal histogram met de afstandsslider. De assen worden aangepast naar de nieuwe data, de balken nog niet.
+
 ### Dag 10:
 
 ### Weekend 2:

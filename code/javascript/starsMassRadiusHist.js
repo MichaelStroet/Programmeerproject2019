@@ -64,11 +64,12 @@ function massRadiusHist(dataset) {
     histogram.append("g")
     .call(d3.axisBottom(xScale))
         .attr("class", "axis")
+        .attr("id", "x")
         .attr("transform", `translate(0, ${chartHeight})`);
 
     // Draw x label
     svgHistogram.append("text")
-        .attr("class", "label")
+        .attr("class", "Label")
         .attr("x", chartWidth / 2 + padding.left)
         .attr("y", chartHeight + padding.top + padding.bottom / 1.5)
         .attr("text-anchor", "middle")
@@ -76,7 +77,8 @@ function massRadiusHist(dataset) {
 
     // Draw y-axis
     histogram.append("g").call(d3.axisLeft(yScale))
-        .attr("class", "axis");
+        .attr("class", "axis")
+        .attr("id", "y");
 
     // Draw y label
     svgHistogram.append("text")
@@ -141,4 +143,69 @@ function massRadiusHist(dataset) {
                     .duration(500)
                     .style("opacity", 0);
             });
+};
+
+function updateMassRadiusHist(newDataset) {
+    /*
+
+    */
+
+    // Padding for the histogram
+    var padding = {
+        top: 30,
+        right: 50,
+        bottom: 50,
+        left: 75
+    };
+
+    var svgWidth = document.getElementById("svgMassRadiusHist").clientWidth;
+    var svgHeight = document.getElementById("svgTemperatureHist").clientHeight;
+
+    var chartWidth = svgWidth - padding.left - padding.right;
+    var chartHeight = svgHeight - padding.top - padding.bottom;
+
+    // Select the "svg" of the histogram
+    var svgHistogram = d3.select("#svgMassRadiusHist").transition()
+
+    // Define the "g" of the histogram
+    var histogram = d3.select(".histogram")
+
+    var stars = Object.values(newDataset);
+
+    // Scaling function for x values
+    var xScale = d3.scaleLinear()
+        .range([0, chartWidth])
+        .domain([0, maxValue(stars, "Straal") * 1.1]);
+
+    // Determine which values go into which bin
+    var bins = d3.histogram()
+        .value(function(star) {
+            return star["Straal"];
+        })
+        .domain(xScale.domain())
+        .thresholds(xScale.ticks(50))
+        (stars)
+
+    // Find the length of the longest array in bins
+    var longestArray = 0;
+    bins.forEach(function(bin) {
+        if (bin.length > longestArray) {
+            longestArray = bin.length;
+        };
+    });
+
+    // Scaling function for y values
+    var yScale = d3.scaleLinear()
+        .range([0, chartHeight])
+        .domain([longestArray * 1.1, 0]);
+
+    // Draw x-axis
+    svgHistogram.select(".axis#x")
+        .duration(500)
+        .call(d3.axisBottom(xScale));
+
+    // Draw x-axis
+    svgHistogram.select(".axis#y")
+        .duration(500)
+        .call(d3.axisLeft(yScale));
 };

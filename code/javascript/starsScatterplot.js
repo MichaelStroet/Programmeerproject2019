@@ -159,15 +159,15 @@ function highlightHRDiagram(highlightDataset, dimDataset) {
         scatterPlot.select(selector)
             .duration(500)
             .attr("r", function(star) {
-                return 2 + Math.pow(star[1]["Straal"], 1/2);
+                return 2 + Math.pow(star[1]["Straal"], 1/3);
             });
     });
 
     Object.entries(dimDataset).forEach(function(star) {
         var selector = `#Star_${star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')}`;
         scatterPlot.select(selector)
-        .duration(500)
-            .attr("r", 1);
+            .duration(500)
+            .attr("r", 0);
     });
 
 };

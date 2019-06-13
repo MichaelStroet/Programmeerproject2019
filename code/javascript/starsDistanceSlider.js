@@ -51,17 +51,12 @@ function distanceSlider(dataset) {
                     newDataset[star[0]] = star[1];
                     highlightDataset[star[0]] = star[1];
                 }
-
                 else {
                     dimDataset[star[0]] = star[1];
                 };
 
             });
-            console.log(highlightDataset);
-            console.log(dimDataset);
-
             updateGraphs(newDataset, highlightDataset, dimDataset);
-
         });
 
     distanceSlider.call(sliderRange);
@@ -76,11 +71,10 @@ function distanceSlider(dataset) {
 };
 
 function updateGraphs(newDataset, highlightDataset, dimDataset) {
-    console.log("Updating graphs:");
 
-    console.log("HR-diagram");
     highlightHRDiagram(highlightDataset, dimDataset);
 
-    console.log("Piechart");
     updatePiechart(newDataset);
+
+    updateMassRadiusHist(newDataset);
 };

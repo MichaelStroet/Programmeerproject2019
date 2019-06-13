@@ -111,6 +111,7 @@ function scatterPlot(dataset) {
         .enter()
         .append("circle")
             .attr("class", "star")
+            .attr("id", star => {return "Star_" + star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')})
             .attr("cx", function(star) {
                 return xScale(star[1]["Temperatuur"]);
             })
@@ -121,7 +122,7 @@ function scatterPlot(dataset) {
                 return star[1]["Kleur"];
             })
             .attr("r", function(star) {
-                return 2 + Math.pow(star[1]["Straal"], 1/2);
+                return 2 + Math.pow(star[1]["Straal"], 1/3);
             })
             .on("click", function(star) {
                 console.log(`Geselecteerde ster:\n  ${star[0]}\nType:\n  ${star[1]["Type"]}\nTemperatuur:\n  ${star[1]["Temperatuur"]}\nLichtkracht:\n  ${star[1]["Lichtkracht"]}\nStraal:\n  ${star[1]["Straal"]}\nAfstand:\n  ${star[1]["Afstand"]}`);
@@ -143,4 +144,30 @@ function scatterPlot(dataset) {
                     .duration(500)
                     .style("opacity", 0);
             });
+};
+
+function highlightHRDiagram(highlightDataset, dimDataset) {
+    /*
+    Highlights certain stars in the HR-diagram and dims the others
+    */
+
+    // Select the scatterpot
+    var scatterPlot = d3.select(".scatterplot").transition()
+
+    Object.entries(highlightDataset).forEach(function(star) {
+        var selector = `#Star_${star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')}`;
+        scatterPlot.select(selector)
+            .duration(500)
+            .attr("r", function(star) {
+                return 2 + Math.pow(star[1]["Straal"], 1/2);
+            });
+    });
+
+    Object.entries(dimDataset).forEach(function(star) {
+        var selector = `#Star_${star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')}`;
+        scatterPlot.select(selector)
+        .duration(500)
+            .attr("r", 1);
+    });
+
 };

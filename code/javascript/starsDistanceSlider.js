@@ -40,16 +40,27 @@ function distanceSlider(dataset) {
             d3.select("#sliderValues").html(`Afstanden (parsec)<br>${values.map(d3.format(".2f")).join(" - ")}`);
         })
         .on("end", function(values) {
-            var newData = {};
+            var newDataset = {};
+            var highlightDataset = {};
+            var dimDataset = {};
 
             Object.entries(dataset).forEach(function(star) {
                 var distance = star[1]["Afstand"];
-                if (distance >= values[0] && distance <= values[1]) {
-                    newData[star[0]] = star[1];
-                };
-            });
 
-            updateGraphs(newData);
+                if (distance >= values[0] && distance <= values[1]) {
+                    newDataset[star[0]] = star[1];
+                    highlightDataset[star[0]] = star[1];
+                }
+
+                else {
+                    dimDataset[star[0]] = star[1];
+                };
+
+            });
+            console.log(highlightDataset);
+            console.log(dimDataset);
+
+            updateGraphs(newDataset, highlightDataset, dimDataset);
 
         });
 
@@ -64,9 +75,12 @@ function distanceSlider(dataset) {
 
 };
 
-function updateGraphs(newData) {
+function updateGraphs(newDataset, highlightDataset, dimDataset) {
     console.log("Updating graphs:");
 
+    console.log("HR-diagram");
+    highlightHRDiagram(highlightDataset, dimDataset);
+
     console.log("Piechart");
-    updatePiechart(newData);
+    updatePiechart(newDataset);
 };

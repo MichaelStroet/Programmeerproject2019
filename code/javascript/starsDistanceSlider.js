@@ -76,5 +76,7 @@ function updateGraphs(newDataset, highlightDataset, dimDataset) {
 
     updatePiechart(newDataset);
 
+    updateTemperatureHist(newDataset);
+
     updateMassRadiusHist(newDataset);
 };

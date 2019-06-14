@@ -119,7 +119,6 @@ function massRadiusHist(dataset) {
                 return Math.abs(xScale(bin.x0) - xScale(bin.x1)) * 0.9;
             })
             .attr("height", function(bin) {
-                console.log("height")
                 return Math.abs(yScale(0) - yScale(bin.length));
             })
             .on("click", function(bin) {
@@ -153,7 +152,7 @@ function getMassRadiusBins(xScale, stars) {
     var thresholds = []
 
     for (var i = 0; i < numberOfBins; i++) {
-        thresholds.push(parseFloat(parseFloat(i * binWidth).toFixed(2)))
+        thresholds.push(parseFloat(parseFloat(i * binWidth).toFixed(2)));
     };
 
     // Determine which values go into which bin
@@ -194,9 +193,6 @@ function updateMassRadiusHist(newDataset) {
 
     // Select the "div" for the tooltip
     var tooltip = d3.select("#mass-radiusTip");
-
-    // Define the "g" of the histogram
-    var histogram = d3.select(".histogram#mass-radius")
 
     var newStars = Object.values(newDataset);
 

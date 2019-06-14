@@ -20,6 +20,8 @@ function temperatureHist(dataset) {
     var chartWidth = svgWidth - padding.left - padding.right;
     var chartHeight = svgHeight - padding.top - padding.bottom;
 
+    var transitionDuration = 1000;
+
     // Select the "svg" for the histogram
     var svgHistogram = d3.select("#svgTemperatureHist")
 
@@ -39,13 +41,7 @@ function temperatureHist(dataset) {
         .domain([maxValue(stars, "Temperatuur") * 1.1, minValue(stars, "Temperatuur") * 0.9]);
 
     // Determine which values go into which bin
-    var bins = d3.histogram()
-        .value(function(star) {
-            return star["Temperatuur"];
-        })
-        .domain(xScale.domain().reverse())
-        .thresholds(xScale.ticks(50).reverse())
-        (stars)
+    var bins = getTemperatureBins(xScale, stars);
 
     // Find the length of the longest array in bins
     var longestArray = 0;
@@ -62,11 +58,12 @@ function temperatureHist(dataset) {
 
     // Draw x-axis
     histogram.append("g")
-        .call(d3.axisBottom(xScale)
-            .ticks(6)//Values([3700, 5200, 6000, 7500, 10000, 30000])
-            .tickFormat(d3.format("d"))
-        )
+        .call(d3.axisBottom(xScale))
+        //     .ticks(6)//Values([3700, 5200, 6000, 7500, 10000, 30000])
+        //     .tickFormat(d3.format("d"))
+        // )
         .attr("class", "axis")
+        .attr("id", "x")
         .attr("transform", `translate(0, ${chartHeight})`);
 
     // Draw x label
@@ -79,7 +76,8 @@ function temperatureHist(dataset) {
 
     // Draw y-axis
     histogram.append("g").call(d3.axisLeft(yScale))
-        .attr("class", "axis");
+        .attr("class", "axis")
+        .attr("id", "y");
 
     // Draw y label
     svgHistogram.append("text")
@@ -110,11 +108,12 @@ function temperatureHist(dataset) {
     var totalStars = Object.keys(dataset).length
 
     // Draw the histogram
-    var bars = histogram.selectAll(".bar")
+    var bars = histogram.selectAll(".bar#temperature")
         .data(bins)
         .enter()
         .append("rect")
             .attr("class", "bar")
+            .attr("id", "temperature")
             .attr("x", function(bin) {
                 return xScale(bin.x1) + 0.1 * Math.abs(xScale(bin.x1) - xScale(bin.x0));
             })
@@ -146,4 +145,107 @@ function temperatureHist(dataset) {
                     .duration(500)
                     .style("opacity", 0);
             });
+};
+
+function getTemperatureBins(xScale, stars) {
+    /*
+
+    */
+
+    var numberOfBins = 25;
+    var binWidth = Math.abs(xScale.domain()[0] - xScale.domain()[1]) / numberOfBins;
+    var thresholds = []
+
+    for (var i = 0; i < numberOfBins; i++) {
+        // thresholds.push(Math.round(i * binWidth));
+        thresholds.push(parseFloat(parseFloat(i * binWidth).toFixed(2)))
+    };
+
+    // Determine which values go into which bin
+    var bins = d3.histogram()
+        .value(function(star) {
+            return star["Temperatuur"];
+        })
+        .domain(xScale.domain().reverse())
+        .thresholds(thresholds)
+        (stars)
+
+    return bins;
+};
+
+function updateTemperatureHist(newDataset) {
+    /*
+
+    */
+
+    // Padding for the histogram
+    var padding = {
+        top: 30,
+        right: 30,
+        bottom: 50,
+        left: 75
+    };
+
+    var svgWidth = document.getElementById("svgTemperatureHist").clientWidth;
+    var svgHeight = document.getElementById("svgTemperatureHist").clientHeight;
+
+    var chartWidth = svgWidth - padding.left - padding.right;
+    var chartHeight = svgHeight - padding.top - padding.bottom;
+
+    var transitionDuration = 1000;
+
+    // Select the "svg" for the histogram
+    var svgHistogram = d3.select("#svgTemperatureHist").transition()
+
+    // Select the "div" for the tooltip
+    var tooltip = d3.select("#temperatureTip");
+
+    var newStars = Object.values(newDataset);
+
+    // Scaling function for x values
+    var xScale = d3.scaleLinear()
+        .range([0, chartWidth])
+        .domain([maxValue(newStars, "Temperatuur") * 1.1, minValue(newStars, "Temperatuur") * 0.9]);
+
+    // Determine which values go into which bin
+    var newBins = getTemperatureBins(xScale, newStars);
+
+    // Find the length of the longest array in bins
+    var longestArray = 0;
+    newBins.forEach(function(bin) {
+        if (bin.length > longestArray) {
+            longestArray = bin.length;
+        };
+    });
+
+    // Scaling function for y values
+    var yScale = d3.scaleLinear()
+        .range([0, chartHeight])
+        .domain([longestArray * 1.1, 0]);
+
+    // Draw x-axis
+    svgHistogram.select(".axis#x")
+        .duration(transitionDuration)
+        .call(d3.axisBottom(xScale));
+
+    // Draw x-axis
+    svgHistogram.select(".axis#y")
+        .duration(transitionDuration)
+        .call(d3.axisLeft(yScale));
+
+    // Replace the old data with the new bins
+    d3.select("#svgTemperatureHist").selectAll(".bar#temperature")
+        .data(newBins)
+        .enter()
+
+    // Update the height of each bar
+    var bars =  d3.select("#svgTemperatureHist").selectAll(".bar#temperature").transition()
+
+    bars.duration(transitionDuration)
+        .attr("y", function(bin) {
+            return yScale(bin.length);
+        })
+        .attr("height", function(bin) {
+            return Math.abs(yScale(0) - yScale(bin.length));
+        });
 };

@@ -91,7 +91,7 @@ def plot_HR(temperatures, luminosities, polygons):
 
         plt.plot(L_x, L_y, color = colors[i], label = polygon)
 
-    plt.scatter(temperatures, luminosities, 0.05)
+    plt.scatter(temperatures, luminosities, 0.5)
 
     plt.xlabel("Effective temperature (K)")
     plt.xlim(min(temperatures), max(temperatures))

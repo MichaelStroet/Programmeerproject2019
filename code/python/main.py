@@ -20,7 +20,7 @@ from add_radius import add_radius
 from add_temperature import add_temperature
 
 # Only include stars with proper stars?
-PROPER_ONLY = True
+PROPER_ONLY = False
 
 # Global constants for in and out put files and the required columns
 INPUT_CSV = os.path.join(data_directory, "hygdata_v3.csv")

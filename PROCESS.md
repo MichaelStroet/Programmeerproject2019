@@ -194,6 +194,32 @@ Twee mensen niet aanwezig, geen stand-up.
 
 ### Dag 10:
 
+#### Stand-up
+Same as usual.
+
+#### Geschreven code
+
+##### Python
+- Polygon punt 15 verplaatst, nieuwe json bestanden gegenereerd.
+
+##### Javascript
+- Klikken op een ster of een ster selecteren uit het dropdown menu geven de eigenschappen van de ster weer boven het taartdiagram.
+- Het indelen van data in histogram bins in een eigen functie gezet voor elk histogram.
+- De Afstandsslider update de twee histogrammen met een mooie transition, temperatuur bins zijn nog een beetje buggy.
+
+##### HTML / CSS
+- tooltips.css verwijderd en alleen het .toolip deel verplaatst naar stars.css. .tooltip#id in had geen effect en bleek uberhaupt niet nodig.
+
+#### Figuren
+
+De huidige visualisatie voor alle afstanden:
+
+![Visualisatie-13-6-19_0-715](doc/process/week_2/Visualisatie-13-6-19_0-715.png)
+
+De visualisatie van 100 tot 500 parsec (Waarschijnlijk een goed idee om parsec om te zetten naar lichtjaren. (1 parsec ~ 3.26 lichtjaar)):
+
+![Visualisatie-13-6-19_100-500](doc/process/week_2/Visualisatie-13-6-19_100-500.png)
+
 ### Weekend 2:
 
 ## Week 3 (17-23 juni)

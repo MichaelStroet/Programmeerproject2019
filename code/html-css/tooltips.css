@@ -11,23 +11,3 @@
     border: 2px solid black;
     pointer-events: none;
 }
-
-.tooltip#HR-diagram {
-     width: 160px;
-     height: 35px;
-}
-
-.tooltip#piechart {
-     width: 125px;
-     height: 35px;
-}
-
-.tooltip#temperature {
-     width: 160px;
-     height: 35px;
-}
-
-.tooltip#mass-radius {
-     width: 125px;
-     height: 35px;
-}

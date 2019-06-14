@@ -20,6 +20,8 @@ function massRadiusHist(dataset) {
     var chartWidth = svgWidth - padding.left - padding.right;
     var chartHeight = svgHeight - padding.top - padding.bottom;
 
+    var transitionDuration = 1000;
+
     // Select the "svg" for the histogram
     var svgHistogram = d3.select("#svgMassRadiusHist")
 
@@ -29,6 +31,7 @@ function massRadiusHist(dataset) {
     // Define a "g" for the histogram
     var histogram = svgHistogram.append("g")
         .attr("class", "histogram")
+        .attr("id", "mass-radius")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
     var stars = Object.values(dataset);
@@ -36,16 +39,9 @@ function massRadiusHist(dataset) {
     // Scaling function for x values
     var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([0, maxValue(stars, "Straal") * 1.1]);
+        .domain([0, Math.ceil(maxValue(stars, "Straal") * 1.1)]);
 
-    // Determine which values go into which bin
-    var bins = d3.histogram()
-        .value(function(star) {
-            return star["Straal"];
-        })
-        .domain(xScale.domain())
-        .thresholds(xScale.ticks(50))
-        (stars)
+    var bins = getMassRadiusBins(xScale, stars);
 
     // Find the length of the longest array in bins
     var longestArray = 0;
@@ -107,11 +103,12 @@ function massRadiusHist(dataset) {
         .text("Verdeling van de straal van sterren relatief aan de zon");
 
     // Draw the histogram
-    var bars = histogram.selectAll(".bar")
+    var bars = histogram.selectAll(".bar#mass-radius")
         .data(bins)
         .enter()
         .append("rect")
             .attr("class", "bar")
+            .attr("id", "mass-radius")
             .attr("x", function(bin) {
                 return xScale(bin.x0) + 0.1 * Math.abs(xScale(bin.x0) - xScale(bin.x1));
             })
@@ -122,6 +119,7 @@ function massRadiusHist(dataset) {
                 return Math.abs(xScale(bin.x0) - xScale(bin.x1)) * 0.9;
             })
             .attr("height", function(bin) {
+                console.log("height")
                 return Math.abs(yScale(0) - yScale(bin.length));
             })
             .on("click", function(bin) {
@@ -140,9 +138,34 @@ function massRadiusHist(dataset) {
             .on("mouseout", () => {
                 tooltip
                     .transition()
-                    .duration(500)
+                    .duration(transitionDuration)
                     .style("opacity", 0);
             });
+};
+
+function getMassRadiusBins(xScale, stars) {
+    /*
+
+    */
+
+    var numberOfBins = 25;
+    var binWidth = xScale.domain()[1] / numberOfBins;
+    var thresholds = []
+
+    for (var i = 0; i < numberOfBins; i++) {
+        thresholds.push(parseFloat(parseFloat(i * binWidth).toFixed(2)))
+    };
+
+    // Determine which values go into which bin
+    var bins = d3.histogram()
+        .value(function(star) {
+            return star["Straal"];
+        })
+        .domain(xScale.domain())
+        .thresholds(thresholds)
+        (stars)
+
+    return bins;
 };
 
 function updateMassRadiusHist(newDataset) {
@@ -164,31 +187,30 @@ function updateMassRadiusHist(newDataset) {
     var chartWidth = svgWidth - padding.left - padding.right;
     var chartHeight = svgHeight - padding.top - padding.bottom;
 
+    var transitionDuration = 1000;
+
     // Select the "svg" of the histogram
     var svgHistogram = d3.select("#svgMassRadiusHist").transition()
 
-    // Define the "g" of the histogram
-    var histogram = d3.select(".histogram")
+    // Select the "div" for the tooltip
+    var tooltip = d3.select("#mass-radiusTip");
 
-    var stars = Object.values(newDataset);
+    // Define the "g" of the histogram
+    var histogram = d3.select(".histogram#mass-radius")
+
+    var newStars = Object.values(newDataset);
 
     // Scaling function for x values
     var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([0, maxValue(stars, "Straal") * 1.1]);
+        .domain([0, maxValue(newStars, "Straal") * 1.1]);
 
     // Determine which values go into which bin
-    var bins = d3.histogram()
-        .value(function(star) {
-            return star["Straal"];
-        })
-        .domain(xScale.domain())
-        .thresholds(xScale.ticks(50))
-        (stars)
+    var newBins = getMassRadiusBins(xScale, newStars);
 
     // Find the length of the longest array in bins
     var longestArray = 0;
-    bins.forEach(function(bin) {
+    newBins.forEach(function(bin) {
         if (bin.length > longestArray) {
             longestArray = bin.length;
         };
@@ -201,11 +223,27 @@ function updateMassRadiusHist(newDataset) {
 
     // Draw x-axis
     svgHistogram.select(".axis#x")
-        .duration(500)
+        .duration(transitionDuration)
         .call(d3.axisBottom(xScale));
 
     // Draw x-axis
     svgHistogram.select(".axis#y")
-        .duration(500)
+        .duration(transitionDuration)
         .call(d3.axisLeft(yScale));
+
+    // Replace the old data with the new bins
+    d3.select("#svgMassRadiusHist").selectAll(".bar#mass-radius")
+        .data(newBins)
+        .enter()
+
+    // Update the height of each bar
+    var bars =  d3.select("#svgMassRadiusHist").selectAll(".bar#mass-radius").transition()
+
+    bars.duration(transitionDuration)
+        .attr("y", function(bin) {
+            return yScale(bin.length);
+        })
+        .attr("height", function(bin) {
+            return Math.abs(yScale(0) - yScale(bin.length));
+        });
 };

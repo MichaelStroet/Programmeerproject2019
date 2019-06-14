@@ -41,10 +41,10 @@ function visualisationStars(dataset) {
     var heightPiechart = widthPiechart;
 
     var widthTemperatureHist = document.getElementById("temperatureHist").clientWidth;
-    var heightTemperatureHist = widthTemperatureHist / 1.5;
+    var heightTemperatureHist = widthTemperatureHist / ((1 + Math.sqrt(5)) / 2);
 
     var widthMassRadiusHist = document.getElementById("massRadiusHist").clientWidth;
-    var heightMassRadiusHist = widthMassRadiusHist / 1.5;
+    var heightMassRadiusHist = widthMassRadiusHist / ((1 + Math.sqrt(5)) / 2);
 
     var body = d3.select("body");
 

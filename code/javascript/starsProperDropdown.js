@@ -32,11 +32,12 @@ function properDropdown(dataset) {
 
     //
     properMenu.on("change", function() {
+        
             // Find which star was selected from the dropdown menu
             var star = d3.select(this)
                 .select("select")
-                .property("value")
+                .property("value");
 
-            console.log(`Selected star:\n${star}`);
+            showStarInfo([star, dataset[star]]);
         });
 };

@@ -125,7 +125,7 @@ function scatterPlot(dataset) {
                 return 2 + Math.pow(star[1]["Straal"], 1/3);
             })
             .on("click", function(star) {
-                console.log(`Geselecteerde ster:\n  ${star[0]}\nType:\n  ${star[1]["Type"]}\nTemperatuur:\n  ${star[1]["Temperatuur"]}\nLichtkracht:\n  ${star[1]["Lichtkracht"]}\nStraal:\n  ${star[1]["Straal"]}\nAfstand:\n  ${star[1]["Afstand"]}`);
+                showStarInfo(star)
             })
             .on("mousemove", function(star) {
                 tooltip
@@ -144,6 +144,30 @@ function scatterPlot(dataset) {
                     .duration(500)
                     .style("opacity", 0);
             });
+};
+
+function showStarInfo(star) {
+    /*
+
+    */
+    let type = star[1]["Type"];
+    let temperature = parseFloat(star[1]["Temperatuur"]).toFixed(2);
+    let luminosity = star[1]["Lichtkracht"];
+    if (luminosity >= 0.01) {
+        luminosity = parseFloat(luminosity).toFixed(2);
+    }
+    else {
+        luminosity = parseFloat(luminosity).toFixed(5);
+    };
+
+    let distance =  parseFloat(star[1]["Afstand"]).toFixed(2);
+    let radius =  parseFloat(star[1]["Straal"]).toFixed(3);
+
+    d3.select("p#starName")
+        .html(`<br>${star[0]}`)
+
+    d3.select("p#starProperties")
+        .html(`Type: ${type}<br>Temperatuur: ${temperature} K<br>Lichtkracht: ${luminosity} L<sub>☉</sub><br>Afstand: ${distance} parsec<br>Straal: ${radius} R<sub>☉</sub>`);
 };
 
 function highlightHRDiagram(highlightDataset, dimDataset) {

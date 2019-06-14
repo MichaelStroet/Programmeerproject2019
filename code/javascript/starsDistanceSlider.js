@@ -33,7 +33,7 @@ function distanceSlider(dataset) {
         .height(chartHeight)
         .tickFormat(d3.format("d"))
         .ticks(10)
-        .default([0, 100])
+        .default([0, Math.ceil(maxDistance)/*100*/])
         .step(0.01)
         .fill("#2196f3")
         .on("onchange ", function(values) {

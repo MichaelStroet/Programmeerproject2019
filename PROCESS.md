@@ -101,7 +101,7 @@ De eerste stand-up waar iedereen aanwezig was. Volgens het team ziet mijn protot
 ## Week 2 (10-16 juni)
 
 ### Weekoverzicht
-Dag: [6](#dag-6) - [7](#dag-7) - [8](#dag-8) - [9](#dag-9) - [10](#dag-10) - [weekend](#weekend-2)
+Dag: [6](#dag-6) - [7](#dag-7) - [8](#dag-8) - [9](#dag-9) - [10](#dag-10)
 
 ### Dag 6:
 
@@ -219,8 +219,6 @@ De huidige visualisatie voor alle afstanden:
 De visualisatie van 100 tot 500 parsec (Waarschijnlijk een goed idee om parsec om te zetten naar lichtjaren. (1 parsec ~ 3.26 lichtjaar)):
 
 ![Visualisatie-13-6-19_100-500](doc/process/week_2/Visualisatie-13-6-19_100-500.png)
-
-### Weekend 2:
 
 ## Week 3 (17-23 juni)
 

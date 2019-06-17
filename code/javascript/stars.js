@@ -3,8 +3,9 @@
 
 window.onload = function() {
     /*
-     * Main function
+     * When the page is loaded, loads the data and visualises it
      */
+    // path to the data file
     // var inputJSON = "../../data/stars.json";
     var inputJSON = "../../data/properStars.json";
 
@@ -14,52 +15,80 @@ window.onload = function() {
     });
 };
 
-function defineSVG(containerId, svgId, width, height) {
-
-    var svg = d3.select(containerId)
-        .append("svg")
-        .attr("class", "container")
-        .attr("id", svgId)
-        .attr("width", width)
-        .attr("height", height);
-
-    return svg;
-}
-
 function visualisationStars(dataset) {
     /*
+     * Initialises the visualisation with the given dataset
+     */
+    // Create the html tags required for the visualisations
+    createTooltipDivs();
+    createFigureSvgs();
 
-    */
+    // Create the dropdown menu for the stars with proper names
+    properDropdown(dataset);
 
-    var widthHRdiagram = document.getElementById("HRdiagram").clientWidth;
-    var heightHRdiagram = widthHRdiagram;
+    // Create the distance slider
+    distanceSlider(dataset);
 
-    var widthSlider = document.getElementById("distanceSlider").clientWidth;
-    var heightSlider = heightHRdiagram;
+    // Draw a scatterplot of stars
+    scatterPlot(dataset);
 
-    var widthPiechart = document.getElementById("piechart").clientWidth;
-    var heightPiechart = widthPiechart;
+    // Draw a piechart of star types
+    pieChart(dataset);
 
-    var widthTemperatureHist = document.getElementById("temperatureHist").clientWidth;
-    var heightTemperatureHist = widthTemperatureHist / ((1 + Math.sqrt(5)) / 2);
+    // Draw a histogram of the stars' effective temperatures
+    temperatureHist(dataset);
 
-    var widthMassRadiusHist = document.getElementById("massRadiusHist").clientWidth;
-    var heightMassRadiusHist = widthMassRadiusHist / ((1 + Math.sqrt(5)) / 2);
+    // Draw a histogram of the stars' masses or radii
+    massRadiusHist(dataset);
+};
 
-    var body = d3.select("body");
 
+function createTooltipDivs() {
+    /*
+     * Creates div tags for all tooltips to be used in the visualisation
+     */
+    // Adds a div of class tooltip with a specific id
     var addTooltipDiv = function(className) {
         body.append("div")
             .attr("class", "tooltip")
             .attr("id", `${className}`)
             .style("opacity", 0);
     };
-    // Define "div"s of tooltips for all figures
+
+    // Define "div"s for tooltips for all figures
     addTooltipDiv("HR-diagramTip");
     addTooltipDiv("piechartTip");
     addTooltipDiv("temperatureTip");
     addTooltipDiv("mass-radiusTip");
+};
 
+function createFigureSvgs() {
+    /*
+     * Creates svg tags for all figures to be used in the visualisation
+     */
+    // Get the dimensions for the Hertzsprung-Russell diagram
+    var widthHRdiagram = document.getElementById("HRdiagram").clientWidth;
+    var heightHRdiagram = widthHRdiagram;
+
+    // Get the dimensions for the distance slider
+    var widthSlider = document.getElementById("distanceSlider").clientWidth;
+    var heightSlider = heightHRdiagram;
+
+    // Get the dimensions for the piechart
+    var widthPiechart = document.getElementById("piechart").clientWidth;
+    var heightPiechart = widthPiechart;
+
+    // Get the dimensions for the temperature histogram
+    var widthTemperatureHist = document.getElementById("temperatureHist").clientWidth;
+    var heightTemperatureHist = widthTemperatureHist / ((1 + Math.sqrt(5)) / 2);
+
+    // Get the dimensions for the mass/radius histogram
+    var widthMassRadiusHist = document.getElementById("massRadiusHist").clientWidth;
+    var heightMassRadiusHist = widthMassRadiusHist / ((1 + Math.sqrt(5)) / 2);
+
+    var body = d3.select("body");
+
+    // Adds a svg of class container with a specific id and dimensions
     var addFigureSvg = function(divId, svgWidth, svgHeight, svgId) {
         d3.select(divId)
             .append("svg")
@@ -75,34 +104,14 @@ function visualisationStars(dataset) {
     addFigureSvg("#piechart", widthPiechart, heightPiechart, "svgPiechart");
     addFigureSvg("#temperatureHist", widthTemperatureHist, heightTemperatureHist, "svgTemperatureHist");
     addFigureSvg("#massRadiusHist", widthMassRadiusHist, heightMassRadiusHist, "svgMassRadiusHist");
-
-    // Create the dropdown menu for the stars with proper names
-    properDropdown(dataset)
-
-    // Create the distance slider
-    distanceSlider(dataset)
-
-    // Draw a scatterplot of stars
-    scatterPlot(dataset)
-
-    // Draw a piechart of star types
-    pieChart(dataset)
-
-    // Draw a histogram of the stars' effective temperatures
-    temperatureHist(dataset)
-
-    // Draw a histogram of the stars' masses or radii
-    massRadiusHist(dataset)
-
-
 };
 
 // window.onresize = resize;
 //
 // function resize() {
 //     /*
-//     * Resize the svg's when the window is resized (doesn't resize the actual figures)
-//     */
+//      * Resize the svg's when the window is resized (doesn't resize the actual figures)
+//      */
 //
 //     var widthHRdiagram = document.getElementById("HRdiagram").clientWidth;
 //     var widthPiechart = document.getElementById("piechart").clientWidth;

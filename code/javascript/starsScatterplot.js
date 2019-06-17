@@ -181,7 +181,7 @@ function highlightHRDiagram(highlightDataset, dimDataset) {
     Object.entries(highlightDataset).forEach(function(star) {
         var selector = `#Star_${star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')}`;
         scatterPlot.select(selector)
-            .duration(500)
+            .duration(transitionDuration)
             .attr("r", function(star) {
                 return 2 + Math.pow(star[1]["Straal"], 1/3);
             });
@@ -190,7 +190,7 @@ function highlightHRDiagram(highlightDataset, dimDataset) {
     Object.entries(dimDataset).forEach(function(star) {
         var selector = `#Star_${star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')}`;
         scatterPlot.select(selector)
-            .duration(500)
+            .duration(transitionDuration)
             .attr("r", 0);
     });
 

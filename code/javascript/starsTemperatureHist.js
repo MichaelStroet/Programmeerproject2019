@@ -20,8 +20,6 @@ function temperatureHist(dataset) {
     var chartWidth = svgWidth - padding.left - padding.right;
     var chartHeight = svgHeight - padding.top - padding.bottom;
 
-    var transitionDuration = 1000;
-
     // Select the "svg" for the histogram
     var svgHistogram = d3.select("#svgTemperatureHist")
 
@@ -127,7 +125,6 @@ function temperatureHist(dataset) {
                 return Math.abs(yScale(0) - yScale(bin.length));
             })
             .on("click", function(bin) {
-                console.log(`Temperatuur:\n    ${bin.x0} - ${bin.x1}\nAantal sterren:\n    ${bin.length}`);
                 selections["temperature"] = [bin.x0, bin.x1];
                 updateGraphs();
             })
@@ -193,8 +190,6 @@ function updateTemperatureHist(newDataset) {
 
     var chartWidth = svgWidth - padding.left - padding.right;
     var chartHeight = svgHeight - padding.top - padding.bottom;
-
-    var transitionDuration = 1000;
 
     // Select the "svg" for the histogram
     var svgHistogram = d3.select("#svgTemperatureHist").transition()

@@ -1,7 +1,7 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-// Global variables for the original dataset and selection criteria
+// Global variables for the original dataset, selection criteria and transition duration
 var originalDataset;
 var selections = {
     "distance" : false,
@@ -9,6 +9,7 @@ var selections = {
     "temperature" : false,
     "radius" : false
 }
+var transitionDuration = 1500;
 
 window.onload = function() {
     /*

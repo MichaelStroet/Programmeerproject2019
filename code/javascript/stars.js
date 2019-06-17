@@ -37,8 +37,11 @@ function visualisationStars(dataset) {
     // Create the dropdown menu for the stars with proper names
     properDropdown(dataset);
 
-    // Create the distance slider
+    // Create a distance slider
     distanceSlider(dataset);
+
+    // Create a reset button
+    resetButton();
 
     // Draw a scatterplot of stars
     scatterPlot(dataset);

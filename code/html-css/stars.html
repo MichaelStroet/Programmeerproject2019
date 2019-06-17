@@ -34,6 +34,7 @@
         <script type = "text/javascript" src = "../javascript/starsMassRadiusHist.js"></script>
 
         <script type = "text/javascript" src = "../javascript/starsProperDropdown.js"></script>
+        <script type = "text/javascript" src = "../javascript/starsResetButton.js"></script>
         <script type = "text/javascript" src = "../javascript/starsDistanceSlider.js"></script>
 
         <link rel = "stylesheet" href = "stars.css">
@@ -70,6 +71,7 @@
                 <!-- HR-diagram -->
                 <div class = "col-sm-6" id = "HRdiagram"></div>
 
+                <!-- Slider, info and piechart -->
                 <div class = "col-sm-6">
                     <div class = "row">
 
@@ -85,19 +87,29 @@
 
                         <div class = "col-sm-9">
 
-                            <!-- Star proper dropdown menu -->
+                            <!-- Dropdown menu and reset button -->
                             <div class = "row">
-                                <div class = "col-sm-12" id = "properDropdown"></div>
+                                <div class = "col-sm-6" id = "properDropdown"></div>
+                                <div class = "col-sm-6" id = "resetButton"></div>
                             </div>
 
                             <!-- Star information -->
                             <div class = "row">
-                                <div class = "col-sm-12" id = "info">
+                                <div class = "col-sm-6" id = "info">
                                     <p id = "starName">
                                         <br>Ster
                                     </p>
                                     <p id = "starProperties">
                                         Type:<br>Temperatuur:<br>Lichtkracht:<br>Afstand:<br>Straal:
+                                    </p>
+                                </div>
+
+                                <div class = "col-sm-6" id = "selections">
+                                    <p>
+                                        <br>Selecties
+                                    </p>
+                                    <p id = "starSelections">
+                                        Type:<br>Afstand:<br>Temperatuur:<br>Straal:
                                     </p>
                                 </div>
                             </div>

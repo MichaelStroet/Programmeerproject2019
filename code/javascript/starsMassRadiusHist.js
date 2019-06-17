@@ -123,6 +123,8 @@ function massRadiusHist(dataset) {
             })
             .on("click", function(bin) {
                 console.log(`Straal:\n    ${bin.x0} - ${bin.x1}\nAantal sterren:\n    ${bin.length}`);
+                selections["radius"] = [bin.x0, bin.x1];
+                updateGraphs();
             })
             .on("mousemove", function(bin) {
                 tooltip

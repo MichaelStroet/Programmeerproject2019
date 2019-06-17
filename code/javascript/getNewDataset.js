@@ -10,10 +10,8 @@ function getNewDatasets() {
     var dimDataset = {};
 
     var stars = Object.entries(originalDataset)
-    console.log(selections);
 
     stars.forEach(function(star) {
-
         if (addStar(star[1])) {
             newDataset[star[0]] = star[1];
             highlightDataset[star[0]] = star[1];
@@ -21,9 +19,7 @@ function getNewDatasets() {
         else {
             dimDataset[star[0]] = star[1];
         };
-
     });
-
     return [newDataset, highlightDataset, dimDataset]
 };
 
@@ -32,10 +28,9 @@ function addStar(star) {
     var includeStar = true;
 
     let selectDistance = selections["distance"];
-
     if (selectDistance) {
         let distance = star["Afstand"];
-        if (distance < selectDistance[0] && distance > selectDistance[1]) {
+        if (distance < selectDistance[0] || distance > selectDistance[1]) {
             includeStar = false;
         };
     };
@@ -51,7 +46,7 @@ function addStar(star) {
     let selectTemperature = selections["temperature"];
     if (selectTemperature) {
         let temperature = star["Temperatuur"];
-        if (temperature < selectTemperature[0] && temperature > selectTemperature[1]) {
+        if (temperature < selectTemperature[0] || temperature > selectTemperature[1]) {
             includeStar = false;
         };
     };
@@ -59,7 +54,7 @@ function addStar(star) {
     let selectRadius = selections["radius"];
     if (selectRadius) {
         let radius = star["Straal"];
-        if (radius < selectRadius[0] && radius > selectRadius[1]) {
+        if (radius < selectRadius[0] || radius > selectRadius[1]) {
             includeStar = false;
         };
     };

@@ -40,14 +40,8 @@ function distanceSlider(dataset) {
             d3.select("#sliderValues").html(`Afstanden (parsec)<br>${values.map(d3.format(".2f")).join(" - ")}`);
         })
         .on("end", function(values) {
-            selections["distance"] = values
-            newData = getNewDatasets();
-
-            var newDataset = newData[0];
-            var highlightDataset = newData[1];
-            var dimDataset = newData[2];
-
-            updateGraphs(newDataset, highlightDataset, dimDataset);
+            selections["distance"] = values;
+            updateGraphs();
         });
 
     distanceSlider.call(sliderRange);
@@ -59,15 +53,4 @@ function distanceSlider(dataset) {
         .join("-")
     );
 
-};
-
-function updateGraphs(newDataset, highlightDataset, dimDataset) {
-
-    highlightHRDiagram(highlightDataset, dimDataset);
-
-    updatePiechart(newDataset);
-
-    updateTemperatureHist(newDataset);
-
-    updateMassRadiusHist(newDataset);
 };

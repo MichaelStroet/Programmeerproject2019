@@ -79,6 +79,8 @@ function pieChart(dataset) {
             })
             .on("click", function(wedge) {
                 console.log(`Type:\n    ${wedge.data[0]}\nAantal sterren:\n    ${wedge.data[1]}`);
+                selections["type"] = wedge.data[0];
+                updateGraphs();
             })
             .on("mousemove", function(wedge) {
                 tooltip

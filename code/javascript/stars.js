@@ -53,6 +53,25 @@ function visualisationStars(dataset) {
     massRadiusHist(dataset);
 };
 
+function updateGraphs() {
+    /*
+     *
+     */
+
+    newData = getNewDatasets();
+
+    var newDataset = newData[0];
+    var highlightDataset = newData[1];
+    var dimDataset = newData[2];
+
+    highlightHRDiagram(highlightDataset, dimDataset);
+
+    updatePiechart(newDataset);
+
+    updateTemperatureHist(newDataset);
+
+    updateMassRadiusHist(newDataset);
+};
 
 function createTooltipDivs(body) {
     /*

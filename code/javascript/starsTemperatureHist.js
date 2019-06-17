@@ -128,6 +128,8 @@ function temperatureHist(dataset) {
             })
             .on("click", function(bin) {
                 console.log(`Temperatuur:\n    ${bin.x0} - ${bin.x1}\nAantal sterren:\n    ${bin.length}`);
+                selections["temperature"] = [bin.x0, bin.x1];
+                updateGraphs();
             })
             .on("mousemove", function(bin) {
                 tooltip

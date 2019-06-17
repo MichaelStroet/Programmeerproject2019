@@ -1,6 +1,15 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
+// Global variables for the original dataset and selection criteria
+var originalDataset;
+var selections = {
+    "distance" : false,
+    "type" : false,
+    "temperature" : false,
+    "radius" : false
+}
+
 window.onload = function() {
     /*
      * When the page is loaded, loads the data and visualises it
@@ -11,6 +20,7 @@ window.onload = function() {
 
     // Import the json and visualise its contents
     d3.json(inputJSON).then(function(dataset) {
+        originalDataset = dataset;
         visualisationStars(dataset);
     });
 };
@@ -20,8 +30,9 @@ function visualisationStars(dataset) {
      * Initialises the visualisation with the given dataset
      */
     // Create the html tags required for the visualisations
-    createTooltipDivs();
-    createFigureSvgs();
+    var body = d3.select("body");
+    createTooltipDivs(body);
+    createFigureSvgs(body);
 
     // Create the dropdown menu for the stars with proper names
     properDropdown(dataset);
@@ -43,7 +54,7 @@ function visualisationStars(dataset) {
 };
 
 
-function createTooltipDivs() {
+function createTooltipDivs(body) {
     /*
      * Creates div tags for all tooltips to be used in the visualisation
      */
@@ -62,7 +73,7 @@ function createTooltipDivs() {
     addTooltipDiv("mass-radiusTip");
 };
 
-function createFigureSvgs() {
+function createFigureSvgs(body) {
     /*
      * Creates svg tags for all figures to be used in the visualisation
      */
@@ -85,8 +96,6 @@ function createFigureSvgs() {
     // Get the dimensions for the mass/radius histogram
     var widthMassRadiusHist = document.getElementById("massRadiusHist").clientWidth;
     var heightMassRadiusHist = widthMassRadiusHist / ((1 + Math.sqrt(5)) / 2);
-
-    var body = d3.select("body");
 
     // Adds a svg of class container with a specific id and dimensions
     var addFigureSvg = function(divId, svgWidth, svgHeight, svgId) {

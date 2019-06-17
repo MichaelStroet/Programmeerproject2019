@@ -40,22 +40,13 @@ function distanceSlider(dataset) {
             d3.select("#sliderValues").html(`Afstanden (parsec)<br>${values.map(d3.format(".2f")).join(" - ")}`);
         })
         .on("end", function(values) {
-            var newDataset = {};
-            var highlightDataset = {};
-            var dimDataset = {};
+            selections["distance"] = values
+            newData = getNewDatasets();
 
-            Object.entries(dataset).forEach(function(star) {
-                var distance = star[1]["Afstand"];
+            var newDataset = newData[0];
+            var highlightDataset = newData[1];
+            var dimDataset = newData[2];
 
-                if (distance >= values[0] && distance <= values[1]) {
-                    newDataset[star[0]] = star[1];
-                    highlightDataset[star[0]] = star[1];
-                }
-                else {
-                    dimDataset[star[0]] = star[1];
-                };
-
-            });
             updateGraphs(newDataset, highlightDataset, dimDataset);
         });
 

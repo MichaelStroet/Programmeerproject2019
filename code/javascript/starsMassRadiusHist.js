@@ -146,12 +146,14 @@ function getMassRadiusBins(xScale, stars) {
 
     */
 
-    var numberOfBins = 25;
-    var binWidth = xScale.domain()[1] / numberOfBins;
+    var numberOfBins = 20;
+    var lowestValue = d3.min(xScale.domain());
+    var highestValue = d3.max(xScale.domain());
+    var binWidth = Math.abs(highestValue - lowestValue) / numberOfBins;
     var thresholds = []
 
     for (var i = 0; i < numberOfBins; i++) {
-        thresholds.push(parseFloat(parseFloat(i * binWidth).toFixed(2)));
+        thresholds.push(parseFloat(parseFloat(i * binWidth + lowestValue).toFixed(3)));
     };
 
     // Determine which values go into which bin
@@ -230,13 +232,16 @@ function updateMassRadiusHist(newDataset) {
         .enter()
 
     // Update the height of each bar
-    var bars =  d3.select("#svgMassRadiusHist").selectAll(".bar#mass-radius").transition()
+    var bars =  d3.select("#svgMassRadiusHist").selectAll(".bar#mass-radius")
 
-    bars.duration(transitionDuration)
+    bars.transition()
+        .duration(transitionDuration)
         .attr("y", function(bin) {
             return yScale(bin.length);
         })
         .attr("height", function(bin) {
             return Math.abs(yScale(0) - yScale(bin.length));
         });
+
+    bars.exit().remove();
 };

@@ -31,13 +31,12 @@ function temperatureHist() {
         .attr("class", "histogram")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
-
     var stars = Object.values(originalDataset);
 
     // Scaling function for x values
     var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([maxValue(stars, "Temperatuur") * 1.1, minValue(stars, "Temperatuur") * 0.9]);
+        .domain([Math.ceil(maxValue(stars, "Temperatuur")), Math.floor(minValue(stars, "Temperatuur"))]);
 
     // Determine which values go into which bin
     var bins = getTemperatureBins(xScale, stars);
@@ -57,10 +56,10 @@ function temperatureHist() {
 
     // Draw x-axis
     histogram.append("g")
-        .call(d3.axisBottom(xScale))
-        //     .ticks(6)//Values([3700, 5200, 6000, 7500, 10000, 30000])
-        //     .tickFormat(d3.format("d"))
-        // )
+        .call(d3.axisBottom(xScale)
+            .ticks(6)
+            .tickFormat(d3.format("d"))
+        )
         .attr("class", "axis")
         .attr("id", "x")
         .attr("transform", `translate(0, ${chartHeight})`);
@@ -151,14 +150,14 @@ function getTemperatureBins(xScale, stars) {
     /*
 
     */
-
-    var numberOfBins = 25;
-    var binWidth = Math.abs(xScale.domain()[0] - xScale.domain()[1]) / numberOfBins;
+    var numberOfBins = 20;
+    var lowestValue = d3.min(xScale.domain());
+    var highestValue = d3.max(xScale.domain());
+    var binWidth = Math.abs(highestValue - lowestValue) / numberOfBins;
     var thresholds = []
 
     for (var i = 0; i < numberOfBins; i++) {
-        // thresholds.push(Math.round(i * binWidth));
-        thresholds.push(parseFloat(parseFloat(i * binWidth).toFixed(2)))
+        thresholds.push(Math.round(i * binWidth + lowestValue));
     };
 
     // Determine which values go into which bin

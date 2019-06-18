@@ -11,6 +11,7 @@ var selections = {
     "temperature" : false,
     "radius" : false
 };
+var highlightedStar = false;
 var transitionDuration = 1500;
 
 window.onload = function() {

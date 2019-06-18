@@ -38,6 +38,8 @@ function properDropdown() {
                 .select("select")
                 .property("value");
 
-            showStarInfo([star, properDataset[star]]);
+            var starEntry = [star, properDataset[star]];
+            showStarInfo(starEntry);
+            highlightStar(starEntry);
         });
 };

@@ -120,7 +120,8 @@ function scatterPlot() {
                 return 2 + Math.pow(star[1]["Straal"], 1/3);
             })
             .on("click", function(star) {
-                showStarInfo(star)
+                highlightStar(star);
+                showStarInfo(star);
             })
             .on("mousemove", function(star) {
                 tooltip
@@ -225,7 +226,9 @@ function updateHRDiagram(newDataset) {
     points.enter()
         .append("circle")
             .attr("class", "star")
-            .attr("id", star => {return "Star_" + star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')})
+            .attr("id", function(star) {
+                return "Star_" + star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '');
+            })
             .attr("cx", function(star) {
                 return xScale(star[1]["Temperatuur"]);
             })
@@ -237,7 +240,8 @@ function updateHRDiagram(newDataset) {
             })
             .attr("r", 0)
             .on("click", function(star) {
-                showStarInfo(star)
+                highlightStar(star);
+                showStarInfo(star);
             })
             .on("mousemove", function(star) {
                 tooltip
@@ -269,10 +273,43 @@ function updateHRDiagram(newDataset) {
         .remove();
 };
 
-// function highlightStar(star) {
-//
-// };
-//
-// function unHighlightStar(star) {
-//
-// };
+function highlightStar(star) {
+    /*
+     *
+     */
+    var starId = "Star_" + star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '');
+
+    if (highlightedStar) {
+        unHighlightStar();
+    };
+
+    d3.select(`.star#${starId}`)
+        .transition()
+        .duration(transitionDuration * 0.5)
+        .attr("fill", "lime")
+        .attr("r", function(star) {
+            return (2 + Math.pow(star[1]["Straal"], 1/3)) * 2;
+        });
+
+    highlightedStar = star
+
+};
+
+function unHighlightStar() {
+    /*
+     *
+     */
+    var star = highlightedStar;
+    var starId = "Star_" + star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '');
+
+    d3.select(`.star#${starId}`)
+        .transition()
+        .duration(transitionDuration * 0.5)
+        .attr("fill", star[1]["Kleur"])
+        .attr("r", function(star) {
+            return 2 + Math.pow(star[1]["Straal"], 1/3);
+        });
+
+
+    highlightedStar = false;
+};

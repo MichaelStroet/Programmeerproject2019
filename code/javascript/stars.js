@@ -2,8 +2,9 @@
 // Student number: 11293284
 
 // Global variables for the original datasets, selection criteria and transition duration
-var originalAllDataset;
-var originalProperDataset;
+var originalDataset;
+var allDataset;
+var properDataset;
 var selections = {
     "distance" : false,
     "type" : false,
@@ -22,10 +23,11 @@ window.onload = function() {
 
     Promise.all([d3.json(allJSON), d3.json(properJSON)])
         .then(function(datasets) {
-            originalAllDataset = datasets[0];
-            originalProperDataset = datasets[1];
+            allDataset = datasets[0];
+            properDataset = datasets[1];
 
-            visualisationStars(originalProperDataset);
+            originalDataset = properDataset;
+            visualisationStars();
         })
         .catch(function(error) {
             console.log("?");
@@ -33,7 +35,7 @@ window.onload = function() {
         });
 };
 
-function visualisationStars(dataset) {
+function visualisationStars() {
     /*
      * Initialises the visualisation with the given dataset
      */
@@ -43,10 +45,10 @@ function visualisationStars(dataset) {
     createFigureSvgs(body);
 
     // Create the dropdown menu for the stars with proper names
-    properDropdown(dataset);
+    properDropdown();
 
     // Create a distance slider
-    distanceSlider(dataset);
+    distanceSlider();
 
     // Create a reset button
     radioInputs();
@@ -55,16 +57,16 @@ function visualisationStars(dataset) {
     resetButton();
 
     // Draw a scatterplot of stars
-    scatterPlot(dataset);
+    scatterPlot();
 
     // Draw a piechart of star types
-    pieChart(dataset);
+    pieChart();
 
     // Draw a histogram of the stars' effective temperatures
-    temperatureHist(dataset);
+    temperatureHist();
 
     // Draw a histogram of the stars' masses or radii
-    massRadiusHist(dataset);
+    massRadiusHist();
 };
 
 function updateGraphs() {
@@ -72,13 +74,9 @@ function updateGraphs() {
      *
      */
 
-    newData = getNewDatasets();
+    var newDataset = getNewDatasets();
 
-    var newDataset = newData[0];
-    var highlightDataset = newData[1];
-    var dimDataset = newData[2];
-
-    highlightHRDiagram(highlightDataset, dimDataset);
+    updateHRDiagram(newDataset);
 
     updatePiechart(newDataset);
 

@@ -5,20 +5,25 @@ function radioInputs() {
     /*
      *
      */
+
     // Create a dropdown menu for the stars
     var radioInputs = d3.select("#radioInputs")
 
-    radioInputs.append("input")
-        .attr("type", "radio")
+    radioInputs.append("button")
+        .attr("type", "button")
         .on("click", function() {
-            console.log("pressed");
+            originalDataset = properDataset;
+            selections["distance"] = [0, 100];
+            updateGraphs();
         })
-        .text("All");
+        .text("Bekende sterren");
 
-    radioInputs.append("input")
-        .attr("type", "radio")
+    radioInputs.append("button")
+        .attr("type", "button")
         .on("click", function() {
-            console.log("pressed");
+            originalDataset = allDataset;
+            selections["distance"] = [0, 100];
+            updateGraphs();
         })
-        .text("Proper");
+        .text("100.000 sterren");
 };

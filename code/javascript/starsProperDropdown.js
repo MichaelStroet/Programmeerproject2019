@@ -1,7 +1,7 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-function properDropdown(dataset) {
+function properDropdown() {
     /*
     Creates an interactive dropdown menu for selecting stars with proper names
     */
@@ -9,7 +9,7 @@ function properDropdown(dataset) {
     // Get all stars with proper names from the dataset
     var properStarArray = [];
 
-    Object.keys(dataset).forEach(function(star) {
+    Object.keys(properDataset).forEach(function(star) {
         if (isNaN(star)) {
             properStarArray.push(star)
         };
@@ -32,12 +32,12 @@ function properDropdown(dataset) {
 
     //
     properMenu.on("change", function() {
-        
+
             // Find which star was selected from the dropdown menu
             var star = d3.select(this)
                 .select("select")
                 .property("value");
 
-            showStarInfo([star, dataset[star]]);
+            showStarInfo([star, properDataset[star]]);
         });
 };

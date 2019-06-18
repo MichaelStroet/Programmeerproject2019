@@ -1,7 +1,7 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-function pieChart(dataset) {
+function pieChart() {
     /*
     Draws an interactive piechart of the types of stars
     */
@@ -43,7 +43,7 @@ function pieChart(dataset) {
         }
 
     // Determine the occurence of each type of star
-    Object.values(dataset).forEach(function(star) {
+    Object.values(originalDataset).forEach(function(star) {
         stars[`${star["Type"]}`]++;
     });
 

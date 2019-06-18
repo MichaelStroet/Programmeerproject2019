@@ -1,7 +1,7 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-function massRadiusHist(dataset) {
+function massRadiusHist() {
     /*
     Draws an interactive histogram of the stars' masses or radii
     */
@@ -32,7 +32,7 @@ function massRadiusHist(dataset) {
         .attr("id", "mass-radius")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
-    var stars = Object.values(dataset);
+    var stars = Object.values(originalDataset);
 
     // Scaling function for x values
     var xScale = d3.scaleLinear()

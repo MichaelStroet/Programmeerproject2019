@@ -1,7 +1,7 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-function temperatureHist(dataset) {
+function temperatureHist() {
     /*
     Draws an interactive histogram of the stars' temperatures
     */
@@ -31,7 +31,8 @@ function temperatureHist(dataset) {
         .attr("class", "histogram")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
-    var stars = Object.values(dataset);
+
+    var stars = Object.values(originalDataset);
 
     // Scaling function for x values
     var xScale = d3.scaleLinear()
@@ -103,7 +104,7 @@ function temperatureHist(dataset) {
         .attr("text-anchor", "middle")
         .text("Verdeling van de effectieve temperatuur van sterren");
 
-    var totalStars = Object.keys(dataset).length
+    var totalStars = Object.keys(originalDataset).length
 
     // Draw the histogram
     var bars = histogram.selectAll(".bar#temperature")
@@ -197,6 +198,7 @@ function updateTemperatureHist(newDataset) {
     // Select the "div" for the tooltip
     var tooltip = d3.select("#temperatureTip");
 
+    var oldStars = Object.values(originalDataset)
     var newStars = Object.values(newDataset);
 
     // Scaling function for x values

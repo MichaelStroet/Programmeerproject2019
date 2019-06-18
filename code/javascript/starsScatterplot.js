@@ -1,7 +1,7 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-function scatterPlot(dataset) {
+function scatterPlot() {
     /*
     Draws an interactive scatterplot of the star data
     */
@@ -31,13 +31,8 @@ function scatterPlot(dataset) {
         .attr("class", "scatterplot")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
-    var stars = Object.entries(dataset);
-    var properties = Object.values(dataset);
-
-    // Scaling function for x values
-    var xlinScale = d3.scaleLinear()
-        .range([0, chartWidth])
-        .domain([maxValue(properties, "Temperatuur") * 1.1, minValue(properties, "Temperatuur") * 0.9]);
+    var stars = Object.entries(originalDataset);
+    var properties = Object.values(originalDataset);
 
     // Scaling function for x values
     var xScale = d3.scaleLog()
@@ -170,28 +165,114 @@ function showStarInfo(star) {
         .html(`Type: ${type}<br>Temperatuur: ${temperature} K<br>Lichtkracht: ${luminosity} L<sub>☉</sub><br>Afstand: ${distance} parsec<br>Straal: ${radius} R<sub>☉</sub>`);
 };
 
-function highlightHRDiagram(highlightDataset, dimDataset) {
+function updateHRDiagram(newDataset) {
     /*
-    Highlights certain stars in the HR-diagram and dims the others
-    */
+     *
+     */
+    // Padding for the HRdiagram
+    var padding = {
+        top: 50,
+        right: 30,
+        bottom: 50,
+        left: 75
+    };
 
-    // Select the scatterpot
-    var scatterPlot = d3.select(".scatterplot").transition()
+    var svgWidth = document.getElementById("svgHRdiagram").clientWidth;
+    var svgHeight = document.getElementById("svgHRdiagram").clientHeight;
 
-    Object.entries(highlightDataset).forEach(function(star) {
-        var selector = `#Star_${star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')}`;
-        scatterPlot.select(selector)
+    var chartWidth = svgWidth - padding.left - padding.right;
+    var chartHeight = svgHeight - padding.top - padding.bottom;
+
+    // Select the "svg" for the HRdiagram
+    var svgScatter = d3.select("#svgHRdiagram");
+    var scatterPlot = svgScatter.select(".scatterplot");
+
+    // Select the "div" for the tooltip
+    var tooltip = d3.select("#HR-diagramTip");
+
+    var stars = Object.entries(newDataset);
+    var properties = Object.values(originalDataset);
+
+    // Scaling function for x values
+    var xScale = d3.scaleLog()
+        .range([0, chartWidth])
+        .domain([maxValue(properties, "Temperatuur") * 1.1, minValue(properties, "Temperatuur") * 0.9]);
+
+    // Scaling function for y values
+    var yScale = d3.scaleLog()
+        .range([0, chartHeight])
+        .domain([maxValue(properties, "Lichtkracht") * 1.1, minValue(properties, "Lichtkracht") * 0.9]);
+
+    var points = scatterPlot.selectAll(".star")
+        .data(stars)
+
+    points.transition()
+        .duration(transitionDuration)
+        .attr("id", star => {return "Star_" + star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')})
+        .attr("cx", function(star) {
+            return xScale(star[1]["Temperatuur"]);
+        })
+        .attr("cy", function(star) {
+            return yScale(star[1]["Lichtkracht"]);
+        })
+        .attr("fill", function(star) {
+            return star[1]["Kleur"];
+        })
+        .attr("r", function(star) {
+            return 2 + Math.pow(star[1]["Straal"], 1/3);
+        });
+
+    points.enter()
+        .append("circle")
+            .attr("class", "star")
+            .attr("id", star => {return "Star_" + star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')})
+            .attr("cx", function(star) {
+                return xScale(star[1]["Temperatuur"]);
+            })
+            .attr("cy", function(star) {
+                return yScale(star[1]["Lichtkracht"]);
+            })
+            .attr("fill", function(star) {
+                return star[1]["Kleur"];
+            })
+            .attr("r", 0)
+            .on("click", function(star) {
+                showStarInfo(star)
+            })
+            .on("mousemove", function(star) {
+                tooltip
+                    .transition()
+                    .duration(50)
+                    .style("opacity", 0.9);
+                tooltip
+                    .html(`Ster: ${star[0]}<br>
+                        Type: ${star[1]["Type"]}`)
+                    .style("left", (d3.event.pageX + 15) + "px")
+                    .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on("mouseout", () => {
+                tooltip
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+            .transition()
             .duration(transitionDuration)
             .attr("r", function(star) {
                 return 2 + Math.pow(star[1]["Straal"], 1/3);
             });
-    });
 
-    Object.entries(dimDataset).forEach(function(star) {
-        var selector = `#Star_${star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '')}`;
-        scatterPlot.select(selector)
-            .duration(transitionDuration)
-            .attr("r", 0);
-    });
-
+    points.exit()
+        .transition()
+        .duration(transitionDuration)
+        .attr("r", 0)
+        .remove();
 };
+
+// function highlightStar(star) {
+//
+// };
+//
+// function unHighlightStar(star) {
+//
+// };

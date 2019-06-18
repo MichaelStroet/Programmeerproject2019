@@ -1,7 +1,7 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-function distanceSlider(dataset) {
+function distanceSlider() {
     /*
 
     */
@@ -25,7 +25,7 @@ function distanceSlider(dataset) {
         .attr("class", "slider")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
-    var stars = Object.values(dataset);
+    var stars = Object.values(allDataset);
     var maxDistance = maxValue(stars, "Afstand");
 
     var sliderRange = d3.sliderRight()

@@ -225,15 +225,37 @@ De visualisatie van 100 tot 500 parsec (Waarschijnlijk een goed idee om parsec o
 ### Weekoverzicht
 Dag: [11](#dag-11) - [12](#dag-12) - [13](#dag-13) - [14](#dag-14) - [14](#dag-14) - [weekend](#weekend-3)
 
-### Dag 11:
+## Dag 11:
 
-### Dag 12:
+#### Stand-up
+Het plan voor deze week is om alle functionaliteit af te maken. Alle figuren moeten geselecteerd kunnen worden en elkaar updaten. Verder moeten de twee json bestanden ingeladen worden en er moet tussen gewisseld kunnen worden.
 
-### Dag 13:
+Met extra tijd wil ik graag de kleuren toevoegen en het taartdiagram dynamisch laten updatem.
 
-### Dag 14:
+#### Geschreven code
 
-### Dag 15:
+##### Markdown
+- STYLE.md geschreven. Beter laat dan nooit.
+
+##### Javascript
+- Vier globale variabelen gemaakt die de originele datasets onthouden, de selecties bijhouden en de duur van een update transitie vastleggen.
+- De dataset verwerker in het slider bestand verplaatst naar een eigen bestand en selecteerd nu gebaseerd op afstand, temperatuur, type en straal.
+- De updateGraphs functie in het slider bestand uitgebreid en verplaatst naar het hoofd javascript bestand stars.js.
+- Alle figuren roepen bovenstaande functie aan en updaten elkaar!
+- Reset knop voor de selecties toegevoegd in de lege hoek rechts boven. Plus een plaats voor tekst om de selecties weer te geven.
+- Twee niet werkende radio knoppen toegevoegd voor het selecteren van de dataset.
+
+#### Huidige visualisatie
+
+![Visualisatie-17-6-19](doc/process/week_3/Visualisatie-17-6-19.png)
+
+## Dag 12:
+
+## Dag 13:
+
+## Dag 14:
+
+### Dag 5:
 
 ### Weekend 3:
 
@@ -243,14 +265,14 @@ Dag: [11](#dag-11) - [12](#dag-12) - [13](#dag-13) - [14](#dag-14) - [14](#dag-1
 ### Weekoverzicht
 Dag: [16](#dag-16) - [7](#dag-7) - [18](#dag-18) - [19](#dag-19) - [20](#dag-20) - [weekend](#weekend-4)
 
-### Dag 16:
+## Dag 16:
 
-### Dag 17:
+## Dag 17:
 
-### Dag 18:
+## Dag 18:
 
-### Dag 19:
+## Dag 19:
 
-### Dag 20:
+## Dag 20:
 
 ### Weekend 4:

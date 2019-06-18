@@ -251,6 +251,21 @@ Met extra tijd wil ik graag de kleuren toevoegen en het taartdiagram dynamisch l
 
 ## Dag 12:
 
+#### Stand-up
+Surprise, surprise, geen stand-up.
+
+
+#### Gechreven code
+
+##### Javascript
+- HR-diagram gebruikt nu het enter, update, exit patroon. Een geklikte ster wordt gehighlight.
+- Bugs in de histogrammen gefixed. Bins in de temperatuur histogram en de thresholds in de straal histogram.
+
+#### Huidige visualisatie
+
+![Visualisatie-18-6-19](doc/process/week_3/Visualisatie-18-6-19.png)
+
+
 ## Dag 13:
 
 ## Dag 14:

@@ -1,29 +1,36 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-// Global variables for the original dataset, selection criteria and transition duration
-var originalDataset;
+// Global variables for the original datasets, selection criteria and transition duration
+var originalAllDataset;
+var originalProperDataset;
 var selections = {
     "distance" : false,
     "type" : false,
     "temperature" : false,
     "radius" : false
-}
+};
 var transitionDuration = 1500;
 
 window.onload = function() {
     /*
      * When the page is loaded, loads the data and visualises it
      */
-    // path to the data file
-    // var inputJSON = "../../data/stars.json";
-    var inputJSON = "../../data/properStars.json";
+    // path to the json files
+    var allJSON = "../../data/stars.json";
+    var properJSON = "../../data/properStars.json";
 
-    // Import the json and visualise its contents
-    d3.json(inputJSON).then(function(dataset) {
-        originalDataset = dataset;
-        visualisationStars(dataset);
-    });
+    Promise.all([d3.json(allJSON), d3.json(properJSON)])
+        .then(function(datasets) {
+            originalAllDataset = datasets[0];
+            originalProperDataset = datasets[1];
+
+            visualisationStars(originalProperDataset);
+        })
+        .catch(function(error) {
+            console.log("?");
+            throw(error);
+        });
 };
 
 function visualisationStars(dataset) {
@@ -40,6 +47,9 @@ function visualisationStars(dataset) {
 
     // Create a distance slider
     distanceSlider(dataset);
+
+    // Create a reset button
+    radioInputs();
 
     // Create a reset button
     resetButton();

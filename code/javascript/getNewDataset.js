@@ -9,7 +9,7 @@ function getNewDatasets() {
     var highlightDataset = {};
     var dimDataset = {};
 
-    var stars = Object.entries(originalDataset)
+    var stars = Object.entries(originalProperDataset)
 
     stars.forEach(function(star) {
         if (addStar(star[1])) {

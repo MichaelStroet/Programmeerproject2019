@@ -1,28 +1,30 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-function radioInputs() {
+function datasetButtons() {
     /*
      *
      */
 
     // Create a dropdown menu for the stars
-    var radioInputs = d3.select("#radioInputs")
+    var properDatasetButton = d3.select("#properDatasetButton");
 
-    radioInputs.append("button")
+    properDatasetButton.append("button")
         .attr("type", "button")
+        .attr("class", "button")
         .on("click", function() {
             originalDataset = properDataset;
-            selections["distance"] = [0, 100];
             updateGraphs();
         })
         .text("Bekende sterren");
 
-    radioInputs.append("button")
+    var allDatasetButton = d3.select("#allDatasetButton");
+
+    allDatasetButton.append("button")
         .attr("type", "button")
+        .attr("class", "button")
         .on("click", function() {
             originalDataset = allDataset;
-            selections["distance"] = [0, 100];
             updateGraphs();
         })
         .text("100.000 sterren");

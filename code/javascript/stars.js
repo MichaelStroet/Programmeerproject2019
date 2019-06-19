@@ -52,7 +52,7 @@ function visualisationStars() {
     distanceSlider();
 
     // Create a reset button
-    radioInputs();
+    datasetButtons();
 
     // Create a reset button
     resetButton();

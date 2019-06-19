@@ -268,6 +268,25 @@ Surprise, surprise, geen stand-up.
 
 ## Dag 13:
 
+#### Stand-up
+Vandaag zowaar geen stand-up. Ben wel eerder weggegaan vanwege de Afternoon of Algorithmic Protein Folding geörganiseerd door het team van programmeertheorie/Heuristieken.
+
+#### Geschreven code
+
+##### Python
+- blackbody radiation (bbr) kleuren tekstbestand geladen en omgevormd naar twee jsons. Elke json behoort tot een aparte color mapping function (zie txt bestand).
+- Aan elke ster wordt nu een kleur toegwezen afhankelijk van de temperatuur. Een bug kan zich voordoen wanneer een ster een temperatuur onder de 1000 K heeft, aangeien er geen kleuren zijn voor 0, 100, 200,...,900 K.
+- Nieuwe sterren jsons gegenereerd met de kleuren.
+
+##### Javascript
+- Alle sporen van "radio inputs" omgezet naar "dataset buttons". Verder die knoppen anders ingedeeld en een "waarschuwing: Langzaam!" neergezet bij de 100.000 sterren knop.
+- HR-diagram update zijn assen wanneer er van dataset wordt gewisseld.
+
+#### Figuren
+Nieuwe Hertzsprung-Russell diagram met de ster kleuren:
+
+[Sterren met kleur](doc/process/week_3/HRkleuren.png)
+
 ## Dag 14:
 
 ### Dag 5:

@@ -51,6 +51,7 @@ function scatterPlot() {
             .tickFormat(d3.format("d"))
         )
         .attr("class", "axis")
+        .attr("id", "x")
         .attr("transform", `translate(0, ${chartHeight})`);
 
     // Draw x label
@@ -72,7 +73,8 @@ function scatterPlot() {
 
     // Draw y-axis
     scatterPlot.append("g").call(d3.axisLeft(yScale))
-        .attr("class", "axis");
+        .attr("class", "axis")
+        .attr("id", "y");
 
     // Draw y label
     svgScatter.append("text")
@@ -203,6 +205,21 @@ function updateHRDiagram(newDataset) {
     var yScale = d3.scaleLog()
         .range([0, chartHeight])
         .domain([maxValue(properties, "Lichtkracht") * 1.1, minValue(properties, "Lichtkracht") * 0.9]);
+
+    // Draw x-axis
+    scatterPlot.select(".axis#x")
+        .transition()
+        .duration(transitionDuration)
+        .call(d3.axisBottom(xScale)
+            .tickValues([3700, 5200, 6000, 7500, 10000, 30000]) // M K G F A B O
+            .tickFormat(d3.format("d"))
+        );
+
+    // Draw y-axis
+    scatterPlot.select(".axis#y")
+        .transition()
+        .duration(transitionDuration)
+        .call(d3.axisLeft(yScale));
 
     var points = scatterPlot.selectAll(".star")
         .data(stars)

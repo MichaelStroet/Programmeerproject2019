@@ -16,11 +16,15 @@ import numpy as np
 import pandas as pd
 
 from add_type import add_type
+from add_color import add_color
 from add_radius import add_radius
 from add_temperature import add_temperature
 
 # Only include stars with proper stars?
 PROPER_ONLY = False
+
+# Use 2deg or 10deg color matching functon?
+USE_CMF = "2deg"
 
 # Global constants for in and out put files and the required columns
 INPUT_CSV = os.path.join(data_directory, "hygdata_v3.csv")
@@ -108,22 +112,23 @@ if __name__ == "__main__":
     dataframe = add_temperature(dataframe)
 
     # Assign a color to each star by turning the color index into a RGB color value (3x 0-255 or hex?)
+    json_path = os.path.join(data_directory, f"bbr_color_{USE_CMF}.json")
+    dataframe = add_color(dataframe, json_path)
 
     # Assign a radius to each star relative to the sun with the temperature and luminosity
     dataframe = add_radius(dataframe)
 
     # Assign a category to each star based on predetermined polygons
     dataframe = add_type(dataframe, data_directory)
-    print(dataframe)
 
     # Assign a mass to each star with the category and the mass-luminosity relation
 
     # RANDOM DATA
-    dataframe["color"] = "#4169e1"
     dataframe["mass"] = np.random.randint(0, 70, dataframe.shape[0])
 
     # Convert the data into a useful dictionary
     data_dict = prepare_data(dataframe)
+    print(dataframe)
 
     # Save the data as a json file
     save_json(data_dict)

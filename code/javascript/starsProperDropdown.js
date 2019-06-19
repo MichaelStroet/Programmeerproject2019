@@ -32,7 +32,6 @@ function properDropdown() {
 
     //
     properMenu.on("change", function() {
-
             // Find which star was selected from the dropdown menu
             var star = d3.select(this)
                 .select("select")

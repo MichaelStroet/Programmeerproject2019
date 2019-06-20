@@ -285,7 +285,7 @@ Vandaag zowaar geen stand-up. Ben wel eerder weggegaan vanwege de Afternoon of A
 #### Figuren
 Nieuwe Hertzsprung-Russell diagram met de ster kleuren:
 
-[Sterren met kleur](doc/process/week_3/HRkleuren.png)
+![Sterren met kleur](doc/process/week_3/HRkleuren.png)
 
 ## Dag 14:
 
@@ -307,11 +307,11 @@ Het ziet er allemaal goed en netjes uit volgens de enige persoon die er verder w
 
 De index.html pagina die als home page functioneert:
 
-[indexHTML](doc/process/week_3/indexHTML.png)
+![indexHTML](doc/process/week_3/indexHTML.png)
 
 De visualisatie pagina:
 
-[starsHTML](doc/process/week_3/starsHTML.png)
+![starsHTML](doc/process/week_3/starsHTML.png)
 
 ### Dag 5:
 

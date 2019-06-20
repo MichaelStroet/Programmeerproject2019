@@ -289,6 +289,30 @@ Nieuwe Hertzsprung-Russell diagram met de ster kleuren:
 
 ## Dag 14:
 
+#### Stand-up
+Het ziet er allemaal goed en netjes uit volgens de enige persoon die er verder was.
+
+#### Geschreven code
+
+##### HTML/CSS
+- navbar toegevoegd aan beide html bestanden. De lay-out van beiden aangepast.
+- stars.css hernoemt naar styles.css.
+
+##### Javascript
+- Ster stralen worden anders afgerond.
+- een aantal functies in stars.js verplaatst naar een eigen bestand.
+- Een linearGradient kleuren legenda gemaakt voor het HR-diagram.
+
+#### Huidige website
+
+De index.html pagina die als home page functioneert:
+
+[indexHTML](doc/process/week_3/indexHTML.png)
+
+De visualisatie pagina:
+
+[starsHTML](doc/process/week_3/starsHTML.png)
+
 ### Dag 5:
 
 ### Weekend 3:

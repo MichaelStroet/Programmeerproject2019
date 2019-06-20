@@ -11,7 +11,7 @@ function scatterPlot() {
     // Padding for the HRdiagram
     var padding = {
         top: 50,
-        right: 30,
+        right: 50,
         bottom: 50 + colorLegendHeight,
         left: 75
     };
@@ -208,7 +208,7 @@ function updateHRDiagram(newDataset) {
      // Padding for the HRdiagram
      var padding = {
          top: 50,
-         right: 30,
+         right: 50,
          bottom: 50 + colorLegendHeight,
          left: 75
      };

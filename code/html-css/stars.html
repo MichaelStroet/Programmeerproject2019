@@ -48,41 +48,44 @@
         <script type = "text/javascript" src = "../javascript/starsResetButton.js"></script>
         <script type = "text/javascript" src = "../javascript/starsDistanceSlider.js"></script>
 
-        <!-- figures stylesheet -->
-        <link rel = "stylesheet" href = "stars.css">
+        <!-- Stylesheet -->
+        <link rel = "stylesheet" href = "styles.css">
 
     </head>
 
     <body>
-        <div class = "container-fluid" id = "pageHeader">
-            <div class = "page-header">
-                <h1>Programmeerproject2019 <small>Data visualisatie</small></h1>
-                <h4><small>Michael Stroet 11293284</small></h4>
-                <hr>
-            </div>
-        </div>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e0e0d1;">
+            <a class="navbar-brand" href="../../index.html">
+                <img src="/doc/M57-RGBL.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                Mikkel Inc.
+            </a>
 
-        <div class = "container-fluid" id = "introduction">
-            <h3>Sterren</h3>
-            <p>
-                Sterren komen in allerlei soorten en maten: van de kleinste rode dwergen, met een straal nog geen tiende van onze zon, tot de gigantische superreuzen, honderden tot duizenden keren groter en tientallen keren zwaarder.
-            </p>
-            <p>
-                Hoewel er veel figuren te vinden zijn die de absolute verschillen tussen de zon en andere sterren vergelijken, is er relatief weinig over de verdeling van de lichtere en zwaardere sterren in het heelal te vinden. Deze komen meestal in de vorm van een speciaal figuur, het Hertzsprung-Rusell diagram (HR-diagram).
-            </p>
-            <p>
-                In dit project wil ik deze verdeling overzichtelijk visualiseren door verder te bouwen op het HR-diagram met linked-view visualisaties.
-            </p>
-        </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item-active">
+                        <a class="nav-link" href="#">Visualisatie</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-right">
+                    <li class="nav-item">
+                        <a class="btn" href="https://github.com/MichaelStroet/Programmeerproject2019" target="_blank">Github</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
         <div class = "container-fluid">
             <!-- row for the radio inputs -->
             <div class = "row">
-                <div class = "col-sm-4">
+                <div class = "col-sm-6">
                     <div class = "row">
-                        <div class = "col-sm-3" id = "properDatasetButton"></div>
-                        <div class = "col-sm-3" id = "allDatasetButton"></div>
-                        <div class = "col-sm-3"><p>Waarscuwing: Langzaam!</p></div>
+                        <div class = "col-sm-3"></div>
+                        <div class = "col-sm-4" id = "properDatasetButton"><br></div>
+                        <div class = "col-sm-4" id = "allDatasetButton"><br></div>
                     </div>
                 </div>
             </div>

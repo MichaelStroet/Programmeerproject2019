@@ -31,7 +31,6 @@ window.onload = function() {
             visualisationStars();
         })
         .catch(function(error) {
-            console.log("?");
             throw(error);
         });
 };
@@ -70,31 +69,15 @@ function visualisationStars() {
     massRadiusHist();
 };
 
-function updateGraphs() {
-    /*
-     *
-     */
-
-    var newDataset = getNewDatasets();
-
-    updateHRDiagram(newDataset);
-
-    updatePiechart(newDataset);
-
-    updateTemperatureHist(newDataset);
-
-    updateMassRadiusHist(newDataset);
-};
-
 function createTooltipDivs(body) {
     /*
      * Creates div tags for all tooltips to be used in the visualisation
      */
     // Adds a div of class tooltip with a specific id
-    var addTooltipDiv = function(className) {
+    var addTooltipDiv = function(idName) {
         body.append("div")
             .attr("class", "tooltip")
-            .attr("id", `${className}`)
+            .attr("id", `${idName}`)
             .style("opacity", 0);
     };
 

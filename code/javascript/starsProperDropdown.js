@@ -38,7 +38,6 @@ function properDropdown() {
                 .property("value");
 
             var starEntry = [star, properDataset[star]];
-            showStarInfo(starEntry);
             highlightStar(starEntry);
         });
 };

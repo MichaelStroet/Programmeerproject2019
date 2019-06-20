@@ -149,7 +149,9 @@ function showStarInfo(star) {
 
     */
     let type = star[1]["Type"];
+
     let temperature = parseFloat(star[1]["Temperatuur"]).toFixed(2);
+
     let luminosity = star[1]["Lichtkracht"];
     if (luminosity >= 0.01) {
         luminosity = parseFloat(luminosity).toFixed(2);
@@ -159,7 +161,17 @@ function showStarInfo(star) {
     };
 
     let distance =  parseFloat(star[1]["Afstand"]).toFixed(2);
-    let radius =  parseFloat(star[1]["Straal"]).toFixed(3);
+
+    let radius =  star[1]["Straal"];
+    if (radius >= 10) {
+        radius = Math.round(radius);
+    }
+    else if (radius >= 1) {
+        radius = parseFloat(radius).toFixed(1);
+    }
+    else {
+        radius = parseFloat(radius).toFixed(3);
+    };
 
     d3.select("p#starName")
         .html(`<br>${star[0]}`)

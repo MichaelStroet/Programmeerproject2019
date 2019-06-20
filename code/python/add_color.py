@@ -18,8 +18,8 @@ def get_color(temperature, temperature_dictionary):
      '''
 
      '''
-     test = str(int(np.floor(temperature / 100) * 100))
-     return temperature_dictionary[test]
+     temperature_key = str(int(np.floor(temperature / 100) * 100))
+     return temperature_dictionary[temperature_key]
 
 def add_color(df, json_path):
     '''

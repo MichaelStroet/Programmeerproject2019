@@ -5,12 +5,15 @@
 var originalDataset;
 var allDataset;
 var properDataset;
+var colorDataset;
+
 var selections = {
     "distance" : false,
     "type" : false,
     "temperature" : false,
     "radius" : false
 };
+
 var highlightedStar = false;
 var transitionDuration = 1500;
 
@@ -21,11 +24,13 @@ window.onload = function() {
     // path to the json files
     var allJSON = "../../data/stars.json";
     var properJSON = "../../data/properStars.json";
+    var colorJSON = "../../data/bbr_color_2deg.json";
 
-    Promise.all([d3.json(allJSON), d3.json(properJSON)])
+    Promise.all([d3.json(allJSON), d3.json(properJSON), d3.json(colorJSON)])
         .then(function(datasets) {
             allDataset = datasets[0];
             properDataset = datasets[1];
+            colorDataset = datasets[2];
 
             originalDataset = properDataset;
             visualisationStars();

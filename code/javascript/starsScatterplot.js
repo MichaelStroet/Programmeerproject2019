@@ -6,11 +6,13 @@ function scatterPlot() {
     Draws an interactive scatterplot of the star data
     */
 
+    var colorLegendHeight = 30;
+
     // Padding for the HRdiagram
     var padding = {
         top: 50,
         right: 30,
-        bottom: 50,
+        bottom: 50 + colorLegendHeight,
         left: 75
     };
 
@@ -34,10 +36,13 @@ function scatterPlot() {
     var stars = Object.entries(originalDataset);
     var properties = Object.values(originalDataset);
 
+    var maxTemperature = maxValue(properties, "Temperatuur");
+    var minTemperature = minValue(properties, "Temperatuur");
+
     // Scaling function for x values
-    var xScale = d3.scaleLog()
+    var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([maxValue(properties, "Temperatuur") * 1.1, minValue(properties, "Temperatuur") * 0.9]);
+        .domain([maxTemperature * 1.1, minTemperature * 0.9]);
 
     // Scaling function for y values
     var yScale = d3.scaleLog()
@@ -47,12 +52,13 @@ function scatterPlot() {
     // Draw x-axis
     scatterPlot.append("g")
         .call(d3.axisBottom(xScale)
-            .tickValues([3700, 5200, 6000, 7500, 10000, 30000]) // M K G F A B O
+            .ticks(6)
+            // .tickValues([3700, 5200, 6000, 7500, 10000, 30000]) // M K G F A B O
             .tickFormat(d3.format("d"))
         )
         .attr("class", "axis")
         .attr("id", "x")
-        .attr("transform", `translate(0, ${chartHeight})`);
+        .attr("transform", `translate(0, ${chartHeight + colorLegendHeight})`);
 
     // Draw x label
     svgScatter.append("text")
@@ -141,19 +147,71 @@ function scatterPlot() {
                     .duration(500)
                     .style("opacity", 0);
             });
+
+
+    // Padding for the legend
+    var legendPadding = {
+            top   : 2,
+            right : 0,
+            bottom: 0,
+            left  : 0
+        };
+
+    // Append a "defs" tag to g
+    var defs = svgScatter.append("defs")
+        .attr("class", "linearGradient");
+
+    // Add a linearGradient element to the defs
+    var linearGradient = defs.append("linearGradient")
+        .attr("id", "scatterGradient");
+
+    //Horizontal gradient
+    linearGradient
+        .attr("x1", "100%")
+        .attr("y1", "0%")
+        .attr("x2", "0%")
+        .attr("y2", "0%");
+
+    // Create a continuous color legend
+    linearGradient.selectAll("stop")
+        .data(createGradientData(minTemperature, maxTemperature))
+        .enter()
+        .append("stop")
+        .attr("offset", function(data) {
+            return data.offset;
+        })
+        .attr("stop-color", function(data) {
+            return data.color;
+        });
+
+    // Define a "g" for the legend
+    var legend = svgScatter.append("g")
+        .attr("class", "legend")
+        .attr("transform", `translate(${padding.left}, ${padding.top + chartHeight})`)
+
+    // Add the gradient to the legend
+    legend.append("rect")
+        .attr("x", legendPadding.left)
+        .attr("y", legendPadding.top)
+        .attr("width", chartWidth - legendPadding.left - legendPadding.right)
+        .attr("height", colorLegendHeight - legendPadding.top - legendPadding.bottom)
+        .style("fill", "url(#scatterGradient)")
+        .style("stroke", "black");
 };
 
 function updateHRDiagram(newDataset) {
     /*
      *
      */
-    // Padding for the HRdiagram
-    var padding = {
-        top: 50,
-        right: 30,
-        bottom: 50,
-        left: 75
-    };
+     var colorLegendHeight = 30;
+
+     // Padding for the HRdiagram
+     var padding = {
+         top: 50,
+         right: 30,
+         bottom: 50 + colorLegendHeight,
+         left: 75
+     };
 
     var svgWidth = document.getElementById("svgHRdiagram").clientWidth;
     var svgHeight = document.getElementById("svgHRdiagram").clientHeight;
@@ -171,10 +229,13 @@ function updateHRDiagram(newDataset) {
     var stars = Object.entries(newDataset);
     var properties = Object.values(originalDataset);
 
+    var maxTemperature = maxValue(properties, "Temperatuur");
+    var minTemperature = minValue(properties, "Temperatuur");
+
     // Scaling function for x values
-    var xScale = d3.scaleLog()
+    var xScale = d3.scaleLinear()
         .range([0, chartWidth])
-        .domain([maxValue(properties, "Temperatuur") * 1.1, minValue(properties, "Temperatuur") * 0.9]);
+        .domain([maxTemperature * 1.1, minTemperature * 0.9]);
 
     // Scaling function for y values
     var yScale = d3.scaleLog()
@@ -186,7 +247,8 @@ function updateHRDiagram(newDataset) {
         .transition()
         .duration(transitionDuration)
         .call(d3.axisBottom(xScale)
-            .tickValues([3700, 5200, 6000, 7500, 10000, 30000]) // M K G F A B O
+            .ticks(6)
+            // .tickValues([3700, 5200, 6000, 7500, 10000, 30000]) // M K G F A B O
             .tickFormat(d3.format("d"))
         );
 
@@ -263,4 +325,18 @@ function updateHRDiagram(newDataset) {
         .duration(transitionDuration)
         .attr("r", 0)
         .remove();
+
+    // Add a linearGradient element to the defs
+    var linearGradient = d3.select("#scatterGradient");
+
+    // Create a continuous color legend
+    linearGradient.selectAll("stop")
+        .data(createGradientData(minTemperature, maxTemperature))
+        .attr("offset", function(data) {
+            return data.offset;
+        })
+        .attr("stop-color", function(data) {
+            return data.color;
+        });
+
 };

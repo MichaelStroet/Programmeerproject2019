@@ -14,21 +14,19 @@ function highlightStar(star) {
     d3.select(`.star#${starId}`)
         .transition()
         .duration(transitionDuration * 0.5)
-        .attr("fill", "lime")
+        .attr("fill", "DarkOrange")
         .attr("r", function(star) {
-            return (5 + Math.pow(star[1]["Straal"], 1/3)) * 2;
+            return (2 + Math.pow(star[1]["Straal"], 1/3)) * 2;
         });
 
     showStarInfo(star);
     highlightedStar = star;
-
 };
 
 function unHighlightStar() {
     /*
      *
      */
-
     if (highlightedStar) {
         var star = highlightedStar;
         var starId = "Star_" + star[0].replace(/\./g, '-').replace(/ /g, '_').replace(/\'/g, '');

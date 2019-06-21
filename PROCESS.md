@@ -315,6 +315,25 @@ De visualisatie pagina:
 
 ### Dag 5:
 
+#### Meeting
+
+Beta versie is compleet en ziet er goed uit.
+
+#### Geschreven code
+
+##### HTML/CSS
+- Vier nieuwe reset knoppen aangemaakt samen met ruimte voor de selecties
+- Styles toegevoegd voor de tekst en reset knoppen
+
+##### Javascript
+- Vier reset knoppen geïmplementeerd en bij het updaten worden de selecties rechts van deze knoppen geplaatst.
+- Structuur sterren info veranderd.
+- Piechart getransleerd.
+
+#### Huidige visualisatie
+
+![Visualisatie-18-6-19](doc/process/week_3/Visualisatie-18-6-19.png)
+
 ### Weekend 3:
 
 

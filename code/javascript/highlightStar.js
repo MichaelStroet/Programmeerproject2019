@@ -50,10 +50,13 @@ function showStarInfo(star) {
 
     let type = star[1]["Type"];
 
-    let temperature = parseFloat(star[1]["Temperatuur"]).toFixed(2);
+    let temperature = Math.round(star[1]["Temperatuur"]);
 
     let luminosity = star[1]["Lichtkracht"];
-    if (luminosity >= 0.01) {
+    if (luminosity >= 10) {
+        luminosity = Math.round(luminosity);
+    }
+    else if (luminosity >= 0.01) {
         luminosity = parseFloat(luminosity).toFixed(2);
     }
     else {
@@ -74,8 +77,8 @@ function showStarInfo(star) {
     };
 
     d3.select("p#starName")
-        .html(`<br>${star[0]}`);
+        .html(`${star[0]}`);
 
     d3.select("p#starProperties")
-        .html(`Type: ${type}<br>Temperatuur: ${temperature} K<br>Lichtkracht: ${luminosity} L<sub>☉</sub><br>Afstand: ${distance} parsec<br>Straal: ${radius} R<sub>☉</sub>`);
+        .html(`Type:<br>- ${type}<br>Temperatuur:<br>- ${temperature} K<br>Lichtkracht:<br>- ${luminosity} L<sub>☉</sub><br>Afstand:<br>- ${distance} parsec<br>Straal:<br>- ${radius} R<sub>☉</sub>`);
 };

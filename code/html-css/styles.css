@@ -1,11 +1,31 @@
 /* Name: Michael Stroet
    Student number: 11293284 */
 body{
-   background: #f5f5f0;
+    background: #f5f5f0;
 }
 
 text {
-    font: 13px Verdana;
+    font: 14px Verdana;
+}
+
+text.title {
+    font: 15px Verdana;
+}
+html {
+    font: 14px Verdana;
+}
+.resetButton {
+    width: 100%;
+    text-align: center;
+}
+.selectionButton {
+    width: 100%;
+    text-align: center;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
 }
 
 /* Hertzsprung-Russell diagram styles */

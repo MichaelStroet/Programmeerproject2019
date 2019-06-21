@@ -72,6 +72,9 @@ function visualisationStars() {
 
     // Draw a histogram of the stars' masses or radii
     massRadiusHist();
+
+    // Update the figures with the default selections
+    updateGraphs();
 };
 
 function createTooltipDivs(body) {
@@ -134,21 +137,3 @@ function createFigureSvgs(body) {
     addFigureSvg("#temperatureHist", widthTemperatureHist, heightTemperatureHist, "svgTemperatureHist");
     addFigureSvg("#massRadiusHist", widthMassRadiusHist, heightMassRadiusHist, "svgMassRadiusHist");
 };
-
-// window.onresize = resize;
-//
-// function resize() {
-//     /*
-//      * Resize the svg's when the window is resized (doesn't resize the actual figures)
-//      */
-//
-//     var widthHRdiagram = document.getElementById("HRdiagram").clientWidth;
-//     var widthPiechart = document.getElementById("piechart").clientWidth;
-//     var widthTemperatureHist = document.getElementById("temperatureHist").clientWidth;
-//     var widthMassRadiusHist = document.getElementById("massRadiusHist").clientWidth;
-//
-//     d3.select("#svgBarchart")
-//         .attr('width', widthBarchart);
-//     d3.select("#svgCalendar")
-//         .attr('width', widthCalendar);
-// };

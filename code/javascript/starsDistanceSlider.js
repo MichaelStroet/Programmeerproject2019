@@ -9,7 +9,7 @@ function distanceSlider() {
     var padding = {
         top: 20,
         right: 30,
-        bottom: 100,
+        bottom: 80,
         left: 10
     };
 
@@ -33,24 +33,13 @@ function distanceSlider() {
         .height(chartHeight)
         .tickFormat(d3.format("d"))
         .ticks(10)
-        .default([0, Math.ceil(maxDistance)/*100*/])
+        .default([0, Math.ceil(maxDistance)])
         .step(0.01)
         .fill("#2196f3")
-        .on("onchange ", function(values) {
-            d3.select("#sliderValues").html(`Afstanden (parsec)<br>${values.map(d3.format(".2f")).join(" - ")}`);
-        })
         .on("end", function(values) {
             selections["distance"] = values;
             updateGraphs();
         });
 
     distanceSlider.call(sliderRange);
-
-    d3.select("#values")
-    .text(sliderRange
-        .value()
-        .map(d3.format(".2f"))
-        .join("-")
-    );
-
 };

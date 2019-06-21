@@ -16,7 +16,7 @@ function datasetButtons() {
             originalDataset = properDataset;
             updateGraphs();
         })
-        .text("Bekende sterren");
+        .html("Bekende sterren");
 
     var allDatasetButton = d3.select("#allDatasetButton");
 
@@ -25,8 +25,7 @@ function datasetButtons() {
         .attr("class", "button")
         .on("click", function() {
             originalDataset = allDataset;
-            selections["distance"] = [0, 50]
             updateGraphs();
         })
-        .text("100.000 sterren");
+        .html("100.000 sterren");
 };

@@ -7,6 +7,8 @@ function updateGraphs() {
      */
     unHighlightStar();
 
+    updateSelections();
+
     var newDataset = getNewDatasets();
 
     updateHRDiagram(newDataset);

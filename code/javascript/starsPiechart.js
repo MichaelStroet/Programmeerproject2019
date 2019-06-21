@@ -8,7 +8,7 @@ function pieChart() {
 
     // Padding for the piechart
     var padding = {
-        top: 20,
+        top: 10,
         right: 125,
         bottom: 30,
         left: 5
@@ -31,7 +31,7 @@ function pieChart() {
     // Define a "g" for the piechart
     var pieChart = svgPie.append("g")
         .attr("class", "piechart")
-        .attr("transform", `translate(${(chartWidth + padding.left) / 2}, ${(chartHeight + padding.top) / 2})`);
+        .attr("transform", `translate(${radius + padding.left}, ${radius + padding.top})`);
 
     // Create an empty object for the piechart data
     var stars = {
@@ -157,14 +157,14 @@ function pieChart() {
         .append("text")
             .attr("x", boxSize + 5)
             .attr("y", boxSize / 2.5)
-            .style("font", "11px Verdana")
+            .style("font", "12px Verdana")
             .text(type => {return legendTexts[type[0]][0]})
 
     legend.selectAll(".legendItem")
         .append("text")
             .attr("x", boxSize + 5)
             .attr("y", boxSize + 5)
-            .style("font", "11px Verdana")
+            .style("font", "12px Verdana")
             .text(type => {return legendTexts[type[0]][1]})
 };
 
@@ -175,7 +175,7 @@ function updatePiechart(newDataset) {
 
     // Padding for the piechart
     var padding = {
-        top: 20,
+        top: 10,
         right: 125,
         bottom: 30,
         left: 5

@@ -57,7 +57,7 @@ function temperatureHist() {
     // Draw x-axis
     histogram.append("g")
         .call(d3.axisBottom(xScale)
-            .ticks(6)
+            .ticks(8)
             .tickFormat(d3.format("d"))
         )
         .attr("class", "axis")
@@ -224,7 +224,10 @@ function updateTemperatureHist(newDataset) {
     // Draw x-axis
     svgHistogram.select(".axis#x")
         .duration(transitionDuration)
-        .call(d3.axisBottom(xScale));
+        .call(d3.axisBottom(xScale)
+            .ticks(8)
+            .tickFormat(d3.format("d"))
+        );
 
     // Draw x-axis
     svgHistogram.select(".axis#y")

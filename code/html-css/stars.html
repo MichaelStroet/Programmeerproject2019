@@ -103,7 +103,7 @@
                         <!-- Distance slider -->
                         <div class = "col-sm-3">
                             <div class="row">
-                                <p id="sliderValues">Afstanden (parsec)<br>0.00 - 100.00</p>
+                                <p id="sliderValues" style = "text-align: center">Afstanden (parsec)</p>
                             </div>
                             <div class="row">
                                 <div class = "col-sm-12" id = "distanceSlider"></div>
@@ -114,28 +114,26 @@
 
                             <!-- Dropdown menu and reset button -->
                             <div class = "row">
-                                <div class = "col-sm-6" id = "properDropdown"></div>
-                                <div class = "col-sm-6" id = "resetButton"></div>
+                                <div class = "col-sm-5" id = "properDropdown"></div>
+                                <div class = "col-sm-7" id = "resetButton"></div>
                             </div>
 
                             <!-- Star information -->
                             <div class = "row">
-                                <div class = "col-sm-6" id = "info">
+                                <div class = "col-sm-5" id = "info">
                                     <p id = "starName">
-                                        <br>Ster
+                                        Ster
                                     </p>
-                                    <p id = "starProperties">
-                                        Type:<br>Temperatuur:<br>Lichtkracht:<br>Afstand:<br>Straal:
+                                    <p class = "nopadding" id = "starProperties">
+                                        Type:<br>-<br>Temperatuur:<br>-<br>Lichtkracht:<br>-<br>Afstand:<br>-<br>Straal:<br>-
                                     </p>
                                 </div>
 
-                                <div class = "col-sm-6" id = "selections">
-                                    <p>
-                                        <br>Selecties
-                                    </p>
-                                    <p id = "starSelections">
-                                        Type:<br>Afstand:<br>Temperatuur:<br>Straal:
-                                    </p>
+                                <div class = "col-sm-7">
+                                    <div class = "row" id = "distanceReset"></div>
+                                    <div class = "row" id = "typeReset"></div>
+                                    <div class = "row" id = "temperatureReset"></div>
+                                    <div class = "row" id = "radiusReset"></div>
                                 </div>
                             </div>
 

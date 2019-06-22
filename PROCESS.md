@@ -223,7 +223,7 @@ De visualisatie van 100 tot 500 parsec (Waarschijnlijk een goed idee om parsec o
 ## Week 3 (17-23 juni)
 
 ### Weekoverzicht
-Dag: [11](#dag-11) - [12](#dag-12) - [13](#dag-13) - [14](#dag-14) - [14](#dag-14) - [weekend](#weekend-3)
+Dag: [11](#dag-11) - [12](#dag-12) - [13](#dag-13) - [14](#dag-14) - [15](#dag-15) - [weekend](#weekend-3)
 
 ## Dag 11:
 
@@ -313,7 +313,7 @@ De visualisatie pagina:
 
 ![starsHTML](doc/process/week_3/starsHTML.png)
 
-### Dag 5:
+### Dag 15:
 
 #### Meeting
 
@@ -332,7 +332,7 @@ Beta versie is compleet en ziet er goed uit.
 
 #### Huidige visualisatie
 
-![Visualisatie-18-6-19](doc/process/week_3/Visualisatie-18-6-19.png)
+![Visualisatie-21-6-19](doc/process/week_3/Visualisatie-21-6-19.png)
 
 ### Weekend 3:
 

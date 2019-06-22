@@ -40,7 +40,7 @@
         <script type = "text/javascript" src = "../javascript/starsScatterplot.js"></script>
         <script type = "text/javascript" src = "../javascript/starsPiechart.js"></script>
         <script type = "text/javascript" src = "../javascript/starsTemperatureHist.js"></script>
-        <script type = "text/javascript" src = "../javascript/starsMassRadiusHist.js"></script>
+        <script type = "text/javascript" src = "../javascript/starsRadiusHist.js"></script>
 
         <!-- User interactions -->
         <script type = "text/javascript" src = "../javascript/starsDatasetButtons.js"></script>
@@ -54,6 +54,7 @@
     </head>
 
     <body>
+        <!-- Navbar visualisation -->
         <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e0e0d1;">
             <a class="navbar-brand" href="../../index.html">
                 <img src="../../doc/M57-RGBL.png" width="30" height="30" class="d-inline-block align-top" alt=""></img>
@@ -78,8 +79,10 @@
             </div>
         </nav>
 
+        <!-- Visualisation -->
         <div class = "container-fluid">
-            <!-- row for the radio inputs -->
+
+            <!-- row for the dataset buttons -->
             <div class = "row">
                 <div class = "col-sm-6">
                     <div class = "row">
@@ -90,36 +93,39 @@
                 </div>
             </div>
 
-            <!-- Row for the HR-diagram, star dropdown, star info and piechart -->
+            <!-- Row for the HR-diagram, piechart, slider, dropdown, info and resets -->
             <div class = "row">
 
                 <!-- HR-diagram -->
                 <div class = "col-sm-6" id = "HRdiagram"></div>
 
-                <!-- Slider, info and piechart -->
+                <!-- Piechart, slider, dropdown, info and resets -->
                 <div class = "col-sm-6">
                     <div class = "row">
 
                         <!-- Distance slider -->
                         <div class = "col-sm-3">
                             <div class="row">
-                                <p id="sliderValues" style = "text-align: center">Afstanden (parsec)</p>
+                                <p style = "text-align: center">Afstanden (parsec)</p>
                             </div>
                             <div class="row">
                                 <div class = "col-sm-12" id = "distanceSlider"></div>
                             </div>
                         </div>
 
+                        <!-- Piechart, dropdown, info and resets -->
                         <div class = "col-sm-9">
 
-                            <!-- Dropdown menu and reset button -->
+                            <!-- Dropdown and reset all button -->
                             <div class = "row">
                                 <div class = "col-sm-5" id = "properDropdown"></div>
                                 <div class = "col-sm-7" id = "resetButton"></div>
                             </div>
 
-                            <!-- Star information -->
+                            <!-- Info and resets -->
                             <div class = "row">
+
+                                <!-- Star information -->
                                 <div class = "col-sm-5" id = "info">
                                     <p id = "starName">
                                         Ster
@@ -129,6 +135,7 @@
                                     </p>
                                 </div>
 
+                                <!-- Reset buttons -->
                                 <div class = "col-sm-7">
                                     <div class = "row" id = "distanceReset"></div>
                                     <div class = "row" id = "typeReset"></div>
@@ -150,7 +157,7 @@
             <!-- Row for the two histograms -->
             <div class = "row">
                 <div class = "col-sm-6" id = "temperatureHist"></div>
-                <div class = "col-sm-6" id = "massRadiusHist"></div>
+                <div class = "col-sm-6" id = "RadiusHist"></div>
             </div>
         </div>
     </body>

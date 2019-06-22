@@ -5,9 +5,8 @@ import os
 
 def open_txt(input_txt):
     '''
-    Reads a text file and returns the rows as a list
+    Reads a text file and returns the lines as lists of strings
     '''
-    # Opens the file as a list of strings and returns it
     with open(input_txt, "r") as file:
         file_content = file.read()
         file_lines = file_content.split()

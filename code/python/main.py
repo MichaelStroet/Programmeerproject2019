@@ -2,7 +2,7 @@
 # Student number: 11293284
 
 """
-This script converts a csv file into a JSON file
+This script converts a csv file of 100.000+ stars into two json files
 """
 
 import os
@@ -24,7 +24,7 @@ from add_temperature import add_temperature
 PROPER_ONLY = False
 
 # Use 2deg or 10deg color matching functon?
-USE_CMF = "2deg"
+USE_CMF = "10deg"
 
 # Global constants for in and out put files and the required columns
 INPUT_CSV = os.path.join(data_directory, "hygdata_v3.csv")
@@ -71,7 +71,7 @@ def prepare_data(df):
         if index % 1000 == 0:
             print(f"index: {index}")
 
-        type = row["type"]
+        # Get the proper name and properties of each star
         proper = row["proper"]
         properties = {
             "Type" : row["type"],
@@ -79,10 +79,10 @@ def prepare_data(df):
             "Lichtkracht" : row["lum"],
             "Afstand" : row["dist"],
             "Kleur" : row["color"],
-            "Massa" : row["mass"],
             "Straal" : row["radius"]
         }
 
+        # Add each star to the dictionary with its proper name (if available) or index as key
         if isinstance(proper, str):
             star_dictionary[proper] = properties
         else:
@@ -120,11 +120,6 @@ if __name__ == "__main__":
 
     # Assign a category to each star based on predetermined polygons
     dataframe = add_type(dataframe, data_directory)
-
-    # Assign a mass to each star with the category and the mass-luminosity relation
-
-    # RANDOM DATA
-    dataframe["mass"] = np.random.randint(0, 70, dataframe.shape[0])
 
     # Convert the data into a useful dictionary
     data_dict = prepare_data(dataframe)

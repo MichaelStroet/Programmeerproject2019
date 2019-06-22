@@ -6,7 +6,7 @@ import numpy as np
 
 def open_json(json_path):
     '''
-    Calculates the effective temperature in Kelvin from the color index
+    Reads a json file and returns a dictionary of its contents
     '''
     with open(json_path, "r") as file:
         json_file = file.read()
@@ -16,20 +16,24 @@ def open_json(json_path):
 
 def get_color(temperature, temperature_dictionary):
      '''
-
+     Determine the color of a star with a specific temperature
      '''
+     # Convert the temperature into the nearest hundredth and return the associated color
      temperature_key = str(int(np.floor(temperature / 100) * 100))
      return temperature_dictionary[temperature_key]
 
 def add_color(df, json_path):
     '''
-    Calculates the effective temperature and adds it to the dataframe
+    Determines the color of each star and adds them to the dataframe
     '''
+    # Get a dictionary of temperatures and colors from one of the color jsons
     temperature_dictionary = open_json(json_path)
-    star_colors = []
 
+    # Assign each star a color
+    star_colors = []
     for temperature in df["Teff"]:
         star_colors.append(get_color(temperature, temperature_dictionary))
 
+    # Add a color column to the dictionary
     df["color"] = star_colors
     return df

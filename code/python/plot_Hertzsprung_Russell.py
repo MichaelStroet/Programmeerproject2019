@@ -2,7 +2,8 @@
 # Student number: 11293284
 
 """
-This script plots a Herzsprung-Russell diagram for determining the category borders
+This script plots a Herzsprung-Russell diagram for determining the coordinates of the
+polygons required for assigning a category to each star.
 """
 
 import os
@@ -24,9 +25,8 @@ def open_csv(input_csv, wanted_data):
 
 def open_txt(input_txt):
     '''
-    Reads a text file and returns the rows as a list
+    Reads a text file and returns the lines as lists of strings
     '''
-    # Opens the file as a list of strings and returns it
     with open(input_txt, "r") as file:
         file_content = file.read()
         file_lines = file_content.split()
@@ -81,6 +81,7 @@ def plot_HR(temperatures, luminosities, polygons):
 
     plt.figure("Hertzsprung-Russell diagram", figsize = (6,6))
 
+    # Plot the polygons
     for i, polygon in enumerate(polygons):
         L_x = []
         L_y = []
@@ -91,6 +92,7 @@ def plot_HR(temperatures, luminosities, polygons):
 
         plt.plot(L_x, L_y, color = colors[i], label = polygon)
 
+    # Scatter the stars
     plt.scatter(temperatures, luminosities, 0.5)
 
     plt.xlabel("Effective temperature (K)")
@@ -104,8 +106,7 @@ def plot_HR(temperatures, luminosities, polygons):
     plt.title("Hertzsprung-Russell diagram all stars")
     plt.legend(loc = "upper right")
 
-    ax = plt.gca()
-    ax.invert_xaxis()
+    plt.gca().invert_xaxis()
 
 if __name__ == "__main__":
 

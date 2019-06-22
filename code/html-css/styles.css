@@ -11,9 +11,18 @@ text {
 text.title {
     font: 15px Verdana;
 }
+
 html {
     font: 14px Verdana;
 }
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+/* Reset buttons styles */
+
 .resetButton {
     width: 100%;
     text-align: center;
@@ -21,11 +30,6 @@ html {
 .selectionButton {
     width: 100%;
     text-align: center;
-}
-
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
 }
 
 /* Hertzsprung-Russell diagram styles */

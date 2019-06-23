@@ -1,9 +1,9 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-function massRadiusHist() {
+function radiusHist() {
     /*
-    Draws an interactive histogram of the stars' masses or radii
+    Draws an interactive histogram of the stars' radii
     */
 
     // Padding for the histogram
@@ -14,22 +14,22 @@ function massRadiusHist() {
         left: 75
     };
 
-    var svgWidth = document.getElementById("svgMassRadiusHist").clientWidth;
+    var svgWidth = document.getElementById("svgRadiusHist").clientWidth;
     var svgHeight = document.getElementById("svgTemperatureHist").clientHeight;
 
     var chartWidth = svgWidth - padding.left - padding.right;
     var chartHeight = svgHeight - padding.top - padding.bottom;
 
     // Select the "svg" for the histogram
-    var svgHistogram = d3.select("#svgMassRadiusHist")
+    var svgHistogram = d3.select("#svgRadiusHist")
 
     // Select the "div" for the tooltip
-    var tooltip = d3.select("#mass-radiusTip");
+    var tooltip = d3.select("#radiusTip");
 
     // Define a "g" for the histogram
     var histogram = svgHistogram.append("g")
         .attr("class", "histogram")
-        .attr("id", "mass-radius")
+        .attr("id", "radius")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
 
     var stars = Object.values(originalDataset);
@@ -39,7 +39,7 @@ function massRadiusHist() {
         .range([0, chartWidth])
         .domain([0, Math.ceil(maxValue(stars, "Straal") * 1.1)]);
 
-    var bins = getMassRadiusBins(xScale, stars);
+    var bins = getRadiusBins(xScale, stars);
 
     // Find the length of the longest array in bins
     var longestArray = 0;
@@ -101,12 +101,12 @@ function massRadiusHist() {
         .text("Verdeling van de straal van sterren relatief aan de zon");
 
     // Draw the histogram
-    var bars = histogram.selectAll(".bar#mass-radius")
+    var bars = histogram.selectAll(".bar#radius")
         .data(bins)
         .enter()
         .append("rect")
             .attr("class", "bar")
-            .attr("id", "mass-radius")
+            .attr("id", "radius")
             .attr("x", function(bin) {
                 return xScale(bin.x0) + 0.1 * Math.abs(xScale(bin.x0) - xScale(bin.x1));
             })
@@ -141,7 +141,7 @@ function massRadiusHist() {
             });
 };
 
-function getMassRadiusBins(xScale, stars) {
+function getRadiusBins(xScale, stars) {
     /*
 
     */
@@ -168,7 +168,7 @@ function getMassRadiusBins(xScale, stars) {
     return bins;
 };
 
-function updateMassRadiusHist(newDataset) {
+function updateRadiusHist(newDataset) {
     /*
 
     */
@@ -181,17 +181,17 @@ function updateMassRadiusHist(newDataset) {
         left: 75
     };
 
-    var svgWidth = document.getElementById("svgMassRadiusHist").clientWidth;
+    var svgWidth = document.getElementById("svgRadiusHist").clientWidth;
     var svgHeight = document.getElementById("svgTemperatureHist").clientHeight;
 
     var chartWidth = svgWidth - padding.left - padding.right;
     var chartHeight = svgHeight - padding.top - padding.bottom;
 
     // Select the "svg" of the histogram
-    var svgHistogram = d3.select("#svgMassRadiusHist").transition()
+    var svgHistogram = d3.select("#svgRadiusHist").transition()
 
     // Select the "div" for the tooltip
-    var tooltip = d3.select("#mass-radiusTip");
+    var tooltip = d3.select("#radiusTip");
 
     var newStars = Object.values(newDataset);
 
@@ -201,7 +201,7 @@ function updateMassRadiusHist(newDataset) {
         .domain([0, maxValue(newStars, "Straal") * 1.1]);
 
     // Determine which values go into which bin
-    var newBins = getMassRadiusBins(xScale, newStars);
+    var newBins = getRadiusBins(xScale, newStars);
 
     // Find the length of the longest array in bins
     var longestArray = 0;
@@ -227,12 +227,12 @@ function updateMassRadiusHist(newDataset) {
         .call(d3.axisLeft(yScale));
 
     // Replace the old data with the new bins
-    d3.select("#svgMassRadiusHist").selectAll(".bar#mass-radius")
+    d3.select("#svgRadiusHist").selectAll(".bar#radius")
         .data(newBins)
         .enter()
 
     // Update the height of each bar
-    var bars =  d3.select("#svgMassRadiusHist").selectAll(".bar#mass-radius")
+    var bars =  d3.select("#svgRadiusHist").selectAll(".bar#radius")
 
     bars.transition()
         .duration(transitionDuration)

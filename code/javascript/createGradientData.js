@@ -3,11 +3,11 @@
 
 function createGradientData(minTemperature, maxTemperature) {
     /*
-     *
+     *  Creates the data for the linear color gradient and returns it
      */
     var gradientData = [];
-
-    for (var i = 0; i <= 100; i += 5) {
+    var percentage = 5;
+    for (var i = 0; i <= 100; i += percentage) {
         gradientData.push(
             {
                 offset: `${i}%`,
@@ -21,7 +21,7 @@ function createGradientData(minTemperature, maxTemperature) {
 
 function pickColour(temperature) {
     /*
-     *
+     * Turns a temperature into a color value and returns it
      */
      return colorDataset[Math.floor(temperature / 100) * 100];
  };

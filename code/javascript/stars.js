@@ -1,12 +1,13 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
-// Global variables for the original datasets, selection criteria and transition duration
+// Global variables for the datasets
 var originalDataset;
 var allDataset;
 var properDataset;
 var colorDataset;
 
+// Global variable for keeping track of the selections for filtering stars from the datasets
 var selections = {
     "distance" : false,
     "type" : false,
@@ -14,6 +15,7 @@ var selections = {
     "radius" : false
 };
 
+// Other global variables
 var highlightedStar = false;
 var transitionDuration = 1500;
 
@@ -26,13 +28,17 @@ window.onload = function() {
     var properJSON = "../../data/properStars.json";
     var colorJSON = "../../data/bbr_color_2deg.json";
 
+    // Load all json files into seperate datasets and visualise the stars
     Promise.all([d3.json(allJSON), d3.json(properJSON), d3.json(colorJSON)])
         .then(function(datasets) {
             allDataset = datasets[0];
             properDataset = datasets[1];
             colorDataset = datasets[2];
 
+            // Set the currently used dataset to be the proper name dataset
             originalDataset = properDataset;
+
+            // Visualise the dataset
             visualisationStars();
         })
         .catch(function(error) {
@@ -42,9 +48,9 @@ window.onload = function() {
 
 function visualisationStars() {
     /*
-     * Initialises the visualisation with the given dataset
+     * Initialises the visualisation of stars with four figures and several interactive elements
      */
-    // Create the html tags required for the visualisations
+    // Create the extra html tags required for the visualisations
     var body = d3.select("body");
     createTooltipDivs(body);
     createFigureSvgs(body);
@@ -55,10 +61,10 @@ function visualisationStars() {
     // Create a distance slider
     distanceSlider();
 
-    // Create a reset button
+    // Create buttons for selecting the dataset to be used
     datasetButtons();
 
-    // Create a reset button
+    // Create reset buttons for the selections
     resetButton();
 
     // Draw a scatterplot of stars
@@ -70,11 +76,8 @@ function visualisationStars() {
     // Draw a histogram of the stars' effective temperatures
     temperatureHist();
 
-    // Draw a histogram of the stars' masses or radii
-    massRadiusHist();
-
-    // Update the figures with the default selections
-    updateGraphs();
+    // Draw a histogram of the stars' radii
+    radiusHist();
 };
 
 function createTooltipDivs(body) {
@@ -93,7 +96,7 @@ function createTooltipDivs(body) {
     addTooltipDiv("HR-diagramTip");
     addTooltipDiv("piechartTip");
     addTooltipDiv("temperatureTip");
-    addTooltipDiv("mass-radiusTip");
+    addTooltipDiv("radiusTip");
 };
 
 function createFigureSvgs(body) {
@@ -116,9 +119,9 @@ function createFigureSvgs(body) {
     var widthTemperatureHist = document.getElementById("temperatureHist").clientWidth;
     var heightTemperatureHist = widthTemperatureHist / ((1 + Math.sqrt(5)) / 2);
 
-    // Get the dimensions for the mass/radius histogram
-    var widthMassRadiusHist = document.getElementById("massRadiusHist").clientWidth;
-    var heightMassRadiusHist = widthMassRadiusHist / ((1 + Math.sqrt(5)) / 2);
+    // Get the dimensions for the radius histogram
+    var widthRadiusHist = document.getElementById("radiusHist").clientWidth;
+    var heightRadiusHist = widthRadiusHist / ((1 + Math.sqrt(5)) / 2);
 
     // Adds a svg of class container with a specific id and dimensions
     var addFigureSvg = function(divId, svgWidth, svgHeight, svgId) {
@@ -135,5 +138,5 @@ function createFigureSvgs(body) {
     addFigureSvg("#distanceSlider", widthSlider, heightSlider, "svgDistanceSlider");
     addFigureSvg("#piechart", widthPiechart, heightPiechart, "svgPiechart");
     addFigureSvg("#temperatureHist", widthTemperatureHist, heightTemperatureHist, "svgTemperatureHist");
-    addFigureSvg("#massRadiusHist", widthMassRadiusHist, heightMassRadiusHist, "svgMassRadiusHist");
+    addFigureSvg("#radiusHist", widthRadiusHist, heightRadiusHist, "svgRadiusHist");
 };

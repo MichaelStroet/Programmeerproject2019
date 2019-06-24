@@ -45,13 +45,20 @@ html {
 .wedge {
     stroke: black;
     stroke-width: 2px;
-    opacity: 0.7;
+    opacity: 0.75;
 }
 
 .wedge:hover {
-    opacity: 1.0
+    opacity: 1.0;
 }
 
+.pieLegendBox {
+    opacity: 0.9;
+}
+
+.pieLegendBox:hover {
+    opacity: 1.0;
+}
 /* Histogram styles */
 .bar {
     fill: royalblue;

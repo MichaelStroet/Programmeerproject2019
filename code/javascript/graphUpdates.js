@@ -19,5 +19,5 @@ function updateGraphs() {
     updateHRDiagram(newDataset);
     updatePiechart(newDataset);
     updateTemperatureHist(newDataset);
-    updateMassRadiusHist(newDataset);
+    updateRadiusHist(newDataset);
 };

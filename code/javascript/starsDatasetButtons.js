@@ -3,13 +3,10 @@
 
 function datasetButtons() {
     /*
-     *
+     * Creates two buttons for switching datasets
      */
-
-    // Create a dropdown menu for the stars
-    var properDatasetButton = d3.select("#properDatasetButton");
-
-    properDatasetButton.append("button")
+    // Create a button for selecting the 'proper name' dataset
+    d3.select("#properDatasetButton").append("button")
         .attr("type", "button")
         .attr("class", "button")
         .on("click", function() {
@@ -18,9 +15,8 @@ function datasetButtons() {
         })
         .html("Bekende sterren");
 
-    var allDatasetButton = d3.select("#allDatasetButton");
-
-    allDatasetButton.append("button")
+    // Create a button for selecting the 'all stars' dataset
+    d3.select("#allDatasetButton").append("button")
         .attr("type", "button")
         .attr("class", "button")
         .on("click", function() {

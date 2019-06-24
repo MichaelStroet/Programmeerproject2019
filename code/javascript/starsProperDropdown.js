@@ -3,24 +3,15 @@
 
 function properDropdown() {
     /*
-    Creates an interactive dropdown menu for selecting stars with proper names
-    */
-
-    // Get all stars with proper names from the dataset
-    var properStarArray = [];
-
-    Object.keys(properDataset).forEach(function(star) {
-        if (isNaN(star)) {
-            properStarArray.push(star)
-        };
-    });
-
-    // Create a dropdown menu for the stars
+     * Creates a dropdown menu for selecting stars with proper names
+     */
+    // Select the div for the dropdown menu
     var properMenu = d3.select("#properDropdown")
 
+    // Create the dropdown menu from the 'proper name' dataset
     properMenu.append("select")
         .selectAll("option")
-        .data(properStarArray.sort())
+        .data(Object.keys(properDataset).sort())
         .enter()
         .append("option")
         .attr("value", function (star) {
@@ -30,14 +21,13 @@ function properDropdown() {
             return star;
         });
 
-    //
+    // Highlight the selected star
     properMenu.on("change", function() {
             // Find which star was selected from the dropdown menu
-            var star = d3.select(this)
+            var starName = d3.select(this)
                 .select("select")
                 .property("value");
 
-            var starEntry = [star, properDataset[star]];
-            highlightStar(starEntry);
+            highlightStar([starName, properDataset[starName]]);
         });
 };

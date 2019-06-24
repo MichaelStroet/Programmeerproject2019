@@ -3,24 +3,23 @@
 
 function distanceSlider() {
     /*
-
-    */
+     * Creates a vertical range slider for selecting the distances of stars
+     */
     // Padding for the slider
     var padding = {
         top: 20,
-        right: 30,
         bottom: 80,
         left: 10
     };
 
-    var svgWidth = document.getElementById("svgDistanceSlider").clientWidth;
+    // Get the height of the svg and the slider
     var svgHeight = document.getElementById("svgDistanceSlider").clientHeight;
+    var sliderHeight = svgHeight - padding.top - padding.bottom;
 
-    var chartWidth = svgWidth - padding.left - padding.right;
-    var chartHeight = svgHeight - padding.top - padding.bottom;
-
+    // Select the slider svg
     var svgDistanceSlider = d3.select("#svgDistanceSlider");
 
+    // Define a "g" tag for the slider
     var distanceSlider = svgDistanceSlider.append("g")
         .attr("class", "slider")
         .attr("transform", `translate(${padding.left}, ${padding.top})`);
@@ -28,9 +27,10 @@ function distanceSlider() {
     var stars = Object.values(allDataset);
     var maxDistance = maxValue(stars, "Afstand");
 
+    // Define a vertical range simple-slider object
     var sliderRange = d3.sliderRight()
         .domain([0, Math.ceil(maxDistance)])
-        .height(chartHeight)
+        .height(sliderHeight)
         .tickFormat(d3.format("d"))
         .ticks(10)
         .default([0, Math.ceil(maxDistance)])
@@ -41,5 +41,6 @@ function distanceSlider() {
             updateGraphs();
         });
 
+    // Create the slider
     distanceSlider.call(sliderRange);
 };

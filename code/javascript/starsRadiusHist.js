@@ -1,71 +1,56 @@
 // Name: Michael Stroet
 // Student number: 11293284
 
+// Padding for the histogram
+var radiusPadding = {
+    top: 30,
+    right: 50,
+    bottom: 50,
+    left: 75
+};
+
 function radiusHist() {
     /*
-    Draws an interactive histogram of the stars' radii
-    */
-
-    // Padding for the histogram
-    var padding = {
-        top: 30,
-        right: 50,
-        bottom: 50,
-        left: 75
-    };
-
+     * Draws an interactive histogram of the stars' radii
+     */
+    // Get the dimensions of the radius histogram svg
     var svgWidth = document.getElementById("svgRadiusHist").clientWidth;
     var svgHeight = document.getElementById("svgTemperatureHist").clientHeight;
 
-    var chartWidth = svgWidth - padding.left - padding.right;
-    var chartHeight = svgHeight - padding.top - padding.bottom;
+    // Determine the dimensions of the histogram
+    var histogramWidth = svgWidth - radiusPadding.left - radiusPadding.right;
+    var histogramHeight = svgHeight - radiusPadding.top - radiusPadding.bottom;
 
-    // Select the "svg" for the histogram
+    // Select the histogram svg
     var svgHistogram = d3.select("#svgRadiusHist")
 
-    // Select the "div" for the tooltip
+    // Select the tooltip div
     var tooltip = d3.select("#radiusTip");
 
-    // Define a "g" for the histogram
+    // Define a "g" tag for the histogram
     var histogram = svgHistogram.append("g")
         .attr("class", "histogram")
         .attr("id", "radius")
-        .attr("transform", `translate(${padding.left}, ${padding.top})`);
+        .attr("transform", `translate(${radiusPadding.left}, ${radiusPadding.top})`);
 
-    var stars = Object.values(originalDataset);
-
-    // Scaling function for x values
-    var xScale = d3.scaleLinear()
-        .range([0, chartWidth])
-        .domain([0, Math.ceil(maxValue(stars, "Straal") * 1.1)]);
-
-    var bins = getRadiusBins(xScale, stars);
-
-    // Find the length of the longest array in bins
-    var longestArray = 0;
-    bins.forEach(function(bin) {
-        if (bin.length > longestArray) {
-            longestArray = bin.length;
-        };
-    });
-
-    // Scaling function for y values
-    var yScale = d3.scaleLinear()
-        .range([0, chartHeight])
-        .domain([longestArray * 1.1, 0]);
+    // Get the x and y scales and the bin ranges and values
+    var scalesAndBins = getRadiusScalesAndBins(originalDataset, histogramWidth, histogramHeight);
+    var xScale = scalesAndBins[0];
+    var yScale = scalesAndBins[1];
+    var bins = scalesAndBins[2];
 
     // Draw x-axis
     histogram.append("g")
     .call(d3.axisBottom(xScale))
         .attr("class", "axis")
         .attr("id", "x")
-        .attr("transform", `translate(0, ${chartHeight})`);
+        .attr("transform", `translate(0, ${histogramHeight})`);
 
-    // Draw x label
+    // Draw x-label
     svgHistogram.append("text")
         .attr("class", "Label")
-        .attr("x", chartWidth / 2 + padding.left)
-        .attr("y", chartHeight + padding.top + padding.bottom / 1.5)
+        .attr("x", histogramWidth / 2 + radiusPadding.left)
+        .attr("y", histogramHeight + radiusPadding.top + radiusPadding.bottom / 1.5)
         .attr("text-anchor", "middle")
         .text("Straal (zonsstralen)");
 
@@ -74,11 +59,11 @@ function radiusHist() {
         .attr("class", "axis")
         .attr("id", "y");
 
-    // Draw y label
+    // Draw y-label
     svgHistogram.append("text")
         .attr("class", "label")
-        .attr("x", - (chartHeight / 2) - padding.top)
-        .attr("y", padding.left / 6)
+        .attr("x", - (histogramHeight / 2) - radiusPadding.top)
+        .attr("y", radiusPadding.left / 6)
         .attr("transform", "rotate(270)")
         .attr("text-anchor", "middle")
         .text("Aantal sterren");
@@ -88,15 +73,15 @@ function radiusHist() {
         .attr("class", "grid")
         .attr("opacity", 0.3)
         .call(d3.axisRight(yScale)
-            .tickSize(chartWidth, 0, 0)
+            .tickSize(histogramWidth, 0, 0)
             .tickFormat("")
         );
 
     // Draw title
     svgHistogram.append("text")
         .attr("class", "title")
-        .attr("x", chartWidth / 2 + padding.left)
-        .attr("y", padding.top / 2)
+        .attr("x", histogramWidth / 2 + radiusPadding.left)
+        .attr("y", radiusPadding.top / 2)
         .attr("text-anchor", "middle")
         .text("Verdeling van de straal van sterren relatief aan de zon");
 
@@ -120,6 +105,7 @@ function radiusHist() {
                 return Math.abs(yScale(0) - yScale(bin.length));
             })
             .on("click", function(bin) {
+                // Set the radius selection to the clicked range and update the visualisation
                 selections["radius"] = [bin.x0, bin.x1];
                 updateGraphs();
             })
@@ -143,20 +129,21 @@ function radiusHist() {
 
 function getRadiusBins(xScale, stars) {
     /*
-
-    */
-
+     * Creates a d3 histogram bins object and adds each star to the correct bin
+     */
+    // Variables for the bins
     var numberOfBins = 20;
     var lowestValue = d3.min(xScale.domain());
     var highestValue = d3.max(xScale.domain());
     var binWidth = Math.abs(highestValue - lowestValue) / numberOfBins;
     var thresholds = []
 
+    // Determine the thresholds for all bins, rounded to three decimal places
     for (var i = 0; i < numberOfBins; i++) {
         thresholds.push(parseFloat(parseFloat(i * binWidth + lowestValue).toFixed(3)));
     };
 
-    // Determine which values go into which bin
+    // Create the bins anto the correct bind add all stars
     var bins = d3.histogram()
         .value(function(star) {
             return star["Straal"];
@@ -168,53 +155,58 @@ function getRadiusBins(xScale, stars) {
     return bins;
 };
 
-function updateRadiusHist(newDataset) {
+function getRadiusScalesAndBins(dataset, width, height) {
     /*
+     * Creates scaling functions for the x and y values and gets the bin ranges and values
+     */
+    var stars = Object.values(dataset);
 
-    */
-
-    // Padding for the histogram
-    var padding = {
-        top: 30,
-        right: 50,
-        bottom: 50,
-        left: 75
-    };
-
-    var svgWidth = document.getElementById("svgRadiusHist").clientWidth;
-    var svgHeight = document.getElementById("svgTemperatureHist").clientHeight;
-
-    var chartWidth = svgWidth - padding.left - padding.right;
-    var chartHeight = svgHeight - padding.top - padding.bottom;
-
-    // Select the "svg" of the histogram
-    var svgHistogram = d3.select("#svgRadiusHist").transition()
-
-    // Select the "div" for the tooltip
-    var tooltip = d3.select("#radiusTip");
-
-    var newStars = Object.values(newDataset);
-
-    // Scaling function for x values
+    // Scaling function for the x values
     var xScale = d3.scaleLinear()
-        .range([0, chartWidth])
-        .domain([0, maxValue(newStars, "Straal") * 1.1]);
+        .range([0, width])
+        .domain([0, Math.ceil(maxValue(stars, "Straal") * 1.1)]);
 
-    // Determine which values go into which bin
-    var newBins = getRadiusBins(xScale, newStars);
+    // Get the bin ranges and values for the histogram
+    var bins = getRadiusBins(xScale, stars);
 
     // Find the length of the longest array in bins
     var longestArray = 0;
-    newBins.forEach(function(bin) {
+    bins.forEach(function(bin) {
         if (bin.length > longestArray) {
             longestArray = bin.length;
         };
     });
 
-    // Scaling function for y values
+    // Scaling function for the y values
     var yScale = d3.scaleLinear()
-        .range([0, chartHeight])
+        .range([0, height])
         .domain([longestArray * 1.1, 0]);
+
+    return [xScale, yScale, bins]
+};
+
+function updateRadiusHist(newDataset) {
+    /*
+     * Updates the radius barchart with the new dataset
+     */
+    // Get the dimensions of the radius histogram svg
+    var svgWidth = document.getElementById("svgRadiusHist").clientWidth;
+    var svgHeight = document.getElementById("svgTemperatureHist").clientHeight;
+
+    // Determine the dimensions of the histogram
+    var histogramWidth = svgWidth - radiusPadding.left - radiusPadding.right;
+    var histogramHeight = svgHeight - radiusPadding.top - radiusPadding.bottom;
+
+    // Select the histogram svg
+    var svgHistogram = d3.select("#svgRadiusHist").transition()
+
+    var newStars = Object.values(newDataset);
+
+    // Get the x and y scales and the bin ranges and values
+    var scalesAndBins = getRadiusScalesAndBins(newStars, histogramWidth, histogramHeight);
+    var xScale = scalesAndBins[0];
+    var yScale = scalesAndBins[1];
+    var newBins = scalesAndBins[2];
 
     // Draw x-axis
     svgHistogram.select(".axis#x")
@@ -231,9 +223,8 @@ function updateRadiusHist(newDataset) {
         .data(newBins)
         .enter()
 
-    // Update the height of each bar
+    // Update the y-value and height of each bar
     var bars =  d3.select("#svgRadiusHist").selectAll(".bar#radius")
-
     bars.transition()
         .duration(transitionDuration)
         .attr("y", function(bin) {
@@ -243,5 +234,6 @@ function updateRadiusHist(newDataset) {
             return Math.abs(yScale(0) - yScale(bin.length));
         });
 
+    // Remove excess bars
     bars.exit().remove();
 };

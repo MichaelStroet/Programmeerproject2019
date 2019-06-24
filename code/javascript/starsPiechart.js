@@ -228,7 +228,7 @@ function updatePiechart(newDataset) {
         }
 
     // Determine the total occurence of each star type
-    Object.values(originalDataset).forEach(function(star) {
+    Object.values(newDataset).forEach(function(star) {
         starData[`${star["Type"]}`]++;
     });
 

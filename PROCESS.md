@@ -8,14 +8,14 @@ Week: [1](#week-1-3-9-juni) - [2](#week-2-10-16-juni) - [3](#week-3-17-23-juni) 
 
 ### Weekoverzicht
 Dag: [1](#dag-1) - [2](#dag-2) - [3](#dag-3) - [4](#dag-4) - [5](#dag-5)
-### Dag 1:
+## Dag 1:
 
 #### Projectvoorstel
 Voor het project heb ik gekozen voor 1 scatterplot, 1 taartdiagram en 2 histogrammen. In het [projectvoorstel](PROPOSAL.md) is deze schets te vinden:
 
 ![Schets](doc/visualisation_sketch.png)
 
-### Dag 2:
+## Dag 2:
 
 #### Design document
 In het [design document](DESIGN.md) staat beschreven welke dataset ik gebruik en hoe ik deze zal gebruiken. Verder wordt uitgebreid beschreven hoe de figuren elkaar onderling beïnvloeden.
@@ -23,7 +23,7 @@ In het [design document](DESIGN.md) staat beschreven welke dataset ik gebruik en
 #### mentorgesprek
 Aan de hand van het mentorgesprek met Jasper zal er ook een afstandsslider toe worden gevoegd bij het HR-diagram. Deze zorgt ervoor dat het HR-diagram iets levendiger wordt.
 
-### Dag 3:
+## Dag 3:
 
 #### Stand-up
 Met twee van de vier mensen aanwezig waren we snel klaar met de eerste standup meeting. Er was niets aan te merken over mijn verhaal of mijn plan. Ik kreeg echter wel de tip om polygonen te gebruiken voor het bepalen van de categoriën.
@@ -47,7 +47,7 @@ De coördinaten van de hoekpunten van elk polynoom zijn genoteerd en opgeslagen 
 
 ![Notebook_scan](doc/process/week_1/notebook_scan.png)
 
-### Dag 4:
+## Dag 4:
 
 #### Stand-up
 Tijdens de stand-up meeting van vandaag werd mij aangeraden om even te stoppen met de data te bewerken en om van random data alvast figuren te maken.
@@ -76,7 +76,7 @@ De huidige Hertzsprung-Russell en taart- diagrammen in de visualisatie:
 
 ![huidige visualisatie](doc/process/week_1/scatterplot&piechart.png)
 
-### Dag 5:
+## Dag 5:
 
 #### Stand-up
 De eerste stand-up waar iedereen aanwezig was. Volgens het team ziet mijn prototype er goed uit, met een kleine aanmerking over de grid van het HR-diagram. Omdat de y-as logaritmisch is verschijnen er veel lijnen dicht op elkaar.
@@ -95,7 +95,6 @@ De eerste stand-up waar iedereen aanwezig was. Volgens het team ziet mijn protot
 - Een [bestand](code/javascript/starsDistanceSlider.js) aangemaakt voor de afstand slider.
 
 #### Huidige visualisatie
-
 ![Visualisatie-7-6-19](doc/process/week_1/Visualisatie-7-6-19.png)
 
 ## Week 2 (10-16 juni)
@@ -103,7 +102,7 @@ De eerste stand-up waar iedereen aanwezig was. Volgens het team ziet mijn protot
 ### Weekoverzicht
 Dag: [6](#dag-6) - [7](#dag-7) - [8](#dag-8) - [9](#dag-9) - [10](#dag-10)
 
-### Dag 6:
+## Dag 6:
 
 #### Stand-up
 Pinksteren: geen stand-up
@@ -122,7 +121,7 @@ Hier is dezelfde visualisatie, maar dan met alle 100.000+ sterren:
 
 Het aantal hoofdreeks en reuzen sterren is duidelijk vele malen groter dan het aantal rode/witte dwergen en superreuzen. Om het taartdiagram toch nog interactief te maken zal er ook op de uiteindelijke legenda geklikt moeten kunnen worden.
 
-### Dag 7:
+## Dag 7:
 
 #### Stand-up
 Deze week wil ik voornamelijk besteden aan het updaten van de figuren. Er werd een opmerking gemaakt over de piechart en de ontbrekende taartpunten. Deze bleken echter te missen vanwege een bug in de piechart code.
@@ -142,10 +141,9 @@ Deze week wil ik voornamelijk besteden aan het updaten van de figuren. Er werd e
 - Paginastructuur aangepast voor de slider
 
 #### Huidige visualisatie
-
 ![Visualisatie-11-6-19](doc/process/week_2/Visualisatie-11-6-19.png)
 
-### Dag 8:
+## Dag 8:
 
 #### Stand-up
 Style guide laten we voor morgen, aangezien één van de leden niet aanwezig was.
@@ -167,7 +165,6 @@ Er werd gesproken ovr het inplementeren van een schaal functie voor de grootte v
 - Verhoudingen van de slider en dropdown/info/taartdiagram kolommen aangepast
 
 #### Figuren
-
 De nieuwe polygonen geplot in het scatterplot in python:
 
 ![Polygonen](doc/process/week_2/HR-diagramPolygonen.png)
@@ -177,10 +174,9 @@ Het met de slider geüpdate taartdiagram:
 ![TaartUpdate](doc/process/week_2/piechartUpdate.png)
 
 #### Huidige visualisatie
-
 ![Visualisatie-12-6-19](doc/process/week_2/Visualisatie-12-6-19.png)
 
-### Dag 9:
+## Dag 9:
 
 #### Stand-up
 Twee mensen niet aanwezig, geen stand-up.
@@ -192,7 +188,7 @@ Twee mensen niet aanwezig, geen stand-up.
 - Afstandsslider update het HR-diagram door sterren buiten de afstandsrange een straal van 0 te geven.
 - Start gemaakt aan het updaten van de massa/straal histogram met de afstandsslider. De assen worden aangepast naar de nieuwe data, de balken nog niet.
 
-### Dag 10:
+## Dag 10:
 
 #### Stand-up
 Same as usual.
@@ -211,7 +207,6 @@ Same as usual.
 - tooltips.css verwijderd en alleen het .toolip deel verplaatst naar stars.css. .tooltip#id in had geen effect en bleek uberhaupt niet nodig.
 
 #### Figuren
-
 De huidige visualisatie voor alle afstanden:
 
 ![Visualisatie-13-6-19_0-715](doc/process/week_2/Visualisatie-13-6-19_0-715.png)
@@ -246,14 +241,12 @@ Met extra tijd wil ik graag de kleuren toevoegen en het taartdiagram dynamisch l
 - Twee niet werkende radio knoppen toegevoegd voor het selecteren van de dataset.
 
 #### Huidige visualisatie
-
 ![Visualisatie-17-6-19](doc/process/week_3/Visualisatie-17-6-19.png)
 
 ## Dag 12:
 
 #### Stand-up
 Surprise, surprise, geen stand-up.
-
 
 #### Gechreven code
 
@@ -262,9 +255,7 @@ Surprise, surprise, geen stand-up.
 - Bugs in de histogrammen gefixed. Bins in de temperatuur histogram en de thresholds in de straal histogram.
 
 #### Huidige visualisatie
-
 ![Visualisatie-18-6-19](doc/process/week_3/Visualisatie-18-6-19.png)
-
 
 ## Dag 13:
 
@@ -304,7 +295,6 @@ Het ziet er allemaal goed en netjes uit volgens de enige persoon die er verder w
 - Een linearGradient kleuren legenda gemaakt voor het HR-diagram.
 
 #### Huidige website
-
 De index.html pagina die als home page functioneert:
 
 ![indexHTML](doc/process/week_3/indexHTML.png)
@@ -313,10 +303,9 @@ De visualisatie pagina:
 
 ![starsHTML](doc/process/week_3/starsHTML.png)
 
-### Dag 15:
+## Dag 15:
 
 #### Meeting
-
 Beta versie is compleet en ziet er goed uit.
 
 #### Geschreven code
@@ -331,16 +320,18 @@ Beta versie is compleet en ziet er goed uit.
 - Piechart getransleerd.
 
 #### Huidige visualisatie
-
 ![Visualisatie-21-6-19](doc/process/week_3/Visualisatie-21-6-19.png)
 
-### Weekend 3:
+## Weekend 3:
 
+#### Geschreven code
+- Comments bijgewerkt voor alle html, css en python bestanden.
+- Comments bijgewerkt voor alle non-stars*** javascript bestanden.
 
 ## Week 4 (24-30 juni)
 
 ### Weekoverzicht
-Dag: [16](#dag-16) - [7](#dag-7) - [18](#dag-18) - [19](#dag-19) - [20](#dag-20) - [weekend](#weekend-4)
+Dag: [16](#dag-16) - [7](#dag-7) - [18](#dag-18) - [19](#dag-19) - [20](#dag-20)
 
 ## Dag 16:
 
@@ -351,5 +342,3 @@ Dag: [16](#dag-16) - [7](#dag-7) - [18](#dag-18) - [19](#dag-19) - [20](#dag-20)
 ## Dag 19:
 
 ## Dag 20:
-
-### Weekend 4:

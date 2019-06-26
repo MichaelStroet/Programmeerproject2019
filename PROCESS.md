@@ -335,7 +335,27 @@ Dag: [16](#dag-16) - [7](#dag-7) - [18](#dag-18) - [19](#dag-19) - [20](#dag-20)
 
 ## Dag 16:
 
+#### Stand-up
+Geen standup, wow.
+
+#### Geschreven code
+
+##### Javascript
+- Comments bijgewerkt voor alle stars*** bestanden
+- Schoonheidsaanpassingen aan code
+
 ## Dag 17:
+
+#### Stand-up / code review
+Zowaar weer geen stand-up. Wel code review gedaan met Bente. Code ziet er goed uit en duidelijk gestructureerd. Veel bestanden, af en toe onduidelijk welke functie in het ene bestand een andere functie aanroept in een ander bestand. stars.js is niet de meest handige naam voor een hoofdbestand: starsMain.js, main.js?
+
+#### Geschreven code
+
+##### HTML/CSS
+- Begonnen aan homepagina verhaal.
+
+##### Javascript
+- stars.js hernoemt naar starsMain.js
 
 ## Dag 18:
 

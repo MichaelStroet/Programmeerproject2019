@@ -29,11 +29,11 @@ Voor de gebruiker naar de visualisatie gaat, kan de data pagina ook nog bekeken 
 
 Eenmaal bij de visualisatie aangekomen ziet de gebruiker deze pagina:
 
-![VisualisatieProper](doc/readme/VisualisatieProper.png)
+![VisualisatieProper](doc/readme/visualisatieProper.png)
 
 Hier kan de gebruiken selecties maken uit ster afstand, type, effectieve (oppervlakte) temperatuur en straal. Individuele sterren kunnen geselecteerd worden in het Hertzsprung-Russell diagram en hun eigenschappen worden dan weergegeven boven het taartdiagram. Boven het Hertzsprung-Russell diagram staan twee knoppen waarmee de huidig gebruikte dataset veranderd kan worden. Wanneer de gebruiker op 100.000 sterren klikt, verschijnt er, na enige laad tijd, deze pagina:
 
-![VisualisatieAll](doc/readme/VisualisatieAll.png)
+![VisualisatieAll](doc/readme/visualisatieAll.png)
 
 Ook deze is net zo interactief als de vorige, alleen flink wat slomer wanneer een redelijk deel van de 100.000 sterren aanwezig zijn.
 

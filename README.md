@@ -7,7 +7,7 @@ ProgrammeerProject periode 6 (5062PRPR6Y)
 ## Eindproduct
 
 ##### Github pages
-[Visualisatie sterren](https://michaelstroet.github.io/Programmeerproject2019/code/html-css/home.html)
+[Visualisatie sterren](https://michaelstroet.github.io/Programmeerproject2019/code/html-css/stars.html)
 
 ##### Product video
 [Unavailable](https://www.youtube.com/watch?v=dQw4w9WgXcQ)

@@ -5,7 +5,6 @@ function resetButton() {
     /*
      * Creates several buttons which reset one or all of the current selections
      */
-
     // Create a button which resets all selections
     d3.select("#resetButton").append("button")
         .attr("type", "button")
@@ -58,7 +57,6 @@ function updateSelections() {
     /*
      * Updates the selection value texts
      */
-
     // Update or remove the text for each selection
     Object.keys(selections).forEach(function(selection) {
         var selectionValue = d3.select(`#${selection}`);

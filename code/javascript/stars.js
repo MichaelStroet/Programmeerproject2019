@@ -123,7 +123,7 @@ function createFigureSvgs(body) {
     var widthRadiusHist = document.getElementById("radiusHist").clientWidth;
     var heightRadiusHist = widthRadiusHist / ((1 + Math.sqrt(5)) / 2);
 
-    // Adds a svg of class container with a specific id and dimensions
+    // Adds an svg of class container with a specific id and dimensions
     var addFigureSvg = function(divId, svgWidth, svgHeight, svgId) {
         d3.select(divId)
             .append("svg")

@@ -37,6 +37,29 @@ Hier kan de gebruiken selecties maken uit ster afstand, type, effectieve (opperv
 
 Ook deze is net zo interactief als de vorige, alleen flink wat slomer wanneer een redelijk deel van de 100.000 sterren aanwezig zijn.
 
+## Repository structuur
+
+### Root map
+
+##### Mappen
+- code: Bevat alle html/css, javascript en python bestanden
+- data: Bevat alle csv, json en txt bestanden
+- doc: Bevat afbeeldingen
+
+##### Losse bestanden
+- .gitignore
+- DESIGN.md
+- LICENSE
+- PROCESS.md
+- PROPOSAL.md
+- README.md
+- REPORT.md
+- STYLE.md
+
+### Hoofdbestanden
+- Het javascript hoofdbestand is: *starsMain.js*
+- Het python hoofdbestand is: *main.py*
+
 ## Dankwoord
 Ik wil graag de staff van de minor programmeren (2019) bedanken voor hun steun en assistentie tijdens de gehele minor.
 

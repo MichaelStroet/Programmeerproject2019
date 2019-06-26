@@ -1,19 +1,9 @@
 /* Name: Michael Stroet
    Student number: 11293284 */
+
 body{
     background: #f5f5f0;
-}
-
-text {
-    font: 14px Verdana;
-}
-
-text.title {
-    font: 15px Verdana;
-}
-
-html {
-    font: 15px Verdana;
+    padding-bottom: 50px;
 }
 
 .nopadding {

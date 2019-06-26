@@ -1,7 +1,7 @@
 <!-- Name: Michael Stroet
      Student number: 11293284 -->
 
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 
 <html>
 
@@ -10,7 +10,7 @@
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Sterren visualisatie</title>
+        <title>Stars - homepage</title>
 
         <!-- Bootstrap (online) -->
         <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
@@ -18,45 +18,15 @@
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "anonymous"></script>
         <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "anonymous"></script>
 
-        <!-- D3 v5 (local) -->
-        <script type = "text/javascript" src = "../javascript/d3/d3.v5.min.js"></script>
-
-        <!-- D3 simple slider (online) -->
-        <script src="https://unpkg.com/d3-simple-slider"></script>
-
-        <!-- Visualisation (local) -->
-
-        <!-- Main code -->
-        <script type = "text/javascript" src = "../javascript/stars.js"></script>
-
-        <!-- Auxillary functions -->
-        <script type = "text/javascript" src = "../javascript/createGradientData.js"></script>
-        <script type = "text/javascript" src = "../javascript/getNewDataset.js"></script>
-        <script type = "text/javascript" src = "../javascript/graphUpdates.js"></script>
-        <script type = "text/javascript" src = "../javascript/highlightStar.js"></script>
-        <script type = "text/javascript" src = "../javascript/minMaxValues.js"></script>
-
-        <!-- figure initialisations and updates -->
-        <script type = "text/javascript" src = "../javascript/starsScatterplot.js"></script>
-        <script type = "text/javascript" src = "../javascript/starsPiechart.js"></script>
-        <script type = "text/javascript" src = "../javascript/starsTemperatureHist.js"></script>
-        <script type = "text/javascript" src = "../javascript/starsRadiusHist.js"></script>
-
-        <!-- User interactions -->
-        <script type = "text/javascript" src = "../javascript/starsDatasetButtons.js"></script>
-        <script type = "text/javascript" src = "../javascript/starsProperDropdown.js"></script>
-        <script type = "text/javascript" src = "../javascript/starsResetButtons.js"></script>
-        <script type = "text/javascript" src = "../javascript/starsDistanceSlider.js"></script>
-
         <!-- Stylesheet -->
         <link rel = "stylesheet" href = "styles.css">
 
     </head>
 
     <body>
-        <!-- Navbar visualisation -->
+        <!-- Navbar homepage -->
         <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e0e0d1;">
-            <a class="navbar-brand" href="../../index.html">
+            <a class="navbar-brand" href="#">
                 <img src="../../doc/M57-RGBL.png" width="30" height="30" class="d-inline-block align-top" alt=""></img>
                 Mikkel Inc.
             </a>
@@ -67,8 +37,14 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item-active">
-                        <a class="nav-link" href="#">Visualisatie</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Sterren</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data.html">Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="visualisation.html">Visualisatie</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-right">
@@ -79,85 +55,99 @@
             </div>
         </nav>
 
-        <!-- Visualisation -->
-        <div class = "container-fluid">
+        <div class = "container" id = "pageHeader">
+            <div class = "page-header">
+                <h1>Programmeerproject2019 <small>Data visualisatie</small></h1>
+                <h4><small>Michael Stroet 11293284</small></h4>
+                <hr>
+            </div>
+        </div>
 
-            <!-- row for the dataset buttons -->
+        <div class = "container">
             <div class = "row">
-                <div class = "col-sm-6">
-                    <div class = "row">
-                        <div class = "col-sm-3"></div>
-                        <div class = "col-sm-4" id = "properDatasetButton"><br></div>
-                        <div class = "col-sm-4" id = "allDatasetButton"><br></div>
-                    </div>
+                <div class = "col-sm-12">
+                    <h2>Sterren aan de hemel</h2>
+
+                    <p>
+                        Al sinds de prehistorie is de mens gefascineerd door de sterren aan de hemel. Ondanks dat mensen in de oudheid al veel wisten over de beweging van de sterren en daarmee voorspellingen konden doen, weten wij relatief kort pas wat deze lichtpunten zijn. Sterren zijn, net zoals de zon, gigantische bollen van heet plasma. Zij stralen een enorme hoeveelheid licht en warmte uit. Alleen omdat alle sterren, naast de zon, op zo'n grote afstand staan, zien wij hen als lichtpuntjes aan de hemel.
+                    </p>
                 </div>
             </div>
 
-            <!-- Row for the HR-diagram, piechart, slider, dropdown, info and resets -->
             <div class = "row">
-
-                <!-- HR-diagram -->
-                <div class = "col-sm-6" id = "HRdiagram"></div>
-
-                <!-- Piechart, slider, dropdown, info and resets -->
                 <div class = "col-sm-6">
-                    <div class = "row">
+                    <p>
+                        Maar niet elke ster is gelijk. Sterren komen voor in allerlei verschillende groottes, massa's en temperaturen. Van bijvoorbeeld Van Maanen's ster, een warme witte dwerg met een straal niet veel groter dan die van de Aarde, helemaal tot VY Canis Majoris , een koele rode superreus meer dan duizend keer zo groot als de zon. Er zijn vrij veel visualisaties te vinden over de verschillen tussen enkele sterren, maar weinig over de verdeling van sterren. Hoeveel van de sterren zijn superreuzen? Is de zon een gemiddelde ster? Enkele vragen die hierbij gesteld kunnen worden. Het doel van dit project is om deze vragen te kunnen beantwoorden.
+                    </p>
+                </div>
 
-                        <!-- Distance slider -->
-                        <div class = "col-sm-3">
-                            <div class="row">
-                                <p style = "text-align: center">Afstanden (parsec)</p>
-                            </div>
-                            <div class="row">
-                                <div class = "col-sm-12" id = "distanceSlider"></div>
-                            </div>
-                        </div>
-
-                        <!-- Piechart, dropdown, info and resets -->
-                        <div class = "col-sm-9">
-
-                            <!-- Dropdown and reset all button -->
-                            <div class = "row">
-                                <div class = "col-sm-5" id = "properDropdown"></div>
-                                <div class = "col-sm-7" id = "resetButton"></div>
-                            </div>
-
-                            <!-- Info and resets -->
-                            <div class = "row">
-
-                                <!-- Star information -->
-                                <div class = "col-sm-5" id = "info">
-                                    <p id = "starName">
-                                        Ster
-                                    </p>
-                                    <p class = "nopadding" id = "starProperties">
-                                        Type:<br>-<br>Temperatuur:<br>-<br>Lichtkracht:<br>-<br>Afstand:<br>-<br>Straal:<br>-
-                                    </p>
-                                </div>
-
-                                <!-- Reset buttons -->
-                                <div class = "col-sm-7">
-                                    <div class = "row" id = "distanceReset"></div>
-                                    <div class = "row" id = "typeReset"></div>
-                                    <div class = "row" id = "temperatureReset"></div>
-                                    <div class = "row" id = "radiusReset"></div>
-                                </div>
-                            </div>
-
-                            <!-- Piechart -->
-                            <div class = "row">
-                                <div class = "col-sm-12" id = "piechart"></div>
-                            </div>
-
-                        </div>
-                    </div>
+                <div class = "col-sm-6">
+                    <!-- https://www.pexels.com/photo/person-sky-silhouette-night-32237/ -->
+                    <img src = "../../doc/cosmos-dark-galaxy-32237.jpg" width = "100%"></img>
                 </div>
             </div>
 
-            <!-- Row for the two histograms -->
+            <hr>
+
             <div class = "row">
-                <div class = "col-sm-6" id = "temperatureHist"></div>
-                <div class = "col-sm-6" id = "radiusHist"></div>
+                <div class = "col-sm-12">
+                    <h2>Hertzsprung-Russell diagram</h2>
+
+                    <p>
+                        In de vroege 20e eeuw hadden Ejnar Hertzsprung en Henry Norris Russell, onafhankelijk van elkaar, een opmerkelijke ondekking. Als je sterren op een grafiek plot met hun oppervlakte temperatuur en lichtkracht, vormen zij vaste patronen. Sterren met soortgelijke eigenschappen staan gegroepeerd in verschillende gebieden. Voor deze visualisatie wordt er onderscheid gemaakt tussen vijf verschillende type sterren.
+                    </p>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class = "col-sm-6">
+                    <ul>
+                        <li>De hoofdreeks (main sequence) bevat het merendeel van alle sterren. Deze zijn te vinden als een diagonale lijn door het figuur heen. Hoofdreeks sterren hebben een straal en massa die relatief vergelijkbaar zijn met die van de zon. Een voorbeeld van een hoofdreeks ster is dan natuurlijk de zon (Sol).</li>
+                        <li>Onderaan de hoofdreeks, waar de temperatuur en helderheid veel lager zijn, staan de rode dwergen. Deze sterren zijn typisch zo'n tien keer kleiner dan de zon, maar kunnen ook veel kleiner zijn. Een bekend voorbeeld van een rode dwerg is Proxima Centauri, met een afstand van iets meer dan vier lichtjaar de dichtstbijzijnde ster na de zon.</li>
+                        <li>Wanneer hoofdreeks sterren door hun bruikbare waterstof voorraad heen zijn, kunnen zij helium atomen fuseren. Door de energie die hierbij vrij komt, worden de sterren veel groter. Hierdoor worden zij een stuk helderder en kouder aan het oppervlakte. Het is op deze plek waar wij de reuzentak vinden. Reuzen sterren zijn tot enkele tientallen keren groter dan de zon. Bekende reuzen zijn bijvoorbeeld Aldebaran of Arcturus.</li>
+                        <li>Sterren die zwaar genoeg zijn groeien door tot gigantische superreuzen. Deze sterren zijn aan het einde van hun leven en zullen eindigen in spectaculaire supernovae. Superreuzen hebben een straal van honderden tot soms duizend zonsstralen. Bekende superreuzen zijn bijvoorbeeld de poolster (Polaris) of Betelgeuze (Betelgeuse).</li>
+                        <li>Sterren die niet zwaar genoeg zijn, verliezen hun buitenste lagen. Wat er overblijft is de oude kern van de ster, dit object wordt een witte dwerg genoemd. Witte dwergen zijn warme overblijfselen met maar een fractie van hun oorspronkelijke grootte. Een voorbeeld van een witte dwerg is Van Maanen's Star.</li>
+                    </ul>
+                </div>
+
+                <div class = "col-sm-6">
+                    <!-- https://www.eso.org/public/images/eso0728c/ -->
+                    <img src = "../../doc/eso0728c.jpg" width = "100%"></img>
+                    <figcaption> Voorbeeld van een Hertzsprung-Russell diagram. Bron: ESO </figcaption>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class = "row">
+                <div class = "col-sm-12">
+                    <h2>Interactieve visualisatie</h2>
+
+                    <p>
+                        Om de eerder genoemde vragen te kunnen beantwoorden is een interactieve visualisatie gemaakt van meer dan 100.000 sterren (Zie de "Data" pagina voor meer informatie). In deze visualisatie staat het Hertzprung-Russell diagram (HR-diagram) centraal. Door op een ster te klikken in het HR-diagram wordt deze gehighlight en zal er informatie over die ster verschijnen. Daarnaast zijn er drie andere figuren:
+                    </p>
+
+                    <ul>
+                        <li> Een taartdiagram waarin de verdeling van de verschillende typen sterren worden weergegeven. Op elke taartpunt (of bijbehoorende legenda vak) kan geklikt worden, zodat alleen sterren van dat type worden weergeven op het HR-diagram.</li>
+                        <li> Een histogram van de temperaturen van de sterren. Op elke balk van het histogram kan geklikt worden om alleen sterren te laten zien in dat gebied van temperaturen.</li>
+                        <li>Een histogram van de stralen van de sterren. Op elke balk van het histogram kan geklikt worden om alleen sterren te laten zien in dat gebied van stralen.</li>
+                    </ul>
+
+                    <p>
+                        Verder is er een slider naast het HR-diagram waarmee de sterren ook kunnen worden gefilterd. Boven het taartdiagram staan knoppen waarmee bepaalde of alle gekozen selecties gereset kunnen worden. Als laatste kan er nog gekozen worden welke dataset gebruikt zal worden. De bekende sterren zijn een colectie van 143 sterren met een bekende naam, de andere knop laat alle 100.000+ sterren zien uit de database. Pas op! Deze optie kan langzaam zijn.
+                    </p>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+        <div class = "container">
+            <div class = "row">
+                <div class = "col-sm-4"></div>
+                <div class = "col-sm-4 text-center">
+                    <a href="visualisation.html" class="btn btn-secondary">Ga naar de visualisatie</a>
+                </div>
             </div>
         </div>
     </body>

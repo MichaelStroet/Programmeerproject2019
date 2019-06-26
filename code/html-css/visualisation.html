@@ -1,0 +1,171 @@
+<!-- Name: Michael Stroet
+     Student number: 11293284 -->
+
+<!DOCTYPE HTML>
+
+<html>
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Stars - visualisatie</title>
+
+        <!-- Bootstrap (online) -->
+        <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
+        <script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin = "anonymous"></script>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "anonymous"></script>
+        <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "anonymous"></script>
+
+        <!-- D3 v5 (local) -->
+        <script type = "text/javascript" src = "../javascript/d3/d3.v5.min.js"></script>
+
+        <!-- D3 simple slider (online) -->
+        <script src="https://unpkg.com/d3-simple-slider"></script>
+
+        <!-- Visualisation (local) -->
+
+        <!-- Main code -->
+        <script type = "text/javascript" src = "../javascript/starsMain.js"></script>
+
+        <!-- Auxillary functions -->
+        <script type = "text/javascript" src = "../javascript/createGradientData.js"></script>
+        <script type = "text/javascript" src = "../javascript/getNewDataset.js"></script>
+        <script type = "text/javascript" src = "../javascript/graphUpdates.js"></script>
+        <script type = "text/javascript" src = "../javascript/highlightStar.js"></script>
+        <script type = "text/javascript" src = "../javascript/minMaxValues.js"></script>
+
+        <!-- figure initialisations and updates -->
+        <script type = "text/javascript" src = "../javascript/starsScatterplot.js"></script>
+        <script type = "text/javascript" src = "../javascript/starsPiechart.js"></script>
+        <script type = "text/javascript" src = "../javascript/starsTemperatureHist.js"></script>
+        <script type = "text/javascript" src = "../javascript/starsRadiusHist.js"></script>
+
+        <!-- User interactions -->
+        <script type = "text/javascript" src = "../javascript/starsDatasetButtons.js"></script>
+        <script type = "text/javascript" src = "../javascript/starsProperDropdown.js"></script>
+        <script type = "text/javascript" src = "../javascript/starsResetButtons.js"></script>
+        <script type = "text/javascript" src = "../javascript/starsDistanceSlider.js"></script>
+
+        <!-- Stylesheet -->
+        <link rel = "stylesheet" href = "styles.css">
+
+    </head>
+
+    <body>
+        <!-- Navbar visualisation -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e0e0d1;">
+            <a class="navbar-brand" href="stars.html">
+                <img src="../../doc/M57-RGBL.png" width="30" height="30" class="d-inline-block align-top" alt=""></img>
+                Mikkel Inc.
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="stars.html">Sterren</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data.html">Data</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Visualisatie</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-right">
+                    <li class="nav-item">
+                        <a class="btn" href="https://github.com/MichaelStroet/Programmeerproject2019" target="_blank">Github</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Visualisation -->
+        <div class = "container-fluid">
+
+            <!-- row for the dataset buttons -->
+            <div class = "row">
+                <div class = "col-sm-6">
+                    <div class = "row">
+                        <div class = "col-sm-3"></div>
+                        <div class = "col-sm-4" id = "properDatasetButton"><br></div>
+                        <div class = "col-sm-4" id = "allDatasetButton"><br></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row for the HR-diagram, piechart, slider, dropdown, info and resets -->
+            <div class = "row">
+
+                <!-- HR-diagram -->
+                <div class = "col-sm-6" id = "HRdiagram"></div>
+
+                <!-- Piechart, slider, dropdown, info and resets -->
+                <div class = "col-sm-6">
+                    <div class = "row">
+
+                        <!-- Distance slider -->
+                        <div class = "col-sm-3">
+                            <div class="row">
+                                <p style = "text-align: center">Afstanden (parsec)</p>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-12" id = "distanceSlider"></div>
+                            </div>
+                        </div>
+
+                        <!-- Piechart, dropdown, info and resets -->
+                        <div class = "col-sm-9">
+
+                            <!-- Dropdown and reset all button -->
+                            <div class = "row">
+                                <div class = "col-sm-5" id = "properDropdown"></div>
+                                <div class = "col-sm-7" id = "resetButton"></div>
+                            </div>
+
+                            <!-- Info and resets -->
+                            <div class = "row">
+
+                                <!-- Star information -->
+                                <div class = "col-sm-5" id = "info">
+                                    <p id = "starName">
+                                        Ster
+                                    </p>
+                                    <p class = "nopadding" id = "starProperties">
+                                        Type:<br>-<br>Temperatuur:<br>-<br>Lichtkracht:<br>-<br>Afstand:<br>-<br>Straal:<br>-
+                                    </p>
+                                </div>
+
+                                <!-- Reset buttons -->
+                                <div class = "col-sm-7">
+                                    <div class = "row" id = "distanceReset"></div>
+                                    <div class = "row" id = "typeReset"></div>
+                                    <div class = "row" id = "temperatureReset"></div>
+                                    <div class = "row" id = "radiusReset"></div>
+                                </div>
+                            </div>
+
+                            <!-- Piechart -->
+                            <div class = "row">
+                                <div class = "col-sm-12" id = "piechart"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row for the two histograms -->
+            <div class = "row">
+                <div class = "col-sm-6" id = "temperatureHist"></div>
+                <div class = "col-sm-6" id = "radiusHist"></div>
+            </div>
+        </div>
+    </body>
+
+</html>

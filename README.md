@@ -3,7 +3,7 @@
 UvA minor programmeren 2019 - ProgrammeerProject periode 6 (5062PRPR6Y)
 
 ## Eindproduct
-[Visualisatie sterren](https://michaelstroet.github.io/Programmeerproject2019/index.html)
+[Visualisatie sterren](https://michaelstroet.github.io/Programmeerproject2019/code/html-css/home.html)
 
 ## Process book
 [Process book](PROCESS.md)

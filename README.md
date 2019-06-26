@@ -88,3 +88,6 @@ Special thanks gaan naar Jasper en Nigel voor hun inzet bij het project, waar zi
 #### Afbeeldingen
 - Sterren achtergrond met silhouette, Snapwire, Pexels: https://www.pexels.com/photo/person-sky-silhouette-night-32237/
 - Hertzsprung-Russell diagram, ESO: https://www.eso.org/public/images/eso0728c/
+
+© 2019 Michael Stroet, MIT license
+© Universiteit van Amsterdam

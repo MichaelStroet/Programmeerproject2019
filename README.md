@@ -90,4 +90,5 @@ Special thanks gaan naar Jasper en Nigel voor hun inzet bij het project, waar zi
 - Hertzsprung-Russell diagram, ESO: https://www.eso.org/public/images/eso0728c/
 
 © 2019 Michael Stroet, MIT license
+
 © Universiteit van Amsterdam

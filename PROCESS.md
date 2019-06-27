@@ -31,7 +31,7 @@ Met twee van de vier mensen aanwezig waren we snel klaar met de eerste standup m
 #### Geschreven code
 
 ##### Python
-- create_temperatureCSV.py geschreven die de data in een pandas dataframe zet. De data wordt geïsoleert en de sterren met ontbrekende gegevens verwijdert. De waardes van de effectieve temperaturen worden berekent in calculate_temperature.py en deze worden als extra kolom toegevoegd aan de dataframe. Deze dataframe creëert een nieuwe csv: [temperature.csv](data/temperature.csv).
+- create_temperatureCSV.py geschreven die de data in een pandas dataframe zet. De data wordt geïsoleert en de sterren met ontbrekende gegevens verwijdert. De waardes van de effectieve temperaturen worden berekent in calculate_temperature.py en deze worden als extra kolom toegevoegd aan de dataframe. Deze dataframe creëert een nieuwe csv: temperature.csv.
 - [Script](code/python/plot_Hertzsprung-Russell.py) geschreven die een Hertzsprung-Russell diagram plot met matplotlib.
 
 #### Keuzes categorie grenzen
@@ -58,16 +58,16 @@ Verder werd er opgemerkt over het python HR-diagram dat door zo'n groot aantal s
 
 ##### Python
 - Begonnen aan het bepalen van de polygonen coördinaten in het [plot_HR bestand](code/python/plot_Hertzsprung-Russell.py).
-- add_category_color_radius_mass.py aangemaakt die alle variabelen, op het moment random, toevoegt aan de [temperature csv](data/temperature.csv) en daarmee [stars.csv](data/stars.csv) aanmaakt.
+- add_category_color_radius_mass.py aangemaakt die alle variabelen, op het moment random, toevoegt aan de temperature csv en daarmee stars.csv aanmaakt.
 - Begonnen aan het convertCSV2JSON.py script die de data om zal zetten naar json bestanden.
 
 De python code is op het moment vrij rommelig, later zal er een hoofdbestand komen die alles in één keer zal laten runnen.
 
 ##### HTML / CSS
-- [Html](code/html-css/stars.html) en [css](code/html-css/stars.css) bestanden van de visualisatie pagina aangmeaakt. De html pagina maakt gebruik van een bootstrap indeling. Link naar de visualisatie toegevoegd aan het [index.html](index.html) bestand.
+- [Html](code/html-css/visualisation.html) en [css](code/html-css/styles.css) bestanden van de visualisatie pagina aangmeaakt. De html pagina maakt gebruik van een bootstrap indeling. Link naar de visualisatie toegevoegd aan het index.html bestand.
 
 ##### Javascript
-- [Hoofdbestand](code/javascript/stars.js) voor javascript aangemaakt die de json data inlaad en de pagina klaarmaakt voor de figuren.
+- [Hoofdbestand](code/javascript/starsMain.js) voor javascript aangemaakt die de json data inlaad en de pagina klaarmaakt voor de figuren.
 - [Scatterplot script](code/javascript/starsScatterplot.js) aangemaakt die een Hertzsprung-Russell diagram maakt van de sterren. De huidige versie plot alleen de sterren met een proper naam.
 - [Piechart script](code/javascript/starsScatterplot.js) aangemaakt die een taartdiagram maakt van de verschillende soorten sterren. In het diagram staat alleen dummy data op het moment
 
@@ -84,13 +84,13 @@ De eerste stand-up waar iedereen aanwezig was. Volgens het team ziet mijn protot
 #### Geschreven code
 
 ##### HTML / CSS
-- Nieuwe javascript bestanden toegevoegd aan [stars.html](code/html-css/stars.html). Het defineren van een "div" voor de verschillende tooltips staat nu in een functie.
+- Nieuwe javascript bestanden toegevoegd aan [visualisation.html](code/html-css/visualisation.html). Het defineren van een "div" voor de verschillende tooltips staat nu in een functie.
 
 ##### Javascript
 - Het [taartdiagram script](code/javascript/starsPiechart.js) aangepast zodat het de [stars.json](data/stars.json) data gebruikt.
 - Code voor de twee histogrammen geschreven:
     - Het [temperatuur script](code/javascript/starsTemperatureHist.js) maakt een histogram van de sterren gebaseerd op hun temperatuur. De x-as is hetzelfde als die van het HR-diagram. De waardes van het histogram komen uit [stars.json](data/stars.json).
-    - Het [massa/straal script](code/javascript/starsMassRadiusHist.js) maakt een histogram van de sterren gebaseerd op hun straal. Massa is nog niet geïmplementeerd. De waardes komen ook uit [stars.json](data/stars.json).
+    - Het [massa/straal script](code/javascript/starsRadiusHist.js) maakt een histogram van de sterren gebaseerd op hun straal. Massa is nog niet geïmplementeerd. De waardes komen ook uit [stars.json](data/stars.json).
 - Het dropdown menu van proper namen heeft staat nu in een eigen [script](code/javascript/starsProperDropdown.js). De opties komen van de [stars.json](data/stars.json) keys, dus in de toekomst moet er een starsProper.json komen wanneer meerdere sterren zullen worden gepbruikt.
 - Een [bestand](code/javascript/starsDistanceSlider.js) aangemaakt voor de afstand slider.
 
@@ -331,7 +331,7 @@ Beta versie is compleet en ziet er goed uit.
 ## Week 4 (24-30 juni)
 
 ### Weekoverzicht
-Dag: [16](#dag-16) - [7](#dag-7) - [18](#dag-18) - [19](#dag-19) - [20](#dag-20)
+Dag: [16](#dag-16) - [17](#dag-17) - [18](#dag-18) - [19](#dag-19)
 
 ## Dag 16:
 
@@ -362,3 +362,6 @@ Zowaar weer geen stand-up. Wel code review gedaan met Bente. Code ziet er goed u
 ## Dag 19:
 
 ## Dag 20:
+Laatste dag en eindpresentaties.
+
+Vakantie!
